@@ -1,6 +1,6 @@
 package org.epiphany.Interfaces;
 
-interface ICharacter{
+public interface ICharacter{
 
     byte level = 0;
 
