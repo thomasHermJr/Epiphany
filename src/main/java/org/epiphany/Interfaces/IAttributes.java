@@ -4,10 +4,10 @@ public interface IAttributes extends ICharacter{ // open IAttributes interface
 
     /*Base Attributes*/
 
-    byte strength = 0; // bonus to physical attack, heavy weapon proficiency gain, and leather proficiency gain
+    byte strength = 0; // bonus to physical attack, heavy weapon proficiency gain, and chainmail proficiency gain
     byte dexterity = 0; // bonus to speed, ranged and light weapon proficiency gain, and gambeson proficiency gain
     byte intelligence = 0; // bonus to skill proficiency gain
-    byte wisdom = 0; // small bonus to both skill and personal proficiency gain
+    byte wisdom = 0; // bonus to life proficiency gain
     byte constitution = 0; // bonus to max health, stamina, and plate proficiency gain
     byte charisma = 0; // bonus to personal proficiency gain
 
@@ -20,7 +20,6 @@ public interface IAttributes extends ICharacter{ // open IAttributes interface
     byte physicalAttack = 0;
     byte physicalDefense = 0;
     byte speed = 0;
-    byte luck = 0;
 
     /*Weapon Proficiencies*/
 
@@ -29,12 +28,20 @@ public interface IAttributes extends ICharacter{ // open IAttributes interface
     byte bowProficiency = 0; // ranged weapon
     byte polearmProficiency = 0; // heavy weapon
 
+    short swordExperience = 0;
+    short axeExperience = 0;
+    short bowExperience = 0;
+    short polearmExperience = 0;
+
     /*Armor Proficiencies*/
 
-    byte gambesonsProficiency = 0;
-    byte leatherProficiency = 0;
+    byte gambesonProficiency = 0;
     byte chainmailProficiency = 0;
     byte plateProficiency = 0;
+
+    short gambesonExperience = 0;
+    short chainmailExperience = 0;
+    short plateExperience = 0;
 
     /*Skill Proficiencies*/
 
@@ -42,10 +49,29 @@ public interface IAttributes extends ICharacter{ // open IAttributes interface
     byte survivalProficiency = 0;
     byte medicalProficiency = 0;
 
-    /*Personal Proficiencies*/
+    short tacticalExperience = 0;
+    short survivalExperience = 0;
+    short medicalExperience = 0;
+
+    /*Life Proficiencies*/
+
     byte smithingProficiency = 0;
-    byte focusProficiency = 0;
+    byte engineeringProficiency = 0;
     byte gadgetryProficiency = 0;
+
+    short smithingExperience = 0;
+    short engineeringExperience = 0;
+    short gadgetryExperience = 0;
+
+    /*Personal Proficiencies*/
+
+    byte leadershipProficiency = 0;
+    byte barterProficiency = 0;
+    byte oratoryProficiency = 0;
+
+    short leadershipExperience = 0;
+    short barterExperience = 0;
+    short oratoryExperience = 0;
 
 
 } // end IAttributes interface
