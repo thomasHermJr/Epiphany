@@ -10,6 +10,8 @@ public interface ICharacter{
     byte speed = 0;
     short maxHitPoints = 0;
     short currentHitPoints = 0;
+    short tempHitPoints = 0;
+    String name = "";
     String job = "";
 
 
