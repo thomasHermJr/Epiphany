@@ -6,13 +6,13 @@ May be further sorted based on system type.
 
 ## System Types
 - Background
-- - Hometowns
-- - Origins
+  - Hometowns
+  - Origins
 - Battle:
-- - Battle Actions
-- - Battle Statuses
-- - Battle Skills
+  - Battle Actions
+  - Battle Statuses
+  - Battle Skills
 - Generation:
-- - Generation Names
+  - Generation Names
 - Inventory
 - Jobs

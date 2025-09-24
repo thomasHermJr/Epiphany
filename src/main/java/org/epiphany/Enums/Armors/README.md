@@ -4,6 +4,6 @@ Enums related to armor types go here.
 
 ## Armor Types
 
-Gambeson,
-Chainmail,
-Plate
+- gambeson
+- Chainmail
+- Plate
