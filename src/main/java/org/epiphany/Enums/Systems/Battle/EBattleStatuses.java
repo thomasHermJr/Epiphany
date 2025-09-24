@@ -1,4 +1,4 @@
 package org.epiphany.Enums.Systems.Battle;
 
-public enum EBattleCondition {
+public enum EBattleStatuses {
 }
