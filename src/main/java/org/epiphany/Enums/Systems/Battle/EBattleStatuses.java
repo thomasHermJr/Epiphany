@@ -1,4 +1,25 @@
 package org.epiphany.Enums.Systems.Battle;
 
 public enum EBattleStatuses {
+
+    HEALTHY("Healthy"), // Default status
+    POISONED("Poisoned"), // Takes damage over time
+    ASLEEP("Asleep"), // Cannot act until woken up
+    SHOCKED("Shocked"), // Chance to force a default attack
+    FAITHLESS("Faithless"), // Cannot use Overdrives
+    DEPRIVED("Deprived"), // Cannot use items
+    APATHETIC("Apathetic"), // Cannot be healed
+    BURNED("Burned"); // Takes damage over time, reduced attack power
+
+    private final String statusName;
+
+    EBattleStatuses(String StatusName) {
+        this.statusName = StatusName;
+    }
+
+    public String getStatusName() {
+        return statusName;
+    }
+
+
 }

@@ -4,10 +4,11 @@ public record RBackground() {
 
     static String name;
     static byte age;
-    static String origin;
+    static String Hometown;
+    static String Origin;
     static String race;
     static String job;
-    static String earlyLife;
+    static String earlyLife; // Origin story
     static String currentLife;
     static String description;
 
@@ -29,12 +30,20 @@ public record RBackground() {
         RBackground.age = age;
     }
 
+    public String getHometown() {
+        return Hometown;
+    }
+
+    public void setHometown(String hometown) {
+        RBackground.Hometown = hometown;
+    }
+
     public String getOrigin() {
-        return origin;
+        return Origin;
     }
 
     public void setOrigin(String origin) {
-        RBackground.origin = origin;
+        RBackground.Origin = origin;
     }
 
     public String getRace() {
@@ -74,13 +83,15 @@ public record RBackground() {
     }
 
     public void setDescription() {
-        RBackground.description = "Name: " + name +
-                "\nJob: " + job +
-                "\nAge: " + age +
-                "\nPlace of Origin: " + origin +
-                "\n Race: " + race +
-                "\n\n\n" + earlyLife +
-                "\n\n" + currentLife;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Name: ").append(name).append("\n");
+        sb.append("Age: ").append(age).append("\n");
+        sb.append("Job: ").append(job).append("\n");
+        sb.append("Hometown: ").append(Hometown).append("\n");
+        sb.append("Race: ").append(race).append("\n\n\n");
+        sb.append(earlyLife).append("\n\n");
+        sb.append(currentLife);
+        RBackground.description = sb.toString();
     }
 
     public String toString() {
