@@ -2,7 +2,9 @@ package org.epiphany.Enums.Systems.Battle;
 
 public enum EBattleStatuses {
 
-    HEALTHY("Healthy"), // Default status
+    NONE("None"), // No status effect
+    HEALTHY("Healthy"), // Recover all status effects
+    STUNNED("Stunned"), // Cannot act for one turn
     POISONED("Poisoned"), // Takes damage over time
     ASLEEP("Asleep"), // Cannot act until woken up
     SHOCKED("Shocked"), // Chance to force a default attack
@@ -11,6 +13,7 @@ public enum EBattleStatuses {
     APATHETIC("Apathetic"), // Cannot be healed
     BURNED("Burned"); // Takes damage over time, reduced attack power
 
+    /*Add stat down effects, turn duration, damage in heath%*/
     private final String statusName;
 
     EBattleStatuses(String StatusName) {
