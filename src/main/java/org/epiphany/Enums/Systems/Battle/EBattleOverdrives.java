@@ -55,18 +55,42 @@ public enum EBattleOverdrives {
 
 
     private final String overdriveName;
-    private final int targetCount; // Default target count is 1, can be modified later for multi-target ODs
-    private final int powerPercentage; // Default power is 150, can be modified later for stronger/weaker ODs
+    private final int targetCount; // min 1, max 4
+    private final int powerPercentage; // min 100, max 300
 
 
-    EBattleOverdrives(String overdriveName, int targetCount, int powerPercentage) {
+    EBattleOverdrives(String overdriveName, int targetCount, int powerPercentage) { // start constructor
+
         this.overdriveName = overdriveName;
+
+        if (targetCount < 1) { // start count validation
+            targetCount = 1;
+        } else if (targetCount > 4) {
+            targetCount = 4;
+        } // end count validation
+
         this.targetCount = targetCount;
+
+        if (powerPercentage < 100) { // start power valldation
+            powerPercentage = 100;
+        } else if (powerPercentage > 300) {
+            powerPercentage = 300;
+        } // end power validation
+
         this.powerPercentage = powerPercentage;
-    }
+
+    } // end constructor
 
     public String getOverdriveName() {
         return overdriveName;
     }
 
-}
+    public int getTargetCount() {
+        return targetCount;
+    }
+
+    public int getPowerPercentage() {
+        return powerPercentage;
+    }
+
+} // end enum
