@@ -911,40 +911,132 @@ public record RAttributes() implements IAttributes {
 
     public static class PersonalProficiencyBuilder { // start personal proficiency builder
 
-        private byte leadershipProficiency = 0;
-        private byte barterProficiency = 0;
-        private byte oratoryProficiency = 0;
+        private byte leadershipProficiency = 1;
+        private byte barterProficiency = 1;
+        private byte oratoryProficiency = 1;
+
+        private double leadershipGrowthRate = totalProficiencyGrowthRate * leadershipProficiency; // multiplier change to needed experience per level
+        private double barterGrowthRate = totalProficiencyGrowthRate * barterProficiency; // multiplier change to needed experience per level
+        private double oratoryGrowthRate = totalProficiencyGrowthRate * oratoryProficiency; // multiplier change to needed experience per level
+
+        private short leadershipExperienceRequired = (short) (baseExperienceRequired * leadershipGrowthRate * leadershipProficiency);
+        private short barterExperienceRequired = (short) (baseExperienceRequired * barterGrowthRate * barterProficiency);
+        private short oratoryExperienceRequired = (short) (baseExperienceRequired * oratoryGrowthRate * oratoryProficiency);
 
         private short leadershipExperience = 0;
         private short barterExperience = 0;
         private short oratoryExperience = 0;
 
         public PersonalProficiencyBuilder setLeadershipProficiency(byte leadershipProficiency) {
+            if (leadershipProficiency < 1) { // start min/max validation
+                leadershipProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.leadershipProficiency = leadershipProficiency;
             return this;
         }
 
         public PersonalProficiencyBuilder setBarterProficiency(byte barterProficiency) {
+            if (barterProficiency < 1) { // start min/max validation
+                barterProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.barterProficiency = barterProficiency;
             return this;
         }
 
         public PersonalProficiencyBuilder setOratoryProficiency(byte oratoryProficiency) {
+            if (oratoryProficiency < 1) { // start min/max validation
+                oratoryProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.oratoryProficiency = oratoryProficiency;
             return this;
         }
 
+        public PersonalProficiencyBuilder setLeadershipGrowthRate(double leadershipGrowthRate) {
+            if (leadershipGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                leadershipGrowthRate = totalProficiencyGrowthRate;
+            } else if (leadershipGrowthRate > totalProficiencyGrowthRate * 10) {
+                leadershipGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
+            this.leadershipGrowthRate = leadershipGrowthRate;
+            return this;
+        }
+
+        public PersonalProficiencyBuilder setBarterGrowthRate(double barterGrowthRate) {
+            if (barterGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                barterGrowthRate = totalProficiencyGrowthRate;
+            } else if (barterGrowthRate > totalProficiencyGrowthRate * 10) {
+                barterGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
+            this.barterGrowthRate = barterGrowthRate;
+            return this;
+        }
+
+        public PersonalProficiencyBuilder setOratoryGrowthRate(double oratoryGrowthRate) {
+            if (oratoryGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                oratoryGrowthRate = totalProficiencyGrowthRate;
+            } else if (oratoryGrowthRate > totalProficiencyGrowthRate * 10) {
+                oratoryGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
+            this.oratoryGrowthRate = oratoryGrowthRate;
+            return this;
+        }
+
+        public PersonalProficiencyBuilder setLeadershipExperienceRequired(short leadershipExperienceRequired) {
+            if (leadershipExperienceRequired < 100) { // start min/max validation
+                leadershipExperienceRequired = 100;
+            } else if (leadershipExperienceRequired > 32000) {
+                leadershipExperienceRequired = 32000;
+            } // end min/max validation
+            this.leadershipExperienceRequired = leadershipExperienceRequired;
+            return this;
+        }
+
+        public PersonalProficiencyBuilder setBarterExperienceRequired(short barterExperienceRequired) {
+            if (barterExperienceRequired < 100) { // start min/max validation
+                barterExperienceRequired = 100;
+            } else if (barterExperienceRequired > 32000) {
+                barterExperienceRequired = 32000;
+            } // end min/max validation
+            this.barterExperienceRequired = barterExperienceRequired;
+            return this;
+        }
+
+        public PersonalProficiencyBuilder setOratoryExperienceRequired(short oratoryExperienceRequired) {
+            if (oratoryExperienceRequired < 100) { // start min/max validation
+                oratoryExperienceRequired = 100;
+            } else if (oratoryExperienceRequired > 32000) {
+                oratoryExperienceRequired = 32000;
+            } // end min/max validation
+            this.oratoryExperienceRequired = oratoryExperienceRequired;
+            return this;
+        }
+
         public PersonalProficiencyBuilder setLeadershipExperience(short leadershipExperience) {
+            if (leadershipExperience < 0) { // start min/max validation
+                leadershipExperience = 0;
+            } else if (leadershipExperience > leadershipExperienceRequired) {
+                leadershipExperience = leadershipExperienceRequired;
+            } // end min/max validation
             this.leadershipExperience = leadershipExperience;
             return this;
         }
 
         public PersonalProficiencyBuilder setBarterExperience(short barterExperience) {
+            if (barterExperience < 0) { // start min/max validation
+                barterExperience = 0;
+            } else if (barterExperience > barterExperienceRequired) {
+                barterExperience = barterExperienceRequired;
+            } // end min/max validation
             this.barterExperience = barterExperience;
             return this;
         }
 
         public PersonalProficiencyBuilder setOratoryExperience(short oratoryExperience) {
+            if (oratoryExperience < 0) { // start min/max validation
+                oratoryExperience = 0;
+            } else if (oratoryExperience > oratoryExperienceRequired) {
+                oratoryExperience = oratoryExperienceRequired;
+            } // end min/max validation
             this.oratoryExperience = oratoryExperience;
             return this;
         }
@@ -953,6 +1045,12 @@ public record RAttributes() implements IAttributes {
             RAttributes.leadershipProficiency = this.leadershipProficiency;
             RAttributes.barterProficiency = this.barterProficiency;
             RAttributes.oratoryProficiency = this.oratoryProficiency;
+            RAttributes.leadershipGrowthRate = this.leadershipGrowthRate;
+            RAttributes.barterGrowthRate = this.barterGrowthRate;
+            RAttributes.oratoryGrowthRate = this.oratoryGrowthRate;
+            RAttributes.leadershipExperienceRequired = this.leadershipExperienceRequired;
+            RAttributes.barterExperienceRequired = this.barterExperienceRequired;
+            RAttributes.oratoryExperienceRequired = this.oratoryExperienceRequired;
             RAttributes.leadershipExperience = this.leadershipExperience;
             RAttributes.barterExperience = this.barterExperience;
             RAttributes.oratoryExperience = this.oratoryExperience;
