@@ -513,7 +513,7 @@ public record RAttributes() implements IAttributes {
         private byte baseSurvivalExperienceRequired = 100;
         private byte baseMedicalExperienceRequired = 100;
 
-        private final double skillChangeRatePerLevel = 1.05; // percentage change to growth rate per level, min 1 max 10
+        private double skillChangeRatePerLevel = 1.05; // percentage change to growth rate per level, min 1 max 10
         private final double baseSkillGrowthRate = 1.20; // percentage change to needed experience per level
         private final double totalGrowthRate = skillChangeRatePerLevel * baseSkillGrowthRate;
 
