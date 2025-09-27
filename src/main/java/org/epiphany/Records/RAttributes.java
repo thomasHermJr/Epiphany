@@ -8,12 +8,32 @@ import org.epiphany.Interfaces.IAttributes;
 
 public record RAttributes() implements IAttributes {
 
-    protected class AttributeValidation {
+    protected static class AttributeValidation {
 
         static final byte zeroBaseMin= 0;
         static final byte oneBaseMin= 1;
         static final short proficiencyExpRequiredMin = 100;
         static final short proficiencyExpRequiredMax = 32000;
+
+        /*getters*/
+
+        public static byte getOneBaseMin() {
+            return oneBaseMin;
+        }
+
+        public static byte getZeroBaseMin() {
+            return zeroBaseMin;
+        }
+
+        public static short getProficiencyExpRequiredMax() {
+            return proficiencyExpRequiredMax;
+        }
+
+        public static short getProficiencyExpRequiredMin() {
+            return proficiencyExpRequiredMin;
+        }
+
+        /*validation methods*/
 
         protected static int zeroBaseValidation(int value) {
             if (value < zeroBaseMin) {
@@ -40,19 +60,19 @@ public record RAttributes() implements IAttributes {
 
         /*Add class definitions here*/
 
-        protected class BaseAttributes { // start base attributes
+        public class BaseAttribute { // start base attributes
 
-            protected class DerivedAttributes { // start derived attributes
+            protected class DerivedAttribute { // start derived attributes
 
         } // end derived attributes subclass
 
-            protected class OverdriveAttributes { // start overdrive attributes
+            protected class OverdriveAttribute { // start overdrive attributes
 
             } // end overdrive attributes subclass
 
         } // end base attributes subclass
 
-        protected class Proficiencies { // start proficiency subclass
+        protected class Proficiency { // start proficiency subclass
 
             protected class WeaponProficiency { // start weapon proficiency
 
