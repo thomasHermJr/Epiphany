@@ -23,108 +23,101 @@ public record RAttributes() implements IAttributes {
 
     /* overdrive attributes */
 
-    static byte overdriveMeter; // max 100, min 0
-    static boolean overdriveActive;
+    static byte overdriveMeter = 0; // max 100, min 0
+    static boolean overdriveActive = false;
+
+    /*Proficiency utilities*/
+
+    static final double baseExperienceRequired = 100; // base experience required for level up
+    static final double baseProficiencyGrowthRate = 1.20; // multiplier change to needed
+    static final double proficiencyChangeRatePerLevel = 1.05; // multiplier change to growth rate per level, min 1 max 10
+    static final double totalProficiencyGrowthRate = baseProficiencyGrowthRate * proficiencyChangeRatePerLevel;
 
     /* weapon proficiencies */
-    static byte swordProficiency;
-    static byte axeProficiency;
-    static byte bowProficiency;
-    static byte polearmProficiency;
+    static byte swordProficiency = 1;
+    static byte axeProficiency = 1;
+    static byte bowProficiency = 1;
+    static byte polearmProficiency = 1;
 
-    static short swordExperienceRequired = 100;
-    static short axeExperienceRequired = 100;
-    static short bowExperienceRequired = 100;
-    static short polearmExperienceRequired = 100;
+    static double swordGrowthRate = totalProficiencyGrowthRate * swordProficiency; // multiplier change to needed experience per level
+    static double axeGrowthRate = totalProficiencyGrowthRate * axeProficiency; // multiplier change to needed experience per level
+    static double bowGrowthRate = totalProficiencyGrowthRate * bowProficiency; // multiplier change to needed experience per level
+    static double polearmGrowthRate = totalProficiencyGrowthRate * polearmProficiency; // multiplier change to needed experience per
 
-    static short swordGrowthRate = 120; // percentage change to needed experience per level
-    static short axeGrowthRate = 120; // percentage change to needed experience per level
-    static short bowGrowthRate = 120; // percentage change to needed experience per level
-    static short polearmGrowthRate = 120; // percentage change to needed experience per
+    static short swordExperienceRequired = (short) (baseExperienceRequired * swordGrowthRate * swordProficiency);
+    static short axeExperienceRequired = (short) (baseExperienceRequired * axeGrowthRate * axeProficiency);
+    static short bowExperienceRequired = (short) (baseExperienceRequired * bowGrowthRate * bowProficiency);
+    static short polearmExperienceRequired = (short) (baseExperienceRequired * polearmGrowthRate * polearmProficiency);
 
-    static byte weaponChangeRatePerLevel; // percentage change to growth rate per level, min 1 max 10
-
-    static short swordExperience;
-    static short axeExperience;
-    static short bowExperience;
-    static short polearmExperience;
+    static short swordExperience = 0;
+    static short axeExperience = 0;
+    static short bowExperience = 0;
+    static short polearmExperience = 0;
 
     /* armor proficiencies */
-    static byte gambesonProficiency;
-    static byte chainmailProficiency;
-    static byte plateProficiency;
+    static byte gambesonProficiency = 1;
+    static byte chainmailProficiency = 1;
+    static byte plateProficiency = 1;
 
-    static short gambesonExperienceRequired = 100;
-    static short chainmailExperienceRequired = 100;
-    static short plateExperienceRequired = 100;
+    static double gambesonGrowthRate = totalProficiencyGrowthRate * gambesonProficiency; // multiplier change to needed experience per level
+    static double chainmailGrowthRate = totalProficiencyGrowthRate * chainmailProficiency; // multiplier change to needed experience per level
+    static double plateGrowthRate = totalProficiencyGrowthRate * plateProficiency; // multiplier change to needed experience per
 
-    static short gambesonGrowthRate = 120; // percentage change to needed experience per level
-    static short chainmailGrowthRate = 120; // percentage change to needed experience per level
-    static short plateGrowthRate = 120; // percentage change to needed experience per
+    static short gambesonExperienceRequired = (short) (baseExperienceRequired * gambesonGrowthRate * gambesonProficiency);
+    static short chainmailExperienceRequired = (short) (baseExperienceRequired * chainmailGrowthRate * chainmailProficiency);
+    static short plateExperienceRequired = (short) (baseExperienceRequired * plateGrowthRate * plateProficiency);
 
-    static byte armorChangeRatePerLevel; // percentage change to growth rate per level, min 1 max 10
 
-    static short gambesonExperience;
-    static short chainmailExperience;
-    static short plateExperience;
+    static short gambesonExperience = 0;
+    static short chainmailExperience = 0;
+    static short plateExperience = 0;
 
     /* skill proficiencies */
-    static byte tacticalProficiency;
-    static byte survivalProficiency;
-    static byte medicalProficiency;
+    static byte tacticalProficiency = 1;
+    static byte survivalProficiency = 1;
+    static byte medicalProficiency = 1;
 
-    static short tacticalExperienceRequired = 100;
-    static short survivalExperienceRequired = 100;
-    static short medicalExperienceRequired = 100;
+    static double tacticalGrowthRate = totalProficiencyGrowthRate * tacticalProficiency; // multiplier change to needed experience per level
+    static double survivalGrowthRate = totalProficiencyGrowthRate * survivalProficiency; // multiplier change to needed experience per level
+    static double medicalGrowthRate = totalProficiencyGrowthRate * medicalProficiency; // multiplier change to needed experience per level
 
-    static byte baseTacticalExperienceRequired = 100;
-    static byte baseSurvivalExperienceRequired = 100;
-    static byte baseMedicalExperienceRequired = 100;
+    static short tacticalExperienceRequired = (short) (baseExperienceRequired * tacticalGrowthRate * tacticalProficiency);
+    static short survivalExperienceRequired = (short) (baseExperienceRequired * survivalGrowthRate * survivalProficiency);
+    static short medicalExperienceRequired = (short) (baseExperienceRequired * medicalGrowthRate * medicalProficiency);
 
-    static double skillChangeRatePerLevel = 1.05; // percentage change to growth rate per level, min 1 max 10
-    static double baseSkillGrowthRate = 1.20; // percentage change to needed experience per level
-
-    static double tacticalGrowthRate = baseSkillGrowthRate * skillChangeRatePerLevel * tacticalProficiency; // percentage change to needed experience per level
-    static double survivalGrowthRate = baseSkillGrowthRate * skillChangeRatePerLevel * survivalProficiency; // percentage change to needed experience per level
-    static double medicalGrowthRate = baseSkillGrowthRate * skillChangeRatePerLevel * medicalProficiency; // percentage change to needed experience per level
-
-    static short tacticalExperience;
-    static short survivalExperience;
-    static short medicalExperience;
+    static short tacticalExperience = 0;
+    static short survivalExperience = 0;
+    static short medicalExperience = 0;
 
     /* life proficiencies */
-    static byte smithingProficiency;
-    static byte engineeringProficiency;
-    static byte gadgetryProficiency;
+    static byte smithingProficiency = 1;
+    static byte engineeringProficiency = 1;
+    static byte gadgetryProficiency = 1;
 
-    static short smithingExperienceRequired = 100;
-    static short engineeringExperienceRequired = 100;
-    static short gadgetryExperienceRequired = 100;
+    static double smithingGrowthRate = totalProficiencyGrowthRate * smithingProficiency; // multiplier change to needed experience per level
+    static double engineeringGrowthRate =  totalProficiencyGrowthRate * engineeringProficiency; // multiplier change to needed experience per level
+    static double gadgetryGrowthRate = totalProficiencyGrowthRate * gadgetryProficiency; // multiplier change to needed experience per level
 
-    static short smithingGrowthRate = 120; // percentage change to needed experience per level
-    static short engineeringGrowthRate = 120; // percentage change to needed experience per level
-    static short gadgetryGrowthRate = 120; // percentage change to needed experience per level
+    static short smithingExperienceRequired = (short) (baseExperienceRequired * smithingGrowthRate * smithingProficiency);
+    static short engineeringExperienceRequired = (short) (baseExperienceRequired * engineeringGrowthRate * engineeringProficiency);
+    static short gadgetryExperienceRequired = (short) (baseExperienceRequired * gadgetryGrowthRate * gadgetryProficiency);
 
-    static byte lifeChangeRatePerLevel; // percentage change to growth rate per level, min 1 max 10
-
-    static short smithingExperience;
-    static short engineeringExperience;
-    static short gadgetryExperience;
+    static short smithingExperience = 0;
+    static short engineeringExperience = 0;
+    static short gadgetryExperience = 0;
 
     /* personal proficiencies */
-    static byte leadershipProficiency;
-    static byte barterProficiency;
-    static byte oratoryProficiency;
+    static byte leadershipProficiency = 1;
+    static byte barterProficiency = 1;
+    static byte oratoryProficiency = 1;
 
-    static short leadershipExperienceRequired = 100;
-    static short barterExperienceRequired = 100;
-    static short oratoryExperienceRequired = 100;
+    static double leadershipGrowthRate = totalProficiencyGrowthRate * leadershipProficiency; // multiplier change to needed experience per level
+    static double barterGrowthRate = totalProficiencyGrowthRate * barterProficiency; // multiplier change to needed experience per level
+    static double oratoryGrowthRate = totalProficiencyGrowthRate * oratoryProficiency; // multiplier change to needed experience per level
 
-    static short leadershipGrowthRate = 120; // percentage change to needed experience per level
-    static short barterGrowthRate = 120; // percentage change to needed experience per level
-    static short oratoryGrowthRate = 120; // percentage change to needed experience per level
-
-    static byte personalChangeRatePerLevel; // percentage change to growth rate per level, min 1 max 10
+    static short leadershipExperienceRequired = (short) (baseExperienceRequired * leadershipGrowthRate * leadershipProficiency);
+    static short barterExperienceRequired = (short) (baseExperienceRequired * barterGrowthRate * barterProficiency);
+    static short oratoryExperienceRequired = (short) (baseExperienceRequired * oratoryGrowthRate * oratoryProficiency);
 
     static short leadershipExperience;
     static short barterExperience;
@@ -284,7 +277,6 @@ public record RAttributes() implements IAttributes {
         private short bowGrowthRate = 120; // percentage change to needed experience per level
         private short polearmGrowthRate = 120; // percentage change to needed experience per level
 
-        private byte weaponChangeRatePerLevel = 5; // percentage change to growth rate per level, min 1 max 10
 
         private short swordExperience = 0;
         private short axeExperience = 0;
@@ -385,15 +377,14 @@ public record RAttributes() implements IAttributes {
             RAttributes.axeExperience = this.axeExperience;
             RAttributes.bowExperience = this.bowExperience;
             RAttributes.polearmExperience = this.polearmExperience;
-            RAttributes.swordExperienceRequired = this.swordExperienceRequired;
-            RAttributes.axeExperienceRequired = this.axeExperienceRequired;
-            RAttributes.bowExperienceRequired = this.bowExperienceRequired;
-            RAttributes.polearmExperienceRequired = this.polearmExperienceRequired;
+            RAttributes.baseSwordExperienceRequired = this.swordExperienceRequired;
+            RAttributes.baseAxeExperienceRequired = this.axeExperienceRequired;
+            RAttributes.baseBowExperienceRequired = this.bowExperienceRequired;
+            RAttributes.basePolearmExperienceRequired = this.polearmExperienceRequired;
             RAttributes.swordGrowthRate = this.swordGrowthRate;
             RAttributes.axeGrowthRate = this.axeGrowthRate;
             RAttributes.bowGrowthRate = this.bowGrowthRate;
             RAttributes.polearmGrowthRate = this.polearmGrowthRate;
-            RAttributes.weaponChangeRatePerLevel = this.weaponChangeRatePerLevel;
             return new RAttributes();
         }
 
@@ -513,14 +504,9 @@ public record RAttributes() implements IAttributes {
         private byte baseSurvivalExperienceRequired = 100;
         private byte baseMedicalExperienceRequired = 100;
 
-        private double skillChangeRatePerLevel = 1.05; // percentage change to growth rate per level, min 1 max 10
-        private final double baseSkillGrowthRate = 1.20; // percentage change to needed experience per level
-        private final double totalGrowthRate = skillChangeRatePerLevel * baseSkillGrowthRate;
-
-
-        private double tacticalGrowthRate = totalGrowthRate * tacticalProficiency; // percentage change to needed experience per level
-        private double survivalGrowthRate = totalGrowthRate * survivalProficiency; // percentage change to needed experience per level
-        private double medicalGrowthRate =  totalGrowthRate * medicalProficiency; // percentage change to needed experience per level
+        private double tacticalGrowthRate = totalProficiencyGrowthRate * tacticalProficiency; // percentage change to needed experience per level
+        private double survivalGrowthRate = totalProficiencyGrowthRate * survivalProficiency; // percentage change to needed experience per level
+        private double medicalGrowthRate =  totalProficiencyGrowthRate * medicalProficiency; // percentage change to needed experience per level
 
         private short tacticalExperienceRequired = (short) (baseTacticalExperienceRequired * tacticalGrowthRate * tacticalProficiency);
         private short survivalExperienceRequired = (short) (baseSurvivalExperienceRequired * survivalGrowthRate * survivalProficiency);
@@ -607,11 +593,6 @@ public record RAttributes() implements IAttributes {
             return this;
         }
 
-        public SkillProficiencyBuilder setSkillChangeRatePerLevel(double skillChangeRatePerLevel) {
-            this.skillChangeRatePerLevel = skillChangeRatePerLevel;
-            return this;
-        }
-
         public RAttributes buildSkill() {
             RAttributes.tacticalProficiency = this.tacticalProficiency;
             RAttributes.survivalProficiency = this.survivalProficiency;
@@ -628,7 +609,6 @@ public record RAttributes() implements IAttributes {
             RAttributes.tacticalGrowthRate = this.tacticalGrowthRate;
             RAttributes.survivalGrowthRate = this.survivalGrowthRate;
             RAttributes.medicalGrowthRate = this.medicalGrowthRate;
-            RAttributes.skillChangeRatePerLevel = this.skillChangeRatePerLevel;
             return new RAttributes();
         }
 
