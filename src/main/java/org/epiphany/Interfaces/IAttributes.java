@@ -2,6 +2,8 @@ package org.epiphany.Interfaces;
 
 public interface IAttributes extends ICharacter{ // open IAttributes interface
 
+    /* TODO: Add variables to catch up to changes in RAttributes class*/
+
     /*Base Attributes*/
 
     byte strength = 0; // bonus to physical attack, heavy weapon proficiency gain, and chainmail proficiency gain
