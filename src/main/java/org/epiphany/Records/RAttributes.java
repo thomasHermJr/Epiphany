@@ -262,21 +262,20 @@ public record RAttributes() implements IAttributes {
 
     public static class WeaponProficiencyBuilder { // start weapon proficiency builder
 
-        private byte swordProficiency = 0;
-        private byte axeProficiency = 0;
-        private byte bowProficiency = 0;
-        private byte polearmProficiency = 0;
+        private byte swordProficiency = 1;
+        private byte axeProficiency = 1;
+        private byte bowProficiency = 1;
+        private byte polearmProficiency = 1;
 
-        private short swordExperienceRequired = 100;
-        private short axeExperienceRequired = 100;
-        private short bowExperienceRequired = 100;
-        private short polearmExperienceRequired = 100;
+        private double swordGrowthRate = totalProficiencyGrowthRate * swordProficiency; // multiplier change to needed experience per level
+        private double axeGrowthRate = totalProficiencyGrowthRate * axeProficiency; // multiplier change to needed experience per level
+        private double bowGrowthRate = totalProficiencyGrowthRate * bowProficiency; // multiplier change to needed experience per level
+        private double polearmGrowthRate = totalProficiencyGrowthRate * polearmProficiency; // multiplier change to needed experience per level
 
-        private short swordGrowthRate = 120; // percentage change to needed experience per level
-        private short axeGrowthRate = 120; // percentage change to needed experience per level
-        private short bowGrowthRate = 120; // percentage change to needed experience per level
-        private short polearmGrowthRate = 120; // percentage change to needed experience per level
-
+        private short swordExperienceRequired = (short) (baseExperienceRequired * swordGrowthRate * swordProficiency);
+        private short axeExperienceRequired = (short) (baseExperienceRequired * axeGrowthRate * axeProficiency);
+        private short bowExperienceRequired = (short) (baseExperienceRequired * bowGrowthRate * bowProficiency);
+        private short polearmExperienceRequired = (short) (baseExperienceRequired * polearmGrowthRate * polearmProficiency);
 
         private short swordExperience = 0;
         private short axeExperience = 0;
@@ -284,103 +283,171 @@ public record RAttributes() implements IAttributes {
         private short polearmExperience = 0;
 
         public WeaponProficiencyBuilder setSwordProficiency(byte swordProficiency) {
+            if (swordProficiency < 1) { // start min/max validation
+                swordProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.swordProficiency = swordProficiency;
             return this;
         }
 
         public WeaponProficiencyBuilder setAxeProficiency(byte axeProficiency) {
+            if (axeProficiency < 1) { // start min/max validation
+                axeProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.axeProficiency = axeProficiency;
             return this;
         }
 
         public WeaponProficiencyBuilder setBowProficiency(byte bowProficiency) {
+            if (bowProficiency < 1) { // start min/max validation
+                bowProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.bowProficiency = bowProficiency;
             return this;
         }
 
         public WeaponProficiencyBuilder setPolearmProficiency(byte polearmProficiency) {
+            if (polearmProficiency < 1) { // start min/max validation
+                polearmProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.polearmProficiency = polearmProficiency;
             return this;
         }
 
         public WeaponProficiencyBuilder setSwordExperience(short swordExperience) {
+            if (swordExperience < 0) { // start min/max validation
+                swordExperience = 0;
+            } else if (swordExperience > swordExperienceRequired) {
+                swordExperience = swordExperienceRequired;
+            } // end min/max validation
             this.swordExperience = swordExperience;
             return this;
         }
 
         public WeaponProficiencyBuilder setAxeExperience(short axeExperience) {
+            if (axeExperience < 0) { // start min/max validation
+                axeExperience = 0;
+            } else if (axeExperience > axeExperienceRequired) {
+                axeExperience = axeExperienceRequired;
+            } // end min/max validation
             this.axeExperience = axeExperience;
             return this;
         }
 
         public WeaponProficiencyBuilder setBowExperience(short bowExperience) {
+            if (bowExperience < 0) { // start min/max validation
+                bowExperience = 0;
+            } else if (bowExperience > bowExperienceRequired) {
+                bowExperience = bowExperienceRequired;
+            } // end min/max validation
             this.bowExperience = bowExperience;
             return this;
         }
 
         public WeaponProficiencyBuilder setPolearmExperience(short polearmExperience) {
+            if (polearmExperience < 0) { // start min/max validation
+                polearmExperience = 0;
+            } else if (polearmExperience > polearmExperienceRequired) {
+                polearmExperience = polearmExperienceRequired;
+            } // end min/max validation
             this.polearmExperience = polearmExperience;
             return this;
         }
 
         public WeaponProficiencyBuilder setSwordExperienceRequired(short swordExperienceRequired) {
+            if (swordExperienceRequired < 100) { // start min/max validation
+                swordExperienceRequired = 100;
+            } else if (swordExperienceRequired > 32000) {
+                swordExperienceRequired = 32000;
+            } // end min/max validation
             this.swordExperienceRequired = swordExperienceRequired;
             return this;
         }
 
         public WeaponProficiencyBuilder setAxeExperienceRequired(short axeExperienceRequired) {
+            if (axeExperienceRequired < 100) { // start min/max validation
+                axeExperienceRequired = 100;
+            } else if (axeExperienceRequired > 32000) {
+                axeExperienceRequired = 32000;
+            } // end min/max validation
             this.axeExperienceRequired = axeExperienceRequired;
             return this;
         }
 
         public WeaponProficiencyBuilder setBowExperienceRequired(short bowExperienceRequired) {
+            if (bowExperienceRequired < 100) { // start min/max validation
+                bowExperienceRequired = 100;
+            } else if (bowExperienceRequired > 32000) {
+                bowExperienceRequired = 32000;
+            } // end min/max validation
             this.bowExperienceRequired = bowExperienceRequired;
             return this;
         }
 
         public WeaponProficiencyBuilder setPolearmExperienceRequired(short polearmExperienceRequired) {
+            if (polearmExperienceRequired < 100) { // start min/max validation
+                polearmExperienceRequired = 100;
+            } else if (polearmExperienceRequired > 32000) {
+                polearmExperienceRequired = 32000;
+            } // end min/max validation
             this.polearmExperienceRequired = polearmExperienceRequired;
             return this;
         }
 
-        public WeaponProficiencyBuilder setSwordGrowthRate(short swordGrowthRate) {
+        public WeaponProficiencyBuilder setSwordGrowthRate(double swordGrowthRate) {
+            if (swordGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                swordGrowthRate = totalProficiencyGrowthRate;
+            } else if (swordGrowthRate > totalProficiencyGrowthRate * 10) {
+                swordGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
             this.swordGrowthRate = swordGrowthRate;
             return this;
         }
 
-        public WeaponProficiencyBuilder setAxeGrowthRate(short axeGrowthRate) {
+        public WeaponProficiencyBuilder setAxeGrowthRate(double axeGrowthRate) {
+            if (axeGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                axeGrowthRate = totalProficiencyGrowthRate;
+            } else if (axeGrowthRate > totalProficiencyGrowthRate * 10) {
+                axeGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
             this.axeGrowthRate = axeGrowthRate;
             return this;
         }
 
-        public WeaponProficiencyBuilder setBowGrowthRate(short bowGrowthRate) {
+        public WeaponProficiencyBuilder setBowGrowthRate(double bowGrowthRate) {
+            if (bowGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                bowGrowthRate = totalProficiencyGrowthRate;
+            } else if (bowGrowthRate > totalProficiencyGrowthRate * 10) {
+                bowGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
             this.bowGrowthRate = bowGrowthRate;
             return this;
         }
 
-        public WeaponProficiencyBuilder setPolearmGrowthRate(short polearmGrowthRate) {
+        public WeaponProficiencyBuilder setPolearmGrowthRate(double polearmGrowthRate) {
+            if (polearmGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                polearmGrowthRate = totalProficiencyGrowthRate;
+            } else if (polearmGrowthRate > totalProficiencyGrowthRate * 10) {
+                polearmGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
             this.polearmGrowthRate = polearmGrowthRate;
             return this;
         }
 
-        public WeaponProficiencyBuilder setWeaponChangeRatePerLevel(byte weaponChangeRatePerLevel) {
-            this.weaponChangeRatePerLevel = weaponChangeRatePerLevel;
-            return this;
-        }
 
         public RAttributes buildWeapon() {
             RAttributes.swordProficiency = this.swordProficiency;
             RAttributes.axeProficiency = this.axeProficiency;
             RAttributes.bowProficiency = this.bowProficiency;
             RAttributes.polearmProficiency = this.polearmProficiency;
+            RAttributes.swordExperienceRequired = this.swordExperienceRequired;
+            RAttributes.axeExperienceRequired = this.axeExperienceRequired;
+            RAttributes.bowExperienceRequired = this.bowExperienceRequired;
+            RAttributes.polearmExperienceRequired = this.polearmExperienceRequired;
             RAttributes.swordExperience = this.swordExperience;
             RAttributes.axeExperience = this.axeExperience;
             RAttributes.bowExperience = this.bowExperience;
             RAttributes.polearmExperience = this.polearmExperience;
-            RAttributes.baseSwordExperienceRequired = this.swordExperienceRequired;
-            RAttributes.baseAxeExperienceRequired = this.axeExperienceRequired;
-            RAttributes.baseBowExperienceRequired = this.bowExperienceRequired;
-            RAttributes.basePolearmExperienceRequired = this.polearmExperienceRequired;
             RAttributes.swordGrowthRate = this.swordGrowthRate;
             RAttributes.axeGrowthRate = this.axeGrowthRate;
             RAttributes.bowGrowthRate = this.bowGrowthRate;
