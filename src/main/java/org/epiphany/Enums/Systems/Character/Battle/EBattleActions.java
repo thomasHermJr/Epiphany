@@ -1,4 +1,4 @@
-package org.epiphany.Enums.Systems.Battle;
+package org.epiphany.Enums.Systems.Character.Battle;
 
 public enum EBattleActions {
 

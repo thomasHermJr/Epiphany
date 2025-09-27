@@ -31,6 +31,10 @@ public enum EGenerationNames {
     XION("First","Masc", "Xion"),
     ZACK("First","Masc", "Zack"),
     ZIDANE("First","Masc", "Zidane"),
+    ZACKARY("First","Masc", "Zackary"),
+    ZACHARY("First","Masc", "Zachary"),
+    ZACHARIAH("First","Masc", "Zachariah"),
+    ZACH("First","Masc", "Zach"),
 
     /*Ambi*/
 
@@ -59,6 +63,14 @@ public enum EGenerationNames {
     SORREN("First","Ambi", "Sorren"),
     LOREN("First","Ambi", "Loren"),
     RIN("First","Ambi", "Rin"),
+    RION("First","Ambi", "Rion"),
+    KAI("First","Ambi", "Kai"),
+    KAY("First","Ambi", "Kay"),
+    OLI("First","Ambi", "Oli"),
+    OLLIE("First","Ambi", "Ollie"),
+    DANI("First","Ambi", "Dani"),
+    DANNY("First","Ambi", "Danny"),
+    ZAK("First","Ambi", "Zak"),
 
     /*Fem*/
 
@@ -223,7 +235,6 @@ public enum EGenerationNames {
     OAKENFIELDS("Last","Ambi", "Oakenfields"),
     RANS("Last","Ambi", "Rans"),
     HEI("Last","Ambi", "Hei"),
-    KAI("Last","Ambi", "Kai"),
     HAI("Last","Ambi", "Hai"),
     HUI("Last","Ambi", "Hui"),
     MAI("Last","Ambi", "Mai");

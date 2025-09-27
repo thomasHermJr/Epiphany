@@ -1,6 +1,6 @@
-package org.epiphany.Enums.Systems.Battle;
+package org.epiphany.Enums.Systems.Character;
 
-public enum EBattleStatuses {
+public enum ECharacterStatuses {
 
     NONE("None"), // No status effect
     HEALTHY("Healthy"), // Recover all status effects
@@ -16,7 +16,7 @@ public enum EBattleStatuses {
     /*Add stat down effects, turn duration, damage in heath%*/
     private final String statusName;
 
-    EBattleStatuses(String StatusName) {
+    ECharacterStatuses(String StatusName) {
         this.statusName = StatusName;
     }
 

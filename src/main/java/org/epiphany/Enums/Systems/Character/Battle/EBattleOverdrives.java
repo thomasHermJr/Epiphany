@@ -1,4 +1,4 @@
-package org.epiphany.Enums.Systems.Battle;
+package org.epiphany.Enums.Systems.Character.Battle;
 
 public enum EBattleOverdrives {
 
@@ -60,7 +60,7 @@ public enum EBattleOverdrives {
     private final int powerPercentage; // min 100, max 300
 
 
-    EBattleOverdrives(String overdriveName,  String statusApplied, int targetCount, int powerPercentage) { // start constructor
+    EBattleOverdrives(String overdriveName, String statusApplied, int targetCount, int powerPercentage) { // start constructor
 
         this.overdriveName = overdriveName;
 
