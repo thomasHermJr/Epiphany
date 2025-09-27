@@ -613,78 +613,98 @@ public record RAttributes() implements IAttributes {
         private byte survivalProficiency = 1;
         private byte medicalProficiency = 1;
 
-        private byte baseTacticalExperienceRequired = 100;
-        private byte baseSurvivalExperienceRequired = 100;
-        private byte baseMedicalExperienceRequired = 100;
+        private double tacticalGrowthRate = totalProficiencyGrowthRate * tacticalProficiency; // multiplier change to needed experience per level
+        private double survivalGrowthRate = totalProficiencyGrowthRate * survivalProficiency; // multiplier change to needed experience per level
+        private double medicalGrowthRate =  totalProficiencyGrowthRate * medicalProficiency; // multiplier change to needed experience per level
 
-        private double tacticalGrowthRate = totalProficiencyGrowthRate * tacticalProficiency; // percentage change to needed experience per level
-        private double survivalGrowthRate = totalProficiencyGrowthRate * survivalProficiency; // percentage change to needed experience per level
-        private double medicalGrowthRate =  totalProficiencyGrowthRate * medicalProficiency; // percentage change to needed experience per level
-
-        private short tacticalExperienceRequired = (short) (baseTacticalExperienceRequired * tacticalGrowthRate * tacticalProficiency);
-        private short survivalExperienceRequired = (short) (baseSurvivalExperienceRequired * survivalGrowthRate * survivalProficiency);
-        private short medicalExperienceRequired = (short) (baseMedicalExperienceRequired * medicalGrowthRate * medicalProficiency);
+        private short tacticalExperienceRequired = (short) (baseExperienceRequired * tacticalGrowthRate * tacticalProficiency);
+        private short survivalExperienceRequired = (short) (baseExperienceRequired * survivalGrowthRate * survivalProficiency);
+        private short medicalExperienceRequired = (short) (baseExperienceRequired * medicalGrowthRate * medicalProficiency);
 
         private short tacticalExperience = 0;
         private short survivalExperience = 0;
         private short medicalExperience = 0;
 
         public SkillProficiencyBuilder setTacticalProficiency(byte tacticalProficiency) {
+            if (tacticalProficiency < 1) { // start min/max validation
+                tacticalProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.tacticalProficiency = tacticalProficiency;
             return this;
         }
 
         public SkillProficiencyBuilder setSurvivalProficiency(byte survivalProficiency) {
+            if (survivalProficiency < 1) { // start min/max validation
+                survivalProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.survivalProficiency = survivalProficiency;
             return this;
         }
 
         public SkillProficiencyBuilder setMedicalProficiency(byte medicalProficiency) {
+            if (medicalProficiency < 1) { // start min/max validation
+                medicalProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.medicalProficiency = medicalProficiency;
             return this;
         }
 
         public SkillProficiencyBuilder setTacticalExperience(short tacticalExperience) {
+            if (tacticalExperience < 0) { // start min/max validation
+                tacticalExperience = 0;
+            } else if (tacticalExperience > tacticalExperienceRequired) {
+                tacticalExperience = tacticalExperienceRequired;
+            } // end min/max validation
             this.tacticalExperience = tacticalExperience;
             return this;
         }
 
         public SkillProficiencyBuilder setSurvivalExperience(short survivalExperience) {
+            if (survivalExperience < 0) { // start min/max validation
+                survivalExperience = 0;
+            } else if (survivalExperience > survivalExperienceRequired) {
+                survivalExperience = survivalExperienceRequired;
+            } // end min/max validation
             this.survivalExperience = survivalExperience;
             return this;
         }
 
         public SkillProficiencyBuilder setMedicalExperience(short medicalExperience) {
+            if (medicalExperience < 0) { // start min/max validation
+                medicalExperience = 0;
+            } else if (medicalExperience > medicalExperienceRequired) {
+                medicalExperience = medicalExperienceRequired;
+            } // end min/max validation
             this.medicalExperience = medicalExperience;
             return this;
         }
 
-        public SkillProficiencyBuilder setBaseTacticalExperienceRequired(byte baseTacticalExperienceRequired) {
-            this.baseTacticalExperienceRequired = baseTacticalExperienceRequired;
-            return this;
-        }
-
-        public SkillProficiencyBuilder setBaseSurvivalExperienceRequired(byte baseSurvivalExperienceRequired) {
-            this.baseSurvivalExperienceRequired = baseSurvivalExperienceRequired;
-            return this;
-        }
-
-        public SkillProficiencyBuilder setBaseMedicalExperienceRequired(byte baseMedicalExperienceRequired) {
-            this.baseMedicalExperienceRequired = baseMedicalExperienceRequired;
-            return this;
-        }
-
         public SkillProficiencyBuilder setTacticalExperienceRequired(short tacticalExperienceRequired) {
+            if (tacticalExperienceRequired < 100) { // start min/max validation
+                tacticalExperienceRequired = 100;
+            } else if (tacticalExperienceRequired > 32000) {
+                tacticalExperienceRequired = 32000;
+            } // end min/max validation
             this.tacticalExperienceRequired = tacticalExperienceRequired;
             return this;
         }
 
         public SkillProficiencyBuilder setSurvivalExperienceRequired(short survivalExperienceRequired) {
+            if (survivalExperienceRequired < 100) { // start min/max validation
+                survivalExperienceRequired = 100;
+            } else if (survivalExperienceRequired > 32000) {
+                survivalExperienceRequired = 32000;
+            } // end min/max validation
             this.survivalExperienceRequired = survivalExperienceRequired;
             return this;
         }
 
         public SkillProficiencyBuilder setMedicalExperienceRequired(short medicalExperienceRequired) {
+            if (medicalExperienceRequired < 100) { // start min/max validation
+                medicalExperienceRequired = 100;
+            } else if (medicalExperienceRequired > 32000) {
+                medicalExperienceRequired = 32000;
+            } // end min/max validation
             this.medicalExperienceRequired = medicalExperienceRequired;
             return this;
         }
@@ -692,16 +712,31 @@ public record RAttributes() implements IAttributes {
 
 
         public SkillProficiencyBuilder setTacticalGrowthRate(double tacticalGrowthRate) {
+            if (tacticalGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                tacticalGrowthRate = totalProficiencyGrowthRate;
+            } else if (tacticalGrowthRate > totalProficiencyGrowthRate * 10) {
+                tacticalGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
             this.tacticalGrowthRate = tacticalGrowthRate;
             return this;
         }
 
         public SkillProficiencyBuilder setSurvivalGrowthRate(double survivalGrowthRate) {
+            if (survivalGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                survivalGrowthRate = totalProficiencyGrowthRate;
+            } else if (survivalGrowthRate > totalProficiencyGrowthRate * 10) {
+                survivalGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
             this.survivalGrowthRate = survivalGrowthRate;
             return this;
         }
 
         public SkillProficiencyBuilder setMedicalGrowthRate(double medicalGrowthRate) {
+            if (medicalGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                medicalGrowthRate = totalProficiencyGrowthRate;
+            } else if (medicalGrowthRate > totalProficiencyGrowthRate * 10) {
+                medicalGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
             this.medicalGrowthRate = medicalGrowthRate;
             return this;
         }
@@ -713,9 +748,6 @@ public record RAttributes() implements IAttributes {
             RAttributes.tacticalExperience = this.tacticalExperience;
             RAttributes.survivalExperience = this.survivalExperience;
             RAttributes.medicalExperience = this.medicalExperience;
-            RAttributes.baseTacticalExperienceRequired = this.baseTacticalExperienceRequired;
-            RAttributes.baseSurvivalExperienceRequired = this.baseSurvivalExperienceRequired;
-            RAttributes.baseMedicalExperienceRequired = this.baseMedicalExperienceRequired;
             RAttributes.tacticalExperienceRequired = this.tacticalExperienceRequired;
             RAttributes.survivalExperienceRequired = this.survivalExperienceRequired;
             RAttributes.medicalExperienceRequired = this.medicalExperienceRequired;
