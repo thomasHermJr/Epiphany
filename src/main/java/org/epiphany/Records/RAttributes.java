@@ -7,12 +7,12 @@ import org.epiphany.Interfaces.IAttributes;
 *  Make separate class to implement modular attributes, to greatly reduce reused parameter code
    Consider making an enum, and using a for loop to initialize the stats, if possible*/
 
-public record RAttributes() implements IAttributes {
+public record RAttributes() implements IAttributes { // open RAttributes record -- implements IAttributes
 
-    protected static class AttributeValidation {
+    protected static class AttributeValidation { // start AttributeValidation subclass
 
-        static final byte zeroBaseMin= 0;
-        static final byte oneBaseMin= 1;
+        static final byte zeroBaseMin= 0; // used predominantly for attributes that can be zero-based, such as experience points
+        static final byte oneBaseMin= 1; // used predominantly for attributes that must be one-based, such as proficiency levels
         static final short proficiencyExpRequiredMin = 100;
         static final short proficiencyExpRequiredMax = 32000;
 
@@ -62,6 +62,13 @@ public record RAttributes() implements IAttributes {
         /*Add class definitions here*/
 
         public class BaseAttribute { // start base attributes
+
+            private final byte minValue = 1;
+            private final byte maxValue = 20;
+            public byte currentValue = 1;
+
+
+
 
             protected class DerivedAttribute { // start derived attributes
 
