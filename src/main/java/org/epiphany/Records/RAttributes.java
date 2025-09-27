@@ -459,86 +459,133 @@ public record RAttributes() implements IAttributes {
 
     public static class ArmorProficiencyBuilder { // start armor proficiency builder
 
-        private byte gambesonProficiency = 0;
-        private byte chainmailProficiency = 0;
-        private byte plateProficiency = 0;
+        private byte gambesonProficiency = 1;
+        private byte chainmailProficiency = 1;
+        private byte plateProficiency = 1;
+
+        private double gambesonGrowthRate = totalProficiencyGrowthRate * gambesonProficiency; // multiplier change to needed experience per level
+        private double chainmailGrowthRate = totalProficiencyGrowthRate * chainmailProficiency; // multiplier change to needed experience per level
+        private double plateGrowthRate = totalProficiencyGrowthRate * plateProficiency; // multiplier change to needed experience per level
 
         private short gambesonExperienceRequired = 100;
         private short chainmailExperienceRequired = 100;
         private short plateExperienceRequired = 100;
-
-        private short gambesonGrowthRate = 120; // percentage change to needed experience per level
-        private short chainmailGrowthRate = 120; // percentage change to needed experience per level
-        private short plateGrowthRate = 120; // percentage change to needed experience per level
-
-        private byte armorChangeRatePerLevel = 5; // percentage change to growth rate per level, min 1 max 10
 
         private short gambesonExperience = 0;
         private short chainmailExperience = 0;
         private short plateExperience = 0;
 
         public ArmorProficiencyBuilder setGambesonProficiency(byte gambesonProficiency) {
+            if (gambesonProficiency < 1) { // start min/max validation
+                gambesonProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.gambesonProficiency = gambesonProficiency;
             return this;
         }
 
         public ArmorProficiencyBuilder setChainmailProficiency(byte chainmailProficiency) {
+            if (chainmailProficiency < 1) { // start min/max validation
+                chainmailProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.chainmailProficiency = chainmailProficiency;
             return this;
         }
 
         public ArmorProficiencyBuilder setPlateProficiency(byte plateProficiency) {
+            if (plateProficiency < 1) { // start min/max validation
+                plateProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.plateProficiency = plateProficiency;
             return this;
         }
 
         public ArmorProficiencyBuilder setGambesonExperience(short gambesonExperience) {
+            if (gambesonExperience < 0) { // start min/max validation
+                gambesonExperience = 0;
+            } else if (gambesonExperience > gambesonExperienceRequired) {
+                gambesonExperience = gambesonExperienceRequired;
+            } // end min/max validation
             this.gambesonExperience = gambesonExperience;
             return this;
         }
 
         public ArmorProficiencyBuilder setChainmailExperience(short chainmailExperience) {
+            if (chainmailExperience < 0) { // start min/max validation
+                chainmailExperience = 0;
+            } else if (chainmailExperience > chainmailExperienceRequired) {
+                chainmailExperience = chainmailExperienceRequired;
+            } // end min/max validation
             this.chainmailExperience = chainmailExperience;
             return this;
         }
 
         public ArmorProficiencyBuilder setPlateExperience(short plateExperience) {
+            if (plateExperience < 0) { // start min/max validation
+                plateExperience = 0;
+            } else if (plateExperience > plateExperienceRequired) {
+                plateExperience = plateExperienceRequired;
+            } // end min/max validation
             this.plateExperience = plateExperience;
             return this;
         }
 
         public ArmorProficiencyBuilder setGambesonExperienceRequired(short gambesonExperienceRequired) {
+            if (gambesonExperienceRequired < 100) { // start min/max validation
+                gambesonExperienceRequired = 100;
+            } else if (gambesonExperienceRequired > 32000) {
+                gambesonExperienceRequired = 32000;
+            } // end min/max validation
             this.gambesonExperienceRequired = gambesonExperienceRequired;
             return this;
         }
 
         public ArmorProficiencyBuilder setChainmailExperienceRequired(short chainmailExperienceRequired) {
+            if (chainmailExperienceRequired < 100) { // start min/max validation
+                chainmailExperienceRequired = 100;
+            } else if (chainmailExperienceRequired > 32000) {
+                chainmailExperienceRequired = 32000;
+            } // end min/max validation
             this.chainmailExperienceRequired = chainmailExperienceRequired;
             return this;
         }
 
         public ArmorProficiencyBuilder setPlateExperienceRequired(short plateExperienceRequired) {
+            if (plateExperienceRequired < 100) { // start min/max validation
+                plateExperienceRequired = 100;
+            } else if (plateExperienceRequired > 32000) {
+                plateExperienceRequired = 32000;
+            } // end min/max validation
             this.plateExperienceRequired = plateExperienceRequired;
             return this;
         }
 
-        public ArmorProficiencyBuilder setGambesonGrowthRate(short gambesonGrowthRate) {
+        public ArmorProficiencyBuilder setGambesonGrowthRate(double gambesonGrowthRate) {
+            if (gambesonGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                gambesonGrowthRate = totalProficiencyGrowthRate;
+            } else if (gambesonGrowthRate > totalProficiencyGrowthRate * 10) {
+                gambesonGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
             this.gambesonGrowthRate = gambesonGrowthRate;
             return this;
         }
 
-        public ArmorProficiencyBuilder setChainmailGrowthRate(short chainmailGrowthRate) {
+        public ArmorProficiencyBuilder setChainmailGrowthRate(double chainmailGrowthRate) {
+            if (chainmailGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                chainmailGrowthRate = totalProficiencyGrowthRate;
+            } else if (chainmailGrowthRate > totalProficiencyGrowthRate * 10) {
+                chainmailGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
             this.chainmailGrowthRate = chainmailGrowthRate;
             return this;
         }
 
-        public ArmorProficiencyBuilder setPlateGrowthRate(short plateGrowthRate) {
+        public ArmorProficiencyBuilder setPlateGrowthRate(double plateGrowthRate) {
+            if (plateGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                plateGrowthRate = totalProficiencyGrowthRate;
+            } else if (plateGrowthRate > totalProficiencyGrowthRate * 10) {
+                plateGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
             this.plateGrowthRate = plateGrowthRate;
-            return this;
-        }
-
-        public ArmorProficiencyBuilder setArmorChangeRatePerLevel(byte armorChangeRatePerLevel) {
-            this.armorChangeRatePerLevel = armorChangeRatePerLevel;
             return this;
         }
 
@@ -555,7 +602,6 @@ public record RAttributes() implements IAttributes {
             RAttributes.gambesonGrowthRate = this.gambesonGrowthRate;
             RAttributes.chainmailGrowthRate = this.chainmailGrowthRate;
             RAttributes.plateGrowthRate = this.plateGrowthRate;
-            RAttributes.armorChangeRatePerLevel = this.armorChangeRatePerLevel;
             return new RAttributes();
         }
 
