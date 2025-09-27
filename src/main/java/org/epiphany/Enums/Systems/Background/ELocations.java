@@ -1,6 +1,6 @@
 package org.epiphany.Enums.Systems.Background;
 
-public enum ELocataions {
+public enum ELocations {
 
     /*Current continent*/
 
@@ -26,7 +26,7 @@ public enum ELocataions {
 
     private final String locationName;
 
-    ELocataions(String locationName) { // Constructor
+    ELocations(String locationName) { // Constructor
         // add location verification later
         this.locationName = locationName;
     } // end constructor
