@@ -522,8 +522,8 @@ public record RAttributes() implements IAttributes {
         private double survivalGrowthRate = totalGrowthRate * survivalProficiency; // percentage change to needed experience per level
         private double medicalGrowthRate =  totalGrowthRate * medicalProficiency; // percentage change to needed experience per level
 
-        private short tacticalExperienceRequired = 100;
-        private short survivalExperienceRequired = 100;
+        private short tacticalExperienceRequired = (short) (baseTacticalExperienceRequired * tacticalGrowthRate * tacticalProficiency);
+        private short survivalExperienceRequired = (short) (baseSurvivalExperienceRequired * survivalGrowthRate * survivalProficiency);
         private short medicalExperienceRequired = (short) (baseMedicalExperienceRequired * medicalGrowthRate * medicalProficiency);
 
         private short tacticalExperience = 0;
