@@ -2,6 +2,10 @@ package org.epiphany.Records;
 
 import org.epiphany.Interfaces.IAttributes;
 
+/*TODO:
+   Create a validation class for attribute validation methods to reduce reused validation code
+*  Consider making a separate attribute class to implement modular attributes, to greatly reduce reused parameter code */
+
 public record RAttributes() implements IAttributes {
 
     /* base attributes */
