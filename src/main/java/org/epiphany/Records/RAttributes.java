@@ -4,9 +4,84 @@ import org.epiphany.Interfaces.IAttributes;
 
 /*TODO:
    Create a validation class for attribute validation methods to reduce reused validation code
-*  Consider making a separate attribute class to implement modular attributes, to greatly reduce reused parameter code */
+*  Make separate class to implement modular attributes, to greatly reduce reused parameter code */
 
 public record RAttributes() implements IAttributes {
+
+    protected class AttributeValidation {
+
+        static final byte zeroBaseMin= 0;
+        static final byte oneBaseMin= 1;
+        static final short proficiencyExpRequiredMin = 100;
+        static final short proficiencyExpRequiredMax = 32000;
+
+        protected static int zeroBaseValidation(int value) {
+            if (value < zeroBaseMin) {
+                value = zeroBaseMin;
+            }
+            return value;
+        }
+
+        protected static int oneBaseValidation(int value) {
+            if (value < oneBaseMin) {
+                value = oneBaseMin;
+            }
+            return value;
+        }
+
+        protected static short proficiencyExpRequiredValidation(short value) {
+            if (value < proficiencyExpRequiredMin) {
+                value = proficiencyExpRequiredMin;
+            } else if (value > proficiencyExpRequiredMax) {
+                value = proficiencyExpRequiredMax;
+            }
+            return value;
+        }
+
+        /*Add class definitions here*/
+
+        protected class BaseAttributes { // start base attributes
+
+            protected class DerivedAttributes { // start derived attributes
+
+        } // end derived attributes subclass
+
+            protected class OverdriveAttributes { // start overdrive attributes
+
+            } // end overdrive attributes subclass
+
+        } // end base attributes subclass
+
+        protected class Proficiencies { // start proficiency subclass
+
+            protected class WeaponProficiency { // start weapon proficiency
+
+            } // end weapon proficiency subclass
+
+            protected class ArmorProficiency { // start armor proficiency
+
+            } // end armor proficiency subclass
+
+            protected class SkillProficiency { // start skill proficiency
+
+            } // end skill proficiency subclass
+
+            protected class LifeProficiency { // start life proficiency
+
+            } // end life proficiency subclass
+
+            protected class PersonalProficiency { // start personal proficiency
+
+            } // end personal proficiency subclass
+
+        } // end proficiencies subclass
+
+    } // end AttributeValidation subclass
+
+
+
+
+    /*Old code; remove when finished*/
 
     /* base attributes */
     static byte strength;
