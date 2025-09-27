@@ -761,40 +761,132 @@ public record RAttributes() implements IAttributes {
 
     public static class LifeProficiencyBuilder { // start life proficiency builder
 
-        private byte smithingProficiency = 0;
-        private byte engineeringProficiency = 0;
-        private byte gadgetryProficiency = 0;
+        private byte smithingProficiency = 1;
+        private byte engineeringProficiency = 1;
+        private byte gadgetryProficiency = 1;
+
+        private double smithingGrowthRate = totalProficiencyGrowthRate * smithingProficiency; // multiplier change to needed experience per level
+        private double engineeringGrowthRate = totalProficiencyGrowthRate * engineeringProficiency; // multiplier change to needed experience per level
+        private double gadgetryGrowthRate = totalProficiencyGrowthRate * gadgetryProficiency; // multiplier change to needed experience per level
+
+        private short smithingExperienceRequired = (short) (baseExperienceRequired * smithingGrowthRate * smithingProficiency);
+        private short engineeringExperienceRequired = (short) (baseExperienceRequired * engineeringGrowthRate * engineeringProficiency);
+        private short gadgetryExperienceRequired = (short) (baseExperienceRequired * gadgetryGrowthRate * gadgetryProficiency);
 
         private short smithingExperience = 0;
         private short engineeringExperience = 0;
         private short gadgetryExperience = 0;
 
         public LifeProficiencyBuilder setSmithingProficiency(byte smithingProficiency) {
+            if (smithingProficiency < 1) { // start min/max validation
+                smithingProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.smithingProficiency = smithingProficiency;
             return this;
         }
 
         public LifeProficiencyBuilder setEngineeringProficiency(byte engineeringProficiency) {
+            if (engineeringProficiency < 1) { // start min/max validation
+                engineeringProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.engineeringProficiency = engineeringProficiency;
             return this;
         }
 
         public LifeProficiencyBuilder setGadgetryProficiency(byte gadgetryProficiency) {
+            if (gadgetryProficiency < 1) { // start min/max validation
+                gadgetryProficiency = 1;
+            } // end min validation -- check for max later, when max levels are set
             this.gadgetryProficiency = gadgetryProficiency;
             return this;
         }
 
+        public LifeProficiencyBuilder setSmithingGrowthRate(double smithingGrowthRate) {
+            if (smithingGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                smithingGrowthRate = totalProficiencyGrowthRate;
+            } else if (smithingGrowthRate > totalProficiencyGrowthRate * 10) {
+                smithingGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
+            this.smithingGrowthRate = smithingGrowthRate;
+            return this;
+        }
+
+        public LifeProficiencyBuilder setEngineeringGrowthRate(double engineeringGrowthRate) {
+            if (engineeringGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                engineeringGrowthRate = totalProficiencyGrowthRate;
+            } else if (engineeringGrowthRate > totalProficiencyGrowthRate * 10) {
+                engineeringGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
+            this.engineeringGrowthRate = engineeringGrowthRate;
+            return this;
+        }
+
+        public LifeProficiencyBuilder setGadgetryGrowthRate(double gadgetryGrowthRate) {
+            if (gadgetryGrowthRate < totalProficiencyGrowthRate) { // start min/max validation
+                gadgetryGrowthRate = totalProficiencyGrowthRate;
+            } else if (gadgetryGrowthRate > totalProficiencyGrowthRate * 10) {
+                gadgetryGrowthRate = (totalProficiencyGrowthRate * 10);
+            } // end min/max validation
+            this.gadgetryGrowthRate = gadgetryGrowthRate;
+            return this;
+        }
+
+        public LifeProficiencyBuilder setSmithingExperienceRequired(short smithingExperienceRequired) {
+            if (smithingExperienceRequired < 100) { // start min/max validation
+                smithingExperienceRequired = 100;
+            } else if (smithingExperienceRequired > 32000) {
+                smithingExperienceRequired = 32000;
+            } // end min/max validation
+            this.smithingExperienceRequired = smithingExperienceRequired;
+            return this;
+        }
+
+        public LifeProficiencyBuilder setEngineeringExperienceRequired(short engineeringExperienceRequired) {
+            if (engineeringExperienceRequired < 100) { // start min/max validation
+                engineeringExperienceRequired = 100;
+            } else if (engineeringExperienceRequired > 32000) {
+                engineeringExperienceRequired = 32000;
+            } // end min/max validation
+            this.engineeringExperienceRequired = engineeringExperienceRequired;
+            return this;
+        }
+
+        public LifeProficiencyBuilder setGadgetryExperienceRequired(short gadgetryExperienceRequired) {
+            if (gadgetryExperienceRequired < 100) { // start min/max validation
+                gadgetryExperienceRequired = 100;
+            } else if (gadgetryExperienceRequired > 32000) {
+                gadgetryExperienceRequired = 32000;
+            } // end min/max validation
+            this.gadgetryExperienceRequired = gadgetryExperienceRequired;
+            return this;
+        }
+
         public LifeProficiencyBuilder setSmithingExperience(short smithingExperience) {
+            if (smithingExperience < 0) { // start min/max validation
+                smithingExperience = 0;
+            } else if (smithingExperience > smithingExperienceRequired) {
+                smithingExperience = smithingExperienceRequired;
+            } // end min/max validation
             this.smithingExperience = smithingExperience;
             return this;
         }
 
         public LifeProficiencyBuilder setEngineeringExperience(short engineeringExperience) {
+            if (engineeringExperience < 0) { // start min/max validation
+                engineeringExperience = 0;
+            } else if (engineeringExperience > engineeringExperienceRequired) {
+                engineeringExperience = engineeringExperienceRequired;
+            } // end min/max validation
             this.engineeringExperience = engineeringExperience;
             return this;
         }
 
         public LifeProficiencyBuilder setGadgetryExperience(short gadgetryExperience) {
+            if (gadgetryExperience < 0) { // start min/max validation
+                gadgetryExperience = 0;
+            } else if (gadgetryExperience > gadgetryExperienceRequired) {
+                gadgetryExperience = gadgetryExperienceRequired;
+            } // end min/max validation
             this.gadgetryExperience = gadgetryExperience;
             return this;
         }
@@ -803,6 +895,12 @@ public record RAttributes() implements IAttributes {
             RAttributes.smithingProficiency = this.smithingProficiency;
             RAttributes.engineeringProficiency = this.engineeringProficiency;
             RAttributes.gadgetryProficiency = this.gadgetryProficiency;
+            RAttributes.smithingGrowthRate = this.smithingGrowthRate;
+            RAttributes.engineeringGrowthRate = this.engineeringGrowthRate;
+            RAttributes.gadgetryGrowthRate = this.gadgetryGrowthRate;
+            RAttributes.smithingExperienceRequired = this.smithingExperienceRequired;
+            RAttributes.engineeringExperienceRequired = this.engineeringExperienceRequired;
+            RAttributes.gadgetryExperienceRequired = this.gadgetryExperienceRequired;
             RAttributes.smithingExperience = this.smithingExperience;
             RAttributes.engineeringExperience = this.engineeringExperience;
             RAttributes.gadgetryExperience = this.gadgetryExperience;
