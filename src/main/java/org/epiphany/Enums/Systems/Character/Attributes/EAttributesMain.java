@@ -68,8 +68,8 @@ public enum EAttributesMain {
         this.derivedBonus = derivedBonus;
         this.proficiencyBonus = proficiencyBonus;
         if (currentValue <= 1) {
-            derivedBonus = currentValue;
-            proficiencyBonus = currentValue;
+            derivedBonus = 1;
+            proficiencyBonus = 1;
         } else {
             derivedBonus = currentValue * 1.5;
             proficiencyBonus = currentValue * 1.25;
