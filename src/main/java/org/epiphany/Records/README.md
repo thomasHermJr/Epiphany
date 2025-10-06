@@ -3,4 +3,3 @@
 ## Current Files
 
 RBackground.java - Record class for character backgrounds.
-RAttributes.java - Record class for character attributes.

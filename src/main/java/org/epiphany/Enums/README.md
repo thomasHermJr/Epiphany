@@ -8,7 +8,10 @@ Anything that can be taken stock of goes here.
 
 - Armors
 - Systems 
-  - Background
-  - Battle
+  - Character 
+    - Attributes
+    - Battle
   - Generation
+  - Lore
+  - Settings
 - Weapons
