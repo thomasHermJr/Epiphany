@@ -1,3 +1,6 @@
+DEPRECIATION REASON:
+               Static attributes will be handled by the enum; dynamic attributes will be handled by a new class
+
 package org.epiphany.Depreciated;
 
 import org.epiphany.Enums.Systems.Character.Attributes.EAttributesMain;

@@ -1,3 +1,7 @@
+DEPRECIATION REASON:
+                 Static values will be initialized with enums, while dynamic values will be tracked in proper classes
+                 to reduce reused code and improve modularity
+
 package org.epiphany.Depreciated;
 import java.util.HashMap;
 import java.util.Map;
