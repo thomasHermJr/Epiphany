@@ -8,7 +8,6 @@ public enum ESettingsInputMode { // start enum
     GAMEPAD("Gamepad", false);
 
     private final String inputName;
-    private final int id = this.ordinal();
     private boolean isOn;
 
 
