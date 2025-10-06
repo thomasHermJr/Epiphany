@@ -5,7 +5,8 @@ import org.epiphany.Interfaces.IAttributes;
 /*TODO:
    Create a validation class for attribute validation methods to reduce reused validation code
 *  Make separate class to implement modular attributes, to greatly reduce reused parameter code
-   Consider making an enum, and using a for loop to initialize the stats, if possible*/
+   Consider making an enum, and using a for loop to initialize the stats, if possible
+   Move subclasses to other files for better management once complete */
 
 public record RAttributes() implements IAttributes { // open RAttributes record -- implements IAttributes
 
