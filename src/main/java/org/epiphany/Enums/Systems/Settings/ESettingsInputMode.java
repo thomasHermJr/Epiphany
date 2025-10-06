@@ -4,23 +4,58 @@ import java.util.Objects;
 
 public enum ESettingsInputMode { // start enum
 
-    KEYBOARD_MOUSE("Keyboard & Mouse"),
-    GAMEPAD("Gamepad");
+    KEYBOARD_MOUSE("Keyboard & Mouse", true),
+    GAMEPAD("Gamepad", false);
 
     private final String inputName;
+    private final int id = this.ordinal();
+    private boolean isOn;
 
-    ESettingsInputMode(String inputName) {
+
+    ESettingsInputMode(String inputName, boolean isOn) {
 
         if (!Objects.equals(inputName, "Keyboard & Mouse") && !Objects.equals(inputName, "Gamepad")) { // validate input mode
             inputName = "Keyboard & Mouse"; // default to Keyboard & Mouse if invalid
         } // end if
 
         this.inputName = inputName;
+        this.isOn = isOn;
 
     } // end constructor
 
     public String getInputName() {
         return inputName;
+    }
+
+    public boolean getIsOn() {
+        return isOn;
+    }
+
+    public void toggleInputMode(String inputName) {
+
+        for (ESettingsInputMode mode : ESettingsInputMode.values()) {
+
+            if (mode.getInputName().equals(inputName)) {
+
+                // Only one input mode can be active at a time, so toggle both modes
+
+                ESettingsInputMode.GAMEPAD.isOn = !ESettingsInputMode.GAMEPAD.isOn;
+                ESettingsInputMode.KEYBOARD_MOUSE.isOn = !ESettingsInputMode.KEYBOARD_MOUSE.isOn;
+                break;
+
+            } // end if
+
+        } // end for
+
+    } // end method
+
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(inputName).append(": ").append(isOn ? "On" : "Off");
+        return sb.toString();
+
     }
 
 } // end enum

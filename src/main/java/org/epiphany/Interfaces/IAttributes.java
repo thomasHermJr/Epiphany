@@ -1,6 +1,6 @@
 package org.epiphany.Interfaces;
 
-public interface IAttributes extends ICharacter{ // open IAttributes interface
+public interface IAttributes{ // open IAttributes interface
 
     /*Base Attributes*/
 

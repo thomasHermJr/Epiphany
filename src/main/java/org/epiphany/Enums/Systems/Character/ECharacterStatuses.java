@@ -2,6 +2,8 @@ package org.epiphany.Enums.Systems.Character;
 
 public enum ECharacterStatuses {
 
+    /*TODO: Add more statuses, add stat down effects, add damage in heath%*/
+
     NONE("None"), // No status effect
     HEALTHY("Healthy"), // Recover all negative status effects, immune to new ones
     STUNNED("Stunned"), // Cannot act for one turn
@@ -13,7 +15,6 @@ public enum ECharacterStatuses {
     APATHETIC("Apathetic"), // Cannot be healed
     BURNED("Burned"); // Takes damage over time, reduced attack power
 
-    /*Add stat down effects, turn duration, damage in heath%*/
     private final String statusName;
 
     ECharacterStatuses(String StatusName) {

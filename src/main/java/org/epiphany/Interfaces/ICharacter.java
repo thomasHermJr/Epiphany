@@ -1,6 +1,6 @@
 package org.epiphany.Interfaces;
 
-public interface ICharacter{
+public interface ICharacter extends IAttributes {
 
     String name = "";
     String job = "";
