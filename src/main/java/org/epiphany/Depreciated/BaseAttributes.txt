@@ -1,0 +1,135 @@
+DEPRECIATION REASON:
+               Static attributes will be handled by the enum; dynamic attributes will be handled by a new class
+
+package org.epiphany.Depreciated;
+
+import org.epiphany.Enums.Systems.Character.Attributes.EAttributesMain;
+
+public class BaseAttributes {
+
+   String strengthName = EAttributesMain.STRENGTH.getAttributeName();
+   String strengthDescription = EAttributesMain.STRENGTH.getDescription();
+   int strengthMinValue = EAttributesMain.STRENGTH.getMinValue();
+   int strengthMaxValue = EAttributesMain.STRENGTH.getMaxValue();
+   double  strengthDerivedBonus = EAttributesMain.STRENGTH.getDerivedBonus();
+   double strengthProficiencyBonus = EAttributesMain.STRENGTH.getProficiencyBonus();
+
+   String dexterityName = EAttributesMain.DEXTERITY.getAttributeName();
+   String dexterityDescription = EAttributesMain.DEXTERITY.getDescription();
+   int dexterityMinValue = EAttributesMain.DEXTERITY.getMinValue();
+   int dexterityMaxValue = EAttributesMain.DEXTERITY.getMaxValue();
+   double dexterityDerivedBonus = EAttributesMain.DEXTERITY.getDerivedBonus();
+   double dexterityProficiencyBonus = EAttributesMain.DEXTERITY.getProficiencyBonus();
+
+    String constitutionName = EAttributesMain.CONSTITUTION.getAttributeName();
+    String constitutionDescription = EAttributesMain.CONSTITUTION.getDescription();
+    int constitutionMinValue = EAttributesMain.CONSTITUTION.getMinValue();
+    int constitutionMaxValue = EAttributesMain.CONSTITUTION.getMaxValue();
+    double constitutionDerivedBonus = EAttributesMain.CONSTITUTION.getDerivedBonus();
+    double constitutionProficiencyBonus = EAttributesMain.CONSTITUTION.getProficiencyBonus();
+
+    String intelligenceName = EAttributesMain.INTELLIGENCE.getAttributeName();
+    String intelligenceDescription = EAttributesMain.INTELLIGENCE.getDescription();
+    int intelligenceMinValue = EAttributesMain.INTELLIGENCE.getMinValue();
+    int intelligenceMaxValue = EAttributesMain.INTELLIGENCE.getMaxValue();
+    double intelligenceDerivedBonus = EAttributesMain.INTELLIGENCE.getDerivedBonus();
+    double intelligenceProficiencyBonus = EAttributesMain.INTELLIGENCE.getProficiencyBonus();
+
+    String wisdomName = EAttributesMain.WISDOM.getAttributeName();
+    String wisdomDescription = EAttributesMain.WISDOM.getDescription();
+    int wisdomMinValue = EAttributesMain.WISDOM.getMinValue();
+    int wisdomMaxValue = EAttributesMain.WISDOM.getMaxValue();
+    double wisdomDerivedBonus = EAttributesMain.WISDOM.getDerivedBonus();
+    double wisdomProficiencyBonus = EAttributesMain.WISDOM.getProficiencyBonus();
+
+    String charismaName = EAttributesMain.CHARISMA.getAttributeName();
+    String charismaDescription = EAttributesMain.CHARISMA.getDescription();
+    int charismaMinValue = EAttributesMain.CHARISMA.getMinValue();
+    int charismaMaxValue = EAttributesMain.CHARISMA.getMaxValue();
+    double charismaDerivedBonus = EAttributesMain.CHARISMA.getDerivedBonus();
+    double charismaProficiencyBonus = EAttributesMain.CHARISMA.getProficiencyBonus();
+
+    public BaseAttributes() {
+
+        // Static initialization for now; dynamic creation attempt under static initialization
+
+        // strength initialization
+
+        this.strengthName = strengthName;
+        this.strengthDescription = strengthDescription;
+        this.strengthMinValue = strengthMinValue;
+        this.strengthMaxValue = strengthMaxValue;
+        this.strengthDerivedBonus = strengthDerivedBonus;
+        this.strengthProficiencyBonus = EAttributesMain.STRENGTH.getProficiencyBonus();
+
+        // dexterity initialization
+
+        this.dexterityName = EAttributesMain.DEXTERITY.getAttributeName();
+        this.dexterityDescription = EAttributesMain.DEXTERITY.getDescription();
+        this.dexterityMinValue = EAttributesMain.DEXTERITY.getMinValue();
+        this.dexterityMaxValue = EAttributesMain.DEXTERITY.getMaxValue();
+        this.dexterityDerivedBonus = EAttributesMain.DEXTERITY.getDerivedBonus();
+        this.dexterityProficiencyBonus = EAttributesMain.DEXTERITY.getProficiencyBonus();
+
+        // constitution initialization
+
+        this.constitutionName = EAttributesMain.CONSTITUTION.getAttributeName();
+        this.constitutionDescription = EAttributesMain.CONSTITUTION.getDescription();
+        this.constitutionMinValue = EAttributesMain.CONSTITUTION.getMinValue();
+        this.constitutionMaxValue = EAttributesMain.CONSTITUTION.getMaxValue();
+        this.constitutionDerivedBonus = EAttributesMain.CONSTITUTION.getDerivedBonus();
+        this.constitutionProficiencyBonus = EAttributesMain.CONSTITUTION.getProficiencyBonus();
+
+        // intelligence initialization
+
+        this.intelligenceName = EAttributesMain.INTELLIGENCE.getAttributeName();
+        this.intelligenceDescription = EAttributesMain.INTELLIGENCE.getDescription();
+        this.intelligenceMinValue = EAttributesMain.INTELLIGENCE.getMinValue();
+        this.intelligenceMaxValue = EAttributesMain.INTELLIGENCE.getMaxValue();
+        this.intelligenceDerivedBonus = EAttributesMain.INTELLIGENCE.getDerivedBonus();
+        this.intelligenceProficiencyBonus = EAttributesMain.INTELLIGENCE.getProficiencyBonus();
+
+        // wisdom initialization
+
+        this.wisdomName = EAttributesMain.WISDOM.getAttributeName();
+        this.wisdomDescription = EAttributesMain.WISDOM.getDescription();
+        this.wisdomMinValue = EAttributesMain.WISDOM.getMinValue();
+        this.wisdomMaxValue = EAttributesMain.WISDOM.getMaxValue();
+        this.wisdomDerivedBonus = EAttributesMain.WISDOM.getDerivedBonus();
+        this.wisdomProficiencyBonus = EAttributesMain.WISDOM.getProficiencyBonus();
+
+        // charisma initialization
+
+        this.charismaName = EAttributesMain.CHARISMA.getAttributeName();
+        this.charismaDescription = EAttributesMain.CHARISMA.getDescription();
+        this.charismaMinValue = EAttributesMain.CHARISMA.getMinValue();
+        this.charismaMaxValue = EAttributesMain.CHARISMA.getMaxValue();
+        this.charismaDerivedBonus = EAttributesMain.CHARISMA.getDerivedBonus();
+        this.charismaProficiencyBonus = EAttributesMain.CHARISMA.getProficiencyBonus();
+
+        /*Dynamic creation attempt; cannot be referenced elsewhere -- create statically for now*/
+
+//                for (EAttributesMain attribute : EAttributesMain.values()) { // start initialization for loop
+//
+//                    attributeName.put(attribute.name(), attribute.getAttributeName());
+//                    attributeDescription.put(attribute.name(), attribute.getDescription());
+//                    attributeMinValue.put(attribute.name(), attribute.getMinValue());
+//                    attributeMaxValue.put(attribute.name(), attribute.getMaxValue());
+//                    attributeDerivedBonus.put(attribute.name(), attribute.getDerivedBonus());
+//                    attributeProficiencyBonus.put(attribute.name(), attribute.getProficiencyBonus());
+//
+//                } // end for loop
+
+    } // end constructor
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Test");
+
+
+        return sb.toString();
+
+    } // end toString override
+
+}

@@ -1,18 +1,27 @@
-package org.epiphany.Records;
+DEPRECIATION REASON:
+                 Static values will be initialized with enums, while dynamic values will be tracked in proper classes
+                 to reduce reused code and improve modularity
+
+package org.epiphany.Depreciated;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.epiphany.Interfaces.IAttributes;
+import org.epiphany.Enums.Systems.Character.Attributes.EAttributesMain;
 
 /*TODO:
    Create a validation class for attribute validation methods to reduce reused validation code
 *  Make separate class to implement modular attributes, to greatly reduce reused parameter code
-   Consider making an enum, and using a for loop to initialize the stats, if possible*/
+   Consider making an enum, and using a for loop to initialize the stats, if possible
+        Use maps for attribute "variables"
+   Move subclasses to other files for better management once complete */
 
-public record RAttributes() implements IAttributes {
+public record RAttributes() implements IAttributes { // open RAttributes record -- implements IAttributes
 
-    protected static class AttributeValidation {
+    public static class AttributeValidation { // start AttributeValidation subclass
 
-        static final byte zeroBaseMin= 0;
-        static final byte oneBaseMin= 1;
+        static final byte zeroBaseMin= 0; // used predominantly for attributes that can be zero-based, such as experience points
+        static final byte oneBaseMin= 1; // used predominantly for attributes that must be one-based, such as proficiency levels
         static final short proficiencyExpRequiredMin = 100;
         static final short proficiencyExpRequiredMax = 32000;
 
@@ -61,7 +70,111 @@ public record RAttributes() implements IAttributes {
 
         /*Add class definitions here*/
 
+        /*EXTRACTING TO OTHER FILE*/
         public class BaseAttribute { // start base attributes
+
+            Map<String, String> attributeName = new HashMap<>();
+            Map<String, String> attributeDescription = new HashMap<>();
+            Map<String, Integer> attributeMinValue = new HashMap<>();
+            Map<String, Integer> attributeMaxValue = new HashMap<>();
+            Map<String, Double> attributeDerivedBonus = new HashMap<>();
+            Map<String, Double> attributeProficiencyBonus = new HashMap<>();
+
+            public BaseAttribute() {
+
+                // Static initialization for now; dynamic creation attempt under static initialization
+
+                // strength initialization
+
+                attributeName.put(EAttributesMain.STRENGTH.getAttributeName(), EAttributesMain.STRENGTH.getAttributeName());
+                attributeDescription.put(EAttributesMain.STRENGTH.getAttributeName(), EAttributesMain.STRENGTH.getDescription());
+                attributeMinValue.put(EAttributesMain.STRENGTH.getAttributeName(), EAttributesMain.STRENGTH.getMinValue());
+                attributeMaxValue.put(EAttributesMain.STRENGTH.getAttributeName(), EAttributesMain.STRENGTH.getMaxValue());
+                attributeDerivedBonus.put(EAttributesMain.STRENGTH.getAttributeName(), EAttributesMain.STRENGTH.getDerivedBonus());
+                attributeProficiencyBonus.put(EAttributesMain.STRENGTH.getAttributeName(), EAttributesMain.STRENGTH.getProficiencyBonus());
+
+                // dexterity initialization
+
+                attributeName.put(EAttributesMain.DEXTERITY.getAttributeName(), EAttributesMain.DEXTERITY.getAttributeName());
+                attributeDescription.put(EAttributesMain.DEXTERITY.getAttributeName(), EAttributesMain.DEXTERITY.getDescription());
+                attributeMinValue.put(EAttributesMain.DEXTERITY.getAttributeName(), EAttributesMain.DEXTERITY.getMinValue());
+                attributeMaxValue.put(EAttributesMain.DEXTERITY.getAttributeName(), EAttributesMain.DEXTERITY.getMaxValue());
+                attributeDerivedBonus.put(EAttributesMain.DEXTERITY.getAttributeName(), EAttributesMain.DEXTERITY.getDerivedBonus());
+                attributeProficiencyBonus.put(EAttributesMain.DEXTERITY.getAttributeName(), EAttributesMain.DEXTERITY.getProficiencyBonus());
+
+                // constitution initialization
+
+                attributeName.put(EAttributesMain.CONSTITUTION.getAttributeName(), EAttributesMain.CONSTITUTION.getAttributeName());
+                attributeDescription.put(EAttributesMain.CONSTITUTION.getAttributeName(), EAttributesMain.CONSTITUTION.getDescription());
+                attributeMinValue.put(EAttributesMain.CONSTITUTION.getAttributeName(), EAttributesMain.CONSTITUTION.getMinValue());
+                attributeMaxValue.put(EAttributesMain.CONSTITUTION.getAttributeName(), EAttributesMain.CONSTITUTION.getMaxValue());
+                attributeDerivedBonus.put(EAttributesMain.CONSTITUTION.getAttributeName(), EAttributesMain.CONSTITUTION.getDerivedBonus());
+                attributeProficiencyBonus.put(EAttributesMain.CONSTITUTION.getAttributeName(), EAttributesMain.CONSTITUTION.getProficiencyBonus());
+
+                // intelligence initialization
+
+                attributeName.put(EAttributesMain.INTELLIGENCE.getAttributeName(), EAttributesMain.INTELLIGENCE.getAttributeName());
+                attributeDescription.put(EAttributesMain.INTELLIGENCE.getAttributeName(), EAttributesMain.INTELLIGENCE.getDescription());
+                attributeMinValue.put(EAttributesMain.INTELLIGENCE.getAttributeName(), EAttributesMain.INTELLIGENCE.getMinValue());
+                attributeMaxValue.put(EAttributesMain.INTELLIGENCE.getAttributeName(), EAttributesMain.INTELLIGENCE.getMaxValue());
+                attributeDerivedBonus.put(EAttributesMain.INTELLIGENCE.getAttributeName(), EAttributesMain.INTELLIGENCE.getDerivedBonus());
+                attributeProficiencyBonus.put(EAttributesMain.INTELLIGENCE.getAttributeName(), EAttributesMain.INTELLIGENCE.getProficiencyBonus());
+
+                // wisdom initialization
+
+                attributeName.put(EAttributesMain.WISDOM.getAttributeName(), EAttributesMain.WISDOM.getAttributeName());
+                attributeDescription.put(EAttributesMain.WISDOM.getAttributeName(), EAttributesMain.WISDOM.getDescription());
+                attributeMinValue.put(EAttributesMain.WISDOM.getAttributeName(), EAttributesMain.WISDOM.getMinValue());
+                attributeMaxValue.put(EAttributesMain.WISDOM.getAttributeName(), EAttributesMain.WISDOM.getMaxValue());
+                attributeDerivedBonus.put(EAttributesMain.WISDOM.getAttributeName(), EAttributesMain.WISDOM.getDerivedBonus());
+                attributeProficiencyBonus.put(EAttributesMain.WISDOM.getAttributeName(), EAttributesMain.WISDOM.getProficiencyBonus());
+
+                // charisma initialization
+
+                attributeName.put(EAttributesMain.CHARISMA.getAttributeName(), EAttributesMain.CHARISMA.getAttributeName());
+                attributeDescription.put(EAttributesMain.CHARISMA.getAttributeName(), EAttributesMain.CHARISMA.getDescription());
+                attributeMinValue.put(EAttributesMain.CHARISMA.getAttributeName(), EAttributesMain.CHARISMA.getMinValue());
+                attributeMaxValue.put(EAttributesMain.CHARISMA.getAttributeName(), EAttributesMain.CHARISMA.getMaxValue());
+                attributeDerivedBonus.put(EAttributesMain.CHARISMA.getAttributeName(), EAttributesMain.CHARISMA.getDerivedBonus());
+                attributeProficiencyBonus.put(EAttributesMain.CHARISMA.getAttributeName(), EAttributesMain.CHARISMA.getProficiencyBonus());
+
+                /*Dynamic creation attempt; cannot be referenced elsewhere -- create statically for now*/
+
+//                for (EAttributesMain attribute : EAttributesMain.values()) { // start initialization for loop
+//
+//                    attributeName.put(attribute.name(), attribute.getAttributeName());
+//                    attributeDescription.put(attribute.name(), attribute.getDescription());
+//                    attributeMinValue.put(attribute.name(), attribute.getMinValue());
+//                    attributeMaxValue.put(attribute.name(), attribute.getMaxValue());
+//                    attributeDerivedBonus.put(attribute.name(), attribute.getDerivedBonus());
+//                    attributeProficiencyBonus.put(attribute.name(), attribute.getProficiencyBonus());
+//
+//                } // end for loop
+
+            } // end constructor
+
+            @Override
+            public String toString() {
+                StringBuilder sb = new StringBuilder();
+                for (String key : attributeName.keySet()) { // start for loop
+
+                    sb.append("Attribute: ").append(attributeName.get(key)).append("\n");
+                    sb.append("Description: ").append(attributeDescription.get(key)).append("\n");
+                    sb.append("Min Value: ").append(attributeMinValue.get(key)).append("\n");
+                    sb.append("Max Value: ").append(attributeMaxValue.get(key)).append("\n");
+                    sb.append("Derived Bonus: ").append(attributeDerivedBonus.get(key)).append("\n");
+                    sb.append("Proficiency Bonus: ").append(attributeProficiencyBonus.get(key)).append("\n");
+                    sb.append("-------------------------\n");
+
+                } // end for loop
+
+                return sb.toString();
+
+            } // end toString override
+
+
+
+
 
             protected class DerivedAttribute { // start derived attributes
 
