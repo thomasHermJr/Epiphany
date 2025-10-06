@@ -3,7 +3,7 @@ package org.epiphany.Enums.Systems.Character;
 public enum ECharacterStatuses {
 
     NONE("None"), // No status effect
-    HEALTHY("Healthy"), // Recover all status effects
+    HEALTHY("Healthy"), // Recover all negative status effects, immune to new ones
     STUNNED("Stunned"), // Cannot act for one turn
     POISONED("Poisoned"), // Takes damage over time
     ASLEEP("Asleep"), // Cannot act until woken up

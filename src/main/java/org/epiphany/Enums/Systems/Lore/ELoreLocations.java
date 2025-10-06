@@ -21,7 +21,7 @@ public enum ELoreLocations {
     VESPERA("Vespera"),
     ZYGA("Zyga"),
     VONGARRIS("Vongarris"),
-    ABGESCH("Abgesch"); // Full name is "Abgeschiedenheit" - German for "Seclusion" - AbGesch for short
+    ABGESCH("Abgesch"); // Full name is "Abgeschiedenheit" - German for "Seclusion" - Abgesch for short
 
 
     private final String locationName;
