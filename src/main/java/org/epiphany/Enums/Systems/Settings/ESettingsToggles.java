@@ -29,13 +29,7 @@ public enum ESettingsToggles { // start enum
     }
 
     public void toggleSetting() {
-
-        for (ESettingsToggles toggle : ESettingsToggles.values()) {
-            if (toggle.getSettingName().equals(this.settingName)) {
-                isOn = !toggle.isOn;
-
-            } // end if
-        } // end for
+                this.isOn = !this.isOn;
     }
 
     @Override
