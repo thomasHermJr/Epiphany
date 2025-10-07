@@ -32,19 +32,10 @@ public enum ESettingsInputMode { // start enum
 
     public void toggleInputMode() {
 
-        for (ESettingsInputMode mode : ESettingsInputMode.values()) {
-
-            if (mode.getInputName().equals(this.inputName)) {
-
                 // Only one input mode can be active at a time, so toggle both modes
 
                 ESettingsInputMode.GAMEPAD.isOn = !ESettingsInputMode.GAMEPAD.isOn;
                 ESettingsInputMode.KEYBOARD_MOUSE.isOn = !ESettingsInputMode.KEYBOARD_MOUSE.isOn;
-                break;
-
-            } // end if
-
-        } // end for
 
         if ((!ESettingsInputMode.KEYBOARD_MOUSE.isOn && !ESettingsInputMode.GAMEPAD.isOn) ||
                 (ESettingsInputMode.KEYBOARD_MOUSE.isOn && ESettingsInputMode.GAMEPAD.isOn)) {// ensure Exactly one mode is always active

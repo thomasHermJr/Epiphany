@@ -58,10 +58,8 @@ public enum EChainmails {
 
     // Can only confirm chainmail equipment - cannot unequip or check other armor types
     public void equipChainmail() {
-        for (EChainmails chainmail : EChainmails.values()) {
 
-            if (chainmail.getName().equals(this.name) && chainmail.getBodyCoverage().equals(this.bodyCoverage)) {
-                chainmail.isEquipped = true;
+                this.isEquipped = true;
 
                 for (EChainmails otherChainmail : EChainmails.values()) {
 
@@ -71,10 +69,6 @@ public enum EChainmails {
                     } // end inner if
 
                 } // end inner for
-
-            } // end outer if
-
-        } // end outer for
 
     } // end equipChainmail
 
