@@ -10,15 +10,17 @@ public class Main {
 
         // Test ESettingsToggles enum
 
-//        ESettingsToggles settingsToggle = ESettingsToggles.FULLSCREEN;
-//        System.out.println(settingsToggle);
-//
-//        settingsToggle.toggleSetting(settingsToggle.getSettingName());
-//        StringBuilder sb = new StringBuilder();
-//        sb.append("\ntoggling...\n\n").append(settingsToggle);
-//        System.out.println(sb);
+        System.out.println("Testing ESettingsToggles enum...\n");
+        ESettingsToggles settingsToggle = ESettingsToggles.FULLSCREEN;
+        System.out.println(settingsToggle);
+
+        settingsToggle.toggleSetting(settingsToggle.getSettingName());
+        StringBuilder sb = new StringBuilder();
+        sb.append("\ntoggling...\n\n").append(settingsToggle);
+        System.out.println(sb);
 
         // Test ESettingsInputMode enum
+        System.out.println("\n\nTesting ESettingsInputMode enum...\n");
         ESettingsInputMode GameInputMode = ESettingsInputMode.GAMEPAD;
         ESettingsInputMode MenuInputMode = ESettingsInputMode.KEYBOARD_MOUSE;
         System.out.println(GameInputMode);

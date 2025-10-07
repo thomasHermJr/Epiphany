@@ -46,6 +46,16 @@ public enum ESettingsInputMode { // start enum
 
         } // end for
 
+        if ((!ESettingsInputMode.KEYBOARD_MOUSE.isOn && !ESettingsInputMode.GAMEPAD.isOn) ||
+                (ESettingsInputMode.KEYBOARD_MOUSE.isOn && ESettingsInputMode.GAMEPAD.isOn)) {// ensure Exactly one mode is always active
+
+            System.out.println("Error calculating input mode. Defaulting to Keyboard & Mouse");
+
+            ESettingsInputMode.KEYBOARD_MOUSE.isOn = true; // default to Keyboard & Mouse
+            ESettingsInputMode.GAMEPAD.isOn = false;
+
+        } // end if
+
     } // end method
 
     @Override

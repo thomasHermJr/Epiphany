@@ -46,4 +46,5 @@ public enum ESettingsToggles { // start enum
         return sb.toString();
 
     }
+
 } // end enum
