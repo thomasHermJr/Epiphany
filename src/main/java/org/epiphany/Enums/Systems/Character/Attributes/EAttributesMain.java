@@ -54,7 +54,7 @@ public enum EAttributesMain {
     private final String attributeName;
     private final String description;
     private final int minValue;
-    private final int startingValue;
+    private int currentValue;
     private final int maxValue;
     private double derivedBonus; // bonus to derived attributes
     private double proficiencyBonus; // bonus to proficiency gain
@@ -73,8 +73,8 @@ public enum EAttributesMain {
         return minValue;
     }
 
-    public int getStartingValue() {
-        return startingValue; // default starting value for all attributes
+    public int getCurrentValue() {
+        return currentValue; // default starting value for all attributes
     }
 
     public int getMaxValue() {
@@ -89,12 +89,12 @@ public enum EAttributesMain {
         return proficiencyBonus;
     }
 
-    EAttributesMain(String attributeName, String description, int minValue, int startingValue, int maxValue, double derivedBonus, double proficiencyBonus) {
+    EAttributesMain(String attributeName, String description, int minValue, int currentValue, int maxValue, double derivedBonus, double proficiencyBonus) {
 
         this.attributeName = attributeName;
         this.description = description;
         this.minValue = minValue;
-        this.startingValue = startingValue;
+        this.currentValue = currentValue;
         this.maxValue = maxValue;
         this.derivedBonus = derivedBonus;
         this.proficiencyBonus = proficiencyBonus;
