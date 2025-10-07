@@ -62,6 +62,7 @@ public enum EChainmails {
                 this.isEquipped = true;
 
                 for (EChainmails otherChainmail : EChainmails.values()) {
+                    // force unequip at O(N) efficiency -- Consider better verification method later
 
                     if (!otherChainmail.getName().equals(this.name) && otherChainmail.getBodyCoverage().equals(this.bodyCoverage)) {
                         otherChainmail.isEquipped = false; // Only one chainmail can be equipped at a time
