@@ -30,11 +30,11 @@ public enum ESettingsInputMode { // start enum
         return isOn;
     }
 
-    public void toggleInputMode(String inputName) {
+    public void toggleInputMode() {
 
         for (ESettingsInputMode mode : ESettingsInputMode.values()) {
 
-            if (mode.getInputName().equals(inputName)) {
+            if (mode.getInputName().equals(this.inputName)) {
 
                 // Only one input mode can be active at a time, so toggle both modes
 

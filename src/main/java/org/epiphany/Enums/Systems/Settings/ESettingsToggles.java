@@ -28,10 +28,10 @@ public enum ESettingsToggles { // start enum
         return isOn;
     }
 
-    public void toggleSetting(String settingName) {
+    public void toggleSetting() {
 
         for (ESettingsToggles toggle : ESettingsToggles.values()) {
-            if (toggle.getSettingName().equals(settingName)) {
+            if (toggle.getSettingName().equals(this.settingName)) {
                 isOn = !toggle.isOn;
 
             } // end if
