@@ -58,4 +58,19 @@ public enum ESettingsInputMode { // start enum
 
     }
 
+    public static void testESettingsInputMode() { // test method
+
+        System.out.println("\nTesting ESettingsInputMode enum...\n");
+        ESettingsInputMode GameInputMode = ESettingsInputMode.GAMEPAD;
+        ESettingsInputMode MenuInputMode = ESettingsInputMode.KEYBOARD_MOUSE;
+        System.out.println(GameInputMode);
+        System.out.println(MenuInputMode);
+
+        GameInputMode.toggleInputMode();
+        StringBuilder sb2 = new StringBuilder();
+        sb2.append("\ntoggling...\n\n").append(GameInputMode);
+        System.out.println(sb2);
+        System.out.println(MenuInputMode);
+    } // end method
+
 } // end enum

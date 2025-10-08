@@ -73,6 +73,23 @@ public enum EChainmails {
 
     } // end equipChainmail
 
+    public static void testEChainmails() {
+
+        System.out.println("\n\nTesting EChainmails enum...\n");
+        EChainmails chainmail1 = EChainmails.RUINED_CHAINMAIL_SHIRT;
+        EChainmails chainmail2 = EChainmails.BLACKENED_HAUBERK;
+        EChainmails chainmail3 = EChainmails.RAGGED_CHAINMAIL_MESH;
+        System.out.println(chainmail1);
+        System.out.println(chainmail2);
+        System.out.println(chainmail3);
+
+        chainmail2.equipChainmail();
+        System.out.println("\nAfter equipping...\n");
+        System.out.println(chainmail1);
+        System.out.println(chainmail2);
+        System.out.println(chainmail3);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

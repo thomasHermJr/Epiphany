@@ -1,5 +1,21 @@
 package org.epiphany.Enums.Systems.Character.Attributes;
 
+/**
+ * Enum representing the main attributes of a character.
+ * Each attribute has a name, description, minimum value, current value, maximum value,
+ * derived bonus (affecting derived attributes), and proficiency bonus (affecting proficiency gain).
+ *
+ * NOTE: Current values can be modified during gameplay, while min and max values are fixed.
+ *
+ * Attributes:
+ * - Strength: Physical power, affects physical attack and heavy weapon proficiency.
+ * - Dexterity: Agility and reflexes, affects ranged attack and light weapon proficiency.
+ * - Intelligence: Reasoning and memory, affects skill proficiency gain.
+ * - Wisdom: Perception and insight, affects life proficiency gain.
+ * - Constitution: Endurance and health, affects max health, stamina, and plate proficiency.
+ * - Charisma: Force of personality, affects personal proficiency gain.
+ */
+
 public enum EAttributesMain {
 
     STRENGTH("Strength",
@@ -75,6 +91,15 @@ public enum EAttributesMain {
 
     public int getCurrentValue() {
         return currentValue; // default starting value for all attributes
+    }
+    public void setCurrentValue(int newValue) {
+        if (newValue < minValue) {
+            this.currentValue = minValue;
+        } else if (newValue > maxValue) {
+            this.currentValue = maxValue;
+        } else {
+            this.currentValue = newValue;
+        }
     }
 
     public int getMaxValue() {

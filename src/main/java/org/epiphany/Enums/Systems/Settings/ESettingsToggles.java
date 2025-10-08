@@ -41,4 +41,17 @@ public enum ESettingsToggles { // start enum
 
     }
 
+    public static void testESettingsToggles() { // test method
+
+        System.out.println("Testing ESettingsToggles enum...\n");
+        ESettingsToggles settingsToggle = ESettingsToggles.FULLSCREEN;
+        System.out.println(settingsToggle);
+
+        settingsToggle.toggleSetting();
+        StringBuilder sb = new StringBuilder();
+        sb.append("\ntoggling...\n\n").append(settingsToggle);
+        System.out.println(sb);
+
+    } // end test method
+
 } // end enum
