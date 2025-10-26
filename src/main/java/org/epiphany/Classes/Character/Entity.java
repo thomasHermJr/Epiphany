@@ -83,7 +83,10 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
     } // end toString
 
     public static void characterTest() {
-        Entity myCharacter = new Entity("Drusyc", ECharacterJobs.PLACEHOLDER_JOB, (byte) 5, (byte) 5, (short) 200, (short) 200, (byte) 10, (byte) 14, (byte) 12, (byte) 16, (byte) 13, (byte) 8);
+        Entity myCharacter = new Entity("Drusyc", ECharacterJobs.PLACEHOLDER_JOB, // entity data
+                (byte) 5, (byte) 5, // levels
+                (short) 200, (short) 200, // experience
+                (byte) 10, (byte) 14, (byte) 12, (byte) 16, (byte) 13, (byte) 8); // main attributes
 
         StringBuilder intro = new StringBuilder();
         intro.append("\n--- Character Class Test ---\n")
@@ -112,7 +115,10 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
 
     public static void statTest() {
 
-        Entity testCharacter = new Entity("Test", ECharacterJobs.PLACEHOLDER_JOB, (byte) 10, (byte) 10, (short) 100, (short) 100, (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10);
+        Entity testCharacter = new Entity("Test", ECharacterJobs.PLACEHOLDER_JOB, // entity data
+                (byte) 10, (byte) 10, // levels
+                (short) 100, (short) 100, // experience
+                (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10); // main attributes
 
         StringBuilder intro = new StringBuilder();
         intro.append("\n--- Stat Bounds Test ---\n")
@@ -121,7 +127,6 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
         System.out.println(intro);
 
         // Test setting attributes below minimum
-
         testCharacter.setCharacterLevel((byte)0);
         testCharacter.setCharacterExperience((short)-50);
         testCharacter.setJobExperience((short)-50);

@@ -37,7 +37,7 @@ public enum EAttributesLevels {
     }
 
     public short getMaxExperience() {
-        return (short) 32000;
+        return (short) 30000;
     }
 
 }
