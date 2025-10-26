@@ -2,4 +2,4 @@
 
 ## Current Files
 
-Character.java - Base class for all characters in the game.
+Person.java - Base class for all characters in the game.

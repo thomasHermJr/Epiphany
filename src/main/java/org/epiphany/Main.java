@@ -2,7 +2,7 @@ package org.epiphany;
 
 
 import org.epiphany.Classes.Person;
-import org.epiphany.Enums.Armors.EChainmails;
+import org.epiphany.Enums.Armors.EArmorsTorso;
 import org.epiphany.Enums.Systems.Settings.ESettingsInputMode;
 import org.epiphany.Enums.Systems.Settings.ESettingsToggles;
 
@@ -19,7 +19,7 @@ public class Main {
 
         // test EChainmails enum
 
-        EChainmails.testEChainmails();
+        EArmorsTorso.testEChainmails();
 
         // character test
 

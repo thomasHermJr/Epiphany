@@ -2,7 +2,7 @@ package org.epiphany.Classes;
 
 import org.epiphany.Enums.Systems.Character.Attributes.EAttributesMain;
 
-/*TODO: Experiment more with using Enums for stat management, in order to maintain one source of truth
+/*TODO:
 *       Experiment with abstract classes for attributes (main --> derived --> prof --> person)*/
 
 /**

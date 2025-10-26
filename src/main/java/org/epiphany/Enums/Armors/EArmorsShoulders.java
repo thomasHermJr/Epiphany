@@ -1,4 +1,4 @@
 package org.epiphany.Enums.Armors;
 
-public enum EPlates {
+public enum EArmorsShoulders {
 }

@@ -1,9 +1,12 @@
 # Armor Enums
 
-Enums related to armor types go here.
+Enums related to armor locations go here.
 
-## Armor Types
+## Armor Locations
 
-- gambeson
-- Chainmail
-- Plate
+- Feet
+- Hands
+- Head
+- Legs
+- Shoulders
+- Torso
