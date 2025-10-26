@@ -1,19 +1,19 @@
 package org.epiphany.Enums.Systems.Character.Attributes;
 
 /**
- * Enum representing the main attributes of a character.
+ * Enum representing the main attributes of a character. <br>
  * Each attribute has a name, description, minimum value, starting, maximum value,
- * derived bonus (affecting derived attributes), and proficiency bonus (affecting proficiency gain).
- *
- * NOTE: Current values should be modified in classes, while these are fixed
- *
- * Attributes:
- * - Strength: Physical power, affects physical attack and heavy weapon proficiency.
- * - Dexterity: Agility and reflexes, affects ranged attack and light weapon proficiency.
- * - Intelligence: Reasoning and memory, affects skill proficiency gain.
- * - Wisdom: Perception and insight, affects life proficiency gain.
- * - Constitution: Endurance and health, affects max health, stamina, and plate proficiency.
- * - Charisma: Force of personality, affects personal proficiency gain.
+ * derived bonus (affecting derived attributes), and proficiency bonus (affecting proficiency gain). <br>
+ * <br>
+ * NOTE: Current values should be modified in classes, while these are fixed definitions. <br>
+ * <br>
+ * Attributes: <br>
+ * - Strength: Physical power, affects physical attack and heavy weapon proficiency. <br>
+ * - Dexterity: Agility and reflexes, affects ranged attack and light weapon proficiency. <br>
+ * - Intelligence: Reasoning and memory, affects skill proficiency gain. <br>
+ * - Wisdom: Perception and insight, affects life proficiency gain. <br>
+ * - Constitution: Endurance and health, affects max health, stamina, and plate proficiency. <br>
+ * - Charisma: Force of personality, affects personal proficiency gain. <br>
  */
 
 public enum EAttributesMain {

@@ -1,7 +1,7 @@
 package org.epiphany.Enums.Systems.Character.Attributes;
 
 /**
- * Enum representing different levels for a character.
+ * Enum representing different levels for a character. <br>
  */
 
 public enum EAttributesLevels {

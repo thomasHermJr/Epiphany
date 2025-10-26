@@ -5,15 +5,17 @@ package org.epiphany.Enums.Systems.Generation;
  *      Consider making different enums for first and last names, to allow for dual purpose names*/
 
 /**
- * Enum EGenerationNames
  *
  * This enum contains a list of names categorized by their type (First or Last)
- * and presenting gender (Masculine, Feminine, Ambiguous).
- * Each enum constant represents a specific name along with its associated metadata.
- * Methods:
- * - getNameSpace(): Returns the type of name (First or Last).
- * - getPresentingGender(): Returns the presenting gender of the name.
- * - getName(): Returns the actual name.
+ * and presenting gender (Masculine, Feminine, Ambiguous). <br>
+ * Each enum constant represents a specific name along with its associated metadata. <br>
+ * <br>
+ * Methods: <br>
+ * - getNameSpace(): Returns the type of name (First or Last). <br>
+ * - getPresentingGender(): Returns the presenting gender of the name. <br>
+ * - getName(): Returns the actual name. <br>
+ *<br>
+ * Generation method to be added in the future. <br>
  */
 
 public enum EGenerationNames {

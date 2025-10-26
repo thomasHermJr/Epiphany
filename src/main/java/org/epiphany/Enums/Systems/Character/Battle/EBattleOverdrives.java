@@ -3,12 +3,22 @@ package org.epiphany.Enums.Systems.Character.Battle;
 import org.epiphany.Enums.Systems.Character.ECharacterStatuses;
 
 /**
- * Enum representing various battle overdrives available to characters in the game.
+ * Enum representing various battle overdrives available to characters in the game. <br>
  * Each overdrive has these specific attributes: overdrive name, status effect, target range,
- * target type, and power percentage.
+ * target type, and power percentage. <br>
  * Uses enums ECharacterStatuses, EBattleTargetRange, and EBattleTargetTypes for defining
- * the characteristics of each overdrive.
- *
+ * the characteristics of each overdrive. <br>
+ * <br>
+ * Example usage: <br>
+ * <pre>
+ * {@code
+ * OVERDRIVE("Overdrive Name", // overdrive name
+ * ECharacterStatuses.STATUS, // status effect - uses .NONE if no status
+ * EBattleTargetRange.TARGETS, // target range
+ * EBattleTargetTypes.TYPE, // target type
+ * 130); // power percentage
+ * }
+ * </pre>
  */
 
 public enum EBattleOverdrives {

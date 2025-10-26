@@ -3,26 +3,27 @@ package org.epiphany.Classes.Attributes;
 import org.epiphany.Enums.Systems.Character.Attributes.EAttributesLevels;
 import org.epiphany.Interfaces.IAttributes;
 
-/**
- * Levels class represents the levels and experience of a character, job, and proficiency.
- * It provides methods to verify and set levels and experience within defined bounds.
- *
- * Class chain:
- * Levels --> MainAttributes --> DerivedAttributes --> Proficiencies --> Entity
- *
- * Attributes:
- * - characterLevel
- * - jobLevel
- * - proficiencyLevel
- * - characterExperience
- * - jobExperience
- * - proficiencyExperience
- *
- * Methods:
- * - verifyLevelBounds(byte level, EAttributesLevels type): Ensures the level is within min and max bounds.
- * - verifyExperienceBounds(short experience, EAttributesLevels type): Ensures the experience is within min and max bounds.
- * - Getters and setters for each attribute with bounds checking.
- * - toString(): Returns a string representation of the levels and experience.
+/** <p>
+ * Levels class represents the levels and experience of a character, job, and proficiency. <br>
+ * It provides methods to verify and set levels and experience within defined bounds. <br>
+ * <br>
+ * Class chain: <br>
+ * Levels --> MainAttributes --> DerivedAttributes --> Proficiencies --> Entity <br>
+ * <br>
+ * Attributes: <br>
+ * - characterLevel <br>
+ * - jobLevel <br>
+ * - proficiencyLevel <br>
+ * - characterExperience <br>
+ * - jobExperience <br>
+ * - proficiencyExperience <br>
+ * <br>
+ * Methods: <br>
+ * - verifyLevelBounds(byte level, EAttributesLevels type): Ensures the level is within min and max bounds. <br>
+ * - verifyExperienceBounds(short experience, EAttributesLevels type): Ensures the experience is within min and max bounds. <br>
+ * - Getters and setters for each attribute with bounds checking. <br>
+ * - toString(): Returns a string representation of the levels and experience. <br>
+ * </p>
  */
 
 public abstract class Levels implements IAttributes {

@@ -3,26 +3,26 @@ package org.epiphany.Enums.Armors;
 public enum EArmorsTorso {
 
     /**
-     * Armors for the torso body part.
-     *
-     * Attributes:
-     * - name: The name of the armor.
-     * - armorType: The type of armor (e.g., Chainmail).
-     * - defense: The defense value provided by the armor.
-     * - isEquipped: Boolean indicating if the armor is currently equipped.
-     *
-     * Methods:
-     * - getName(): Returns the name of the armor.
-     * - getArmorType(): Returns the type of armor.
-     * - getDefense(): Returns the defense value of the armor.
-     * - isEquipped(): Returns whether the armor is currently equipped.
-     * - equip(): Equips the armor, unequipping any other equipped torso armor.
-     * - unequip(): Unequips the armor.
-     * - toString(): Returns a string representation of the armor's attributes.
-     *
-     * Testing:
-     * - testEArmorsTorso(): Static method to test the functionality of the EArmorsTorso enum.
-     *
+     * Armors for the torso body part. <br>
+     * <br>
+     * Attributes: <br>
+     * - name: The name of the armor. <br>
+     * - armorType: The type of armor (e.g., Chainmail). <br>
+     * - defense: The defense value provided by the armor. <br>
+     * - isEquipped: Boolean indicating if the armor is currently equipped. <br>
+     * <br>
+     * Methods: <br>
+     * - getName(): Returns the name of the armor. <br>
+     * - getArmorType(): Returns the type of armor. <br>
+     * - getDefense(): Returns the defense value of the armor. <br>
+     * - isEquipped(): Returns whether the armor is currently equipped. <br>
+     * - equip(): Equips the armor, unequipping any other equipped torso armor. <br>
+     * - unequip(): Unequips the armor. <br>
+     * - toString(): Returns a string representation of the armor's attributes. <br>
+     * <br>
+     * Testing: <br>
+     * - testEArmorsTorso(): Static method to test the functionality of the EArmorsTorso enum. <br>
+     * <br>
      * Note: Reused code structure for armors is considered acceptable for maintainability.
      * */
     /* Chainmail */

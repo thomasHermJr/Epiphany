@@ -5,19 +5,23 @@ import org.epiphany.Enums.Systems.Character.ECharacterJobs;
 import org.epiphany.Interfaces.IEntity;
 
 /**
- * Class representing a character with various attributes.
- * Each attribute has defined minimum and maximum bounds from EAttributesMain.
- * The class includes methods to get and set attributes, ensuring they stay within bounds.
- *
- * Class chain:
- * Levels --> MainAttributes --> DerivedAttributes --> Proficiencies --> Entity
- *
- * Methods:
- * - getName(): Returns the character's name.
- * - setName(String name): Sets the character's name.
- * - toString(): Returns a string representation of the character's attributes.
- * - characterTest(): Tests the Character class functionality.
- * - statTest(): Tests the attribute bounds enforcement.
+ * Class representing a character with various attributes. <br>
+ * Each attribute has defined minimum and maximum bounds from EAttributesMain. <br>
+ * The class includes methods to get and set attributes, ensuring they stay within bounds. <br>
+ *<br>
+ * Class chain: <br>
+ * Levels --> MainAttributes --> DerivedAttributes --> Proficiencies --> Entity <br>
+ * <br>
+ * Methods: <br>
+ * - getName(): Returns the character's name. <br>
+ * - setName(String name): Sets the character's name. <br>
+ * - getJob(): Returns the character's job. <br>
+ * - setJob(ECharacterJobs job): Sets the character's job. <br>
+ * - toString(): Returns a string representation of the character's attributes. <br>
+ * <br>
+ * Testing: <br>
+ * - characterTest(): Tests the Character class functionality.  <br>
+ * - statTest(): Tests the attribute bounds enforcement.  <br>
  */
 
 

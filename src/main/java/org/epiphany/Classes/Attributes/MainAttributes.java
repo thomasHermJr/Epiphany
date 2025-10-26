@@ -2,40 +2,48 @@ package org.epiphany.Classes.Attributes;
 
 import org.epiphany.Enums.Systems.Character.Attributes.EAttributesMain;
 
-/**
- * MainAttributes class represents the primary attributes of a character.
+/** <p>
+ * MainAttributes class represents the primary attributes of a character. <br>
  * It includes methods to get and set each attribute while ensuring they
- * remain within defined bounds.
- *
- * Class chain:
- * Levels --> MainAttributes --> DerivedAttributes --> Proficiencies --> Entity
- *
- * Attributes:
- * - strength
- * - dexterity
- * - constitution
- * - intelligence
- * - wisdom
- * - charisma
- *
- * Methods:
- * - verifyStatBounds(byte stat, EAttributesMain attribute): Ensures the stat is within min and max bounds.
- * - getStrength(): Returns the strength attribute.
- * - setStrength(byte strength): Sets the strength attribute with bounds checking.
- * - getDexterity(): Returns the dexterity attribute.
- * - setDexterity(byte dexterity): Sets the dexterity attribute with bounds checking.
- * - getConstitution(): Returns the constitution attribute.
- * - setConstitution(byte constitution): Sets the constitution attribute with bounds checking.
- * - getIntelligence(): Returns the intelligence attribute.
- * - setIntelligence(byte intelligence): Sets the intelligence attribute with bounds checking.
- * - getWisdom(): Returns the wisdom attribute.
- * - setWisdom(byte wisdom): Sets the wisdom attribute with bounds checking.
- * - getCharisma(): Returns the charisma attribute.
- * - setCharisma(byte charisma): Sets the charisma attribute with bounds checking.
- * - getDerivedBonus(): Returns the derived bonus.
- * - setDerivedBonus(double derivedBonus): Sets the derived bonus.
- * - getProficiencyBonus(): Returns the proficiency bonus.
- * - setProficiencyBonus(double proficiencyBonus): Sets the proficiency bonus.
+ * remain within defined bounds. <br>
+ * <br>
+ * Class chain: <br>
+ * Levels --> MainAttributes --> DerivedAttributes --> Proficiencies --> Entity <br>
+ * <br>
+ * Attributes: <br>
+ * - strength <br>
+ * - dexterity <br>
+ * - constitution <br>
+ * - intelligence <br>
+ * - wisdom <br>
+ * - charisma <br>
+ *  <br>
+ *  min and max bounds are defined in EAttributesMain <br>
+ * <br>
+ * Bonuses: <br>
+ * - derivedBonus <br>
+ * - proficiencyBonus <br>
+ * <br>
+ * Methods: <br>
+ * - verifyStatBounds(byte stat, EAttributesMain attribute): Ensures the stat is within min and max bounds. <br>
+ * - getStrength(): Returns the strength attribute. <br>
+ * - setStrength(byte strength): Sets the strength attribute with bounds checking. <br>
+ * - getDexterity(): Returns the dexterity attribute. <br>
+ * - setDexterity(byte dexterity): Sets the dexterity attribute with bounds checking. <br>
+ * - getConstitution(): Returns the constitution attribute. <br>
+ * - setConstitution(byte constitution): Sets the constitution attribute with bounds checking. <br>
+ * - getIntelligence(): Returns the intelligence attribute. <br>
+ * - setIntelligence(byte intelligence): Sets the intelligence attribute with bounds checking. <br>
+ * - getWisdom(): Returns the wisdom attribute. <br>
+ * - setWisdom(byte wisdom): Sets the wisdom attribute with bounds checking. <br>
+ * - getCharisma(): Returns the charisma attribute. <br>
+ * - setCharisma(byte charisma): Sets the charisma attribute with bounds checking. <br>
+ * - getDerivedBonus(): Returns the derived bonus. <br>
+ * - setDerivedBonus(double derivedBonus): Sets the derived bonus. <br>
+ * - getProficiencyBonus(): Returns the proficiency bonus. <br>
+ * - setProficiencyBonus(double proficiencyBonus): Sets the proficiency bonus. <br>
+ * - toString(): Returns a string representation of the main attributes. <br>
+ * </p>
  */
 
 public abstract class MainAttributes extends Levels{
