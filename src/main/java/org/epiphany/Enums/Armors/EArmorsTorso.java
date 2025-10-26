@@ -2,9 +2,29 @@ package org.epiphany.Enums.Armors;
 
 public enum EArmorsTorso {
 
-    /*TODO:
-    *      Consider making equip function in a different class, to allow easy verification on every armor type*/
-
+    /**
+     * Armors for the torso body part.
+     *
+     * Attributes:
+     * - name: The name of the armor.
+     * - armorType: The type of armor (e.g., Chainmail).
+     * - defense: The defense value provided by the armor.
+     * - isEquipped: Boolean indicating if the armor is currently equipped.
+     *
+     * Methods:
+     * - getName(): Returns the name of the armor.
+     * - getArmorType(): Returns the type of armor.
+     * - getDefense(): Returns the defense value of the armor.
+     * - isEquipped(): Returns whether the armor is currently equipped.
+     * - equip(): Equips the armor, unequipping any other equipped torso armor.
+     * - unequip(): Unequips the armor.
+     * - toString(): Returns a string representation of the armor's attributes.
+     *
+     * Testing:
+     * - testEArmorsTorso(): Static method to test the functionality of the EArmorsTorso enum.
+     *
+     * Note: Reused code structure for armors is considered acceptable for maintainability.
+     * */
     /* Chainmail */
 
     RUINED_CHAINMAIL_SHIRT("Ruined Chainmail Shirt", "Chainmail", 2, true),

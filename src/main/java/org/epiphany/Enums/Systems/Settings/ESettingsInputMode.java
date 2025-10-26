@@ -1,6 +1,22 @@
 package org.epiphany.Enums.Systems.Settings;
 
-import java.util.Objects;
+/**
+ * ESettingsInputMode enum represents different input modes for the application.
+ * It includes methods to toggle between modes and validate their states.
+ *
+ * Modes:
+ * - KEYBOARD_MOUSE: Represents keyboard and mouse input mode.
+ * - GAMEPAD: Represents gamepad input mode.
+ *
+ * Only one input mode can be active at a time.
+ *
+ * Methods:
+ * - toggleInputMode(): Toggles between the two input modes.
+ * - validateInputMode(): Ensures that only one mode is active at a time.
+ *
+ * Test Method:
+ * - testESettingsInputMode(): Tests the functionality of the enum.
+ */
 
 public enum ESettingsInputMode { // start enum
 

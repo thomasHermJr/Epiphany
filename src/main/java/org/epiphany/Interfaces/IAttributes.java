@@ -1,6 +1,20 @@
 package org.epiphany.Interfaces;
 
+/**
+    IAttributes Interface
+    Defines the structure for character attributes, including base attributes,
+    derived attributes, overdrive attributes, weapon proficiencies, armor proficiencies,
+    skill proficiencies, life proficiencies, and personal proficiencies.
+*/
+
 public interface IAttributes{ // open IAttributes interface
+
+    /*Levels*/
+
+    byte characterLevel = 0;
+    byte jobLevel = 0;
+    short characterExperience = 0;
+    short jobExperience = 0;
 
     /*Base Attributes*/
 

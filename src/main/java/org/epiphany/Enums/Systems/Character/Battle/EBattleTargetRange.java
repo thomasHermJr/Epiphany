@@ -1,5 +1,10 @@
 package org.epiphany.Enums.Systems.Character.Battle;
 
+/**
+ * Enum representing different target ranges in battle.
+ * Ranges include SINGLE (1), SMALL (2), MEDIUM (3), PARTY (4), and FIELD (8).
+ */
+
 public enum EBattleTargetRange {
 
     SINGLE("Single", 1),

@@ -1,11 +1,15 @@
 package org.epiphany.Enums.Systems.Character;
 
-public enum ECharacterStatuses {
-
     /*TODO:
        Add more statuses, add stat down effects, add damage in heath%
        Make health down effects distinct from one another
          - Consider making all health down effects inflict an additional effect to accomplish this.*/
+
+/**
+ * Enum representing various character statuses in the game.
+ */
+
+public enum ECharacterStatuses {
 
     /* Base */
     NONE("None"), // No status effect

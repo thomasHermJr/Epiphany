@@ -1,5 +1,9 @@
 package org.epiphany.Enums.Systems.Character;
 
+/**
+ * Enum representing various character backgrounds.
+ */
+
 public enum ECharacterBackgrounds {
 
     NOBLE("Noble"),

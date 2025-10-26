@@ -19,7 +19,7 @@ package org.epiphany.Enums.Systems.Character.Attributes;
 public enum EAttributesMain {
 
     STRENGTH("Strength",
-            "Measures physical power; bonus to physical attack, heavy weapon proficiency gain, and chainmail proficiency gain.",
+            "Measures physical power; bonus to physical attack and defense, heavy weapon proficiency gain, and chainmail proficiency gain.",
             (byte)1,
             (byte)5,
             (byte)50,
@@ -27,7 +27,7 @@ public enum EAttributesMain {
             1.25),
 
     DEXTERITY("Dexterity",
-            "Measures agility and reflexes; bonus to ranged attack, light weapon proficiency gain, and gambeson proficiency gain.",
+            "Measures agility and reflexes; bonus to ranged attack and defense, light weapon proficiency gain, and gambeson proficiency gain.",
             (byte)1,
             (byte)5,
             (byte)50,
@@ -75,6 +75,24 @@ public enum EAttributesMain {
     private final double derivedBonus; // bonus to derived attributes
     private final double proficiencyBonus; // bonus to proficiency gain
 
+    EAttributesMain(String attributeName,
+                    String description,
+                    byte minValue,
+                    byte startingValue,
+                    byte maxValue,
+                    double derivedBonus,
+                    double proficiencyBonus) {
+
+        this.attributeName = attributeName;
+        this.description = description;
+        this.minValue = minValue;
+        this.startingValue = startingValue;
+        this.maxValue = maxValue;
+        this.derivedBonus = derivedBonus;
+        this.proficiencyBonus = proficiencyBonus;
+
+    } // end constructor
+
     /* getters */
 
     public String getAttributeName() {
@@ -104,23 +122,5 @@ public enum EAttributesMain {
     public double getProficiencyBonus() {
         return proficiencyBonus;
     }
-
-    EAttributesMain(String attributeName,
-                    String description,
-                    byte minValue,
-                    byte startingValue,
-                    byte maxValue,
-                    double derivedBonus,
-                    double proficiencyBonus) {
-
-        this.attributeName = attributeName;
-        this.description = description;
-        this.minValue = minValue;
-        this.startingValue = startingValue;
-        this.maxValue = maxValue;
-        this.derivedBonus = derivedBonus;
-        this.proficiencyBonus = proficiencyBonus;
-
-    } // end constructor
 
 } // end enum

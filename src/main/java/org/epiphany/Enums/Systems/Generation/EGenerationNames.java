@@ -1,10 +1,22 @@
 package org.epiphany.Enums.Systems.Generation;
 
-public enum EGenerationNames {
+/*TODO:
+ *      Add generation method
+ *      Consider making different enums for first and last names, to allow for dual purpose names*/
 
-    /*TODO:
-    *      Add generation method
-    *      Consider making different enums for first and last names, to allow for dual purpose names*/
+/**
+ * Enum EGenerationNames
+ *
+ * This enum contains a list of names categorized by their type (First or Last)
+ * and presenting gender (Masculine, Feminine, Ambiguous).
+ * Each enum constant represents a specific name along with its associated metadata.
+ * Methods:
+ * - getNameSpace(): Returns the type of name (First or Last).
+ * - getPresentingGender(): Returns the presenting gender of the name.
+ * - getName(): Returns the actual name.
+ */
+
+public enum EGenerationNames {
 
     /*First Names*/
 
@@ -25,7 +37,7 @@ public enum EGenerationNames {
     LUKASZ("First","Masculine", "Łukasz"),
     MATEUSZ("First","Masculine", "Mateusz"),
     MICHAEL("First","Masculine", "Michael"),
-    MICHAŁ("First","Masculine", "Michał"),
+    MICHAL("First","Masculine", "Michał"),
     NATHAN("First","Masculine", "Nathan"),
     NOAH("First","Masculine", "Noah"),
     OLIVER("First","Masculine", "Oliver"),
@@ -47,6 +59,7 @@ public enum EGenerationNames {
     KIM("First","Ambiguous", "Kim"),
     LEX("First","Ambiguous", "Lex"),
     RYDER("First","Ambiguous", "Ryder"),
+    ORION("First","Ambiguous", "Orion"),
     TAYLOR("First","Ambiguous", "Taylor"),
     JORDAN("First","Ambiguous", "Jordan"),
     CASEY("First","Ambiguous", "Casey"),

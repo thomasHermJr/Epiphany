@@ -1,5 +1,10 @@
 package org.epiphany.Enums.Systems.Lore;
 
+/**
+ * Enum representing various lore locations within the game world.
+ * This includes continents and local towns that are significant in the game's lore.
+ */
+
 public enum ELoreLocations {
 
     /*Current continent*/
