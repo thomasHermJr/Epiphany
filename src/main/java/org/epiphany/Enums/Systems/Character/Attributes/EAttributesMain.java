@@ -2,10 +2,10 @@ package org.epiphany.Enums.Systems.Character.Attributes;
 
 /**
  * Enum representing the main attributes of a character.
- * Each attribute has a name, description, minimum value, current value, maximum value,
+ * Each attribute has a name, description, minimum value, starting, maximum value,
  * derived bonus (affecting derived attributes), and proficiency bonus (affecting proficiency gain).
  *
- * NOTE: Current values can be modified during gameplay, while min and max values are fixed.
+ * NOTE: Current values should be modified in classes, while these are fixed
  *
  * Attributes:
  * - Strength: Physical power, affects physical attack and heavy weapon proficiency.
@@ -70,7 +70,7 @@ public enum EAttributesMain {
     private final String attributeName;
     private final String description;
     private final int minValue;
-    private int currentValue;
+    private final int startingValue;
     private final int maxValue;
     private double derivedBonus; // bonus to derived attributes
     private double proficiencyBonus; // bonus to proficiency gain
@@ -89,17 +89,8 @@ public enum EAttributesMain {
         return minValue;
     }
 
-    public int getCurrentValue() {
-        return currentValue; // default starting value for all attributes
-    }
-    public void setCurrentValue(int newValue) {
-        if (newValue < minValue) {
-            this.currentValue = minValue;
-        } else if (newValue > maxValue) {
-            this.currentValue = maxValue;
-        } else {
-            this.currentValue = newValue;
-        }
+    public int getStartingValue() {
+        return startingValue; // default starting value for all attributes
     }
 
     public int getMaxValue() {
@@ -114,12 +105,12 @@ public enum EAttributesMain {
         return proficiencyBonus;
     }
 
-    EAttributesMain(String attributeName, String description, int minValue, int currentValue, int maxValue, double derivedBonus, double proficiencyBonus) {
+    EAttributesMain(String attributeName, String description, int minValue, int startingValue, int maxValue, double derivedBonus, double proficiencyBonus) {
 
         this.attributeName = attributeName;
         this.description = description;
         this.minValue = minValue;
-        this.currentValue = currentValue;
+        this.startingValue = startingValue;
         this.maxValue = maxValue;
         this.derivedBonus = derivedBonus;
         this.proficiencyBonus = proficiencyBonus;

@@ -61,6 +61,8 @@ public enum ESettingsInputMode { // start enum
 
     public static void testESettingsInputMode() { // test method
 
+        // simulate valid input modes
+
         System.out.println("\nTesting ESettingsInputMode enum...\n");
         ESettingsInputMode GameInputMode = ESettingsInputMode.GAMEPAD;
         ESettingsInputMode MenuInputMode = ESettingsInputMode.KEYBOARD_MOUSE;
@@ -69,7 +71,6 @@ public enum ESettingsInputMode { // start enum
                 .append("\n")
                 .append(MenuInputMode)
                 .append("\n");
-         //       .append(InvalidInputMode);
         System.out.println(sb);
 
         toggleInputMode();
@@ -79,10 +80,10 @@ public enum ESettingsInputMode { // start enum
                 append("\n")
                 .append(MenuInputMode)
                 .append("\n");
-           //     .append(InvalidInputMode);
         System.out.println(sb2);
 
         System.out.println("Testing invalid input mode handling...\n");
+
         // Simulate invalid input mode
 
         ESettingsInputMode.KEYBOARD_MOUSE.isOn = true;

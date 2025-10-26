@@ -3,7 +3,8 @@ package org.epiphany.Enums.Systems.Generation;
 public enum EGenerationNames {
 
     /*TODO:
-    *      Add generation method*/
+    *      Add generation method
+    *      Consider making different enums for first and last names, to allow for dual purpose names*/
 
     /*First Names*/
 
