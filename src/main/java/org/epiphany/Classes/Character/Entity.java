@@ -1,12 +1,8 @@
 package org.epiphany.Classes.Character;
 
 import org.epiphany.Classes.Attributes.Proficiencies;
-import org.epiphany.Enums.Systems.Character.Attributes.EAttributesMain;
 import org.epiphany.Enums.Systems.Character.ECharacterJobs;
 import org.epiphany.Interfaces.IEntity;
-
-/*TODO:
-*       Change job attribute type to ECharacterJobs*/
 
 /**
  * Class representing a character with various attributes.
@@ -89,9 +85,11 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
     public static void characterTest() {
         Entity myCharacter = new Entity("Drusyc", ECharacterJobs.PLACEHOLDER_JOB, (byte) 5, (byte) 5, (short) 200, (short) 200, (byte) 10, (byte) 14, (byte) 12, (byte) 16, (byte) 13, (byte) 8);
 
-        System.out.println("\nTesting Character class...\n");
-        System.out.println("Initial character\n");
-        System.out.println(myCharacter);
+        StringBuilder intro = new StringBuilder();
+        intro.append("\n--- Character Class Test ---\n")
+                .append("Initial character\n")
+                .append(myCharacter);
+        System.out.println(intro);
 
         myCharacter.setName("Arannis");
         myCharacter.setStrength((byte) 4);
@@ -105,9 +103,10 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
         myCharacter.setCharacterExperience((short) 300);
         myCharacter.setJobExperience((short) 300);
 
-        System.out.println("After name change and attribute updates:\n");
-
-        System.out.println(myCharacter);
+        StringBuilder afterChanges = new StringBuilder();
+        afterChanges.append("\n--- After Changes ---\n")
+                .append(myCharacter);
+        System.out.println(afterChanges);
 
 } // end characterTest
 
@@ -115,9 +114,11 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
 
         Entity testCharacter = new Entity("Test", ECharacterJobs.PLACEHOLDER_JOB, (byte) 10, (byte) 10, (short) 100, (short) 100, (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10);
 
-        System.out.println("\nTesting Character stat bounds...\n");
-        System.out.println("Initial character:\n");
-        System.out.println(testCharacter);
+        StringBuilder intro = new StringBuilder();
+        intro.append("\n--- Stat Bounds Test ---\n")
+                .append("Initial character:\n")
+                .append(testCharacter);
+        System.out.println(intro);
 
         // Test setting attributes below minimum
 
@@ -132,8 +133,10 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
         testCharacter.setWisdom((byte)0);
         testCharacter.setCharisma((byte)0);
 
-        System.out.println("After setting attributes below minimum:\n");
-        System.out.println(testCharacter);
+        StringBuilder afterMinTest = new StringBuilder();
+        afterMinTest.append("\n--- After setting attributes below minimum ---\n")
+                .append(testCharacter);
+        System.out.println(afterMinTest);
 
         // Test setting attributes above maximum
         testCharacter.setCharacterLevel((byte)100);
@@ -147,8 +150,11 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
         testCharacter.setWisdom((byte)100);
         testCharacter.setCharisma((byte)100);
 
-        System.out.println("After setting attributes above maximum:\n");
-        System.out.println(testCharacter);
+        StringBuilder afterMaxTest = new StringBuilder();
+        afterMaxTest.append("\n--- After setting attributes above maximum ---\n")
+                .append(testCharacter);
+        System.out.println(afterMaxTest);
+
     } // end statTest
 
 } // end Character class
