@@ -19,7 +19,9 @@ public interface IAttributes{ // open IAttributes interface
     short currentStamina = 0;
     byte physicalAttack = 0;
     byte physicalDefense = 0;
-    byte speed = 0;
+    byte rangedAttack = 0;
+    byte rangedDefense = 0;
+    byte agility = 0;
 
     /*Overdrive Attributes*/
 

@@ -1,7 +1,7 @@
 package org.epiphany;
 
 
-import org.epiphany.Classes.Person;
+import org.epiphany.Classes.Character.Entity;
 import org.epiphany.Enums.Armors.EArmorsTorso;
 import org.epiphany.Enums.Systems.Settings.ESettingsInputMode;
 import org.epiphany.Enums.Systems.Settings.ESettingsToggles;
@@ -17,14 +17,14 @@ public class Main {
         // Test ESettingsInputMode enum
         ESettingsInputMode.testESettingsInputMode();
 
-        // test EChainmails enum
+        // test EArmorsTorso enum
 
         EArmorsTorso.testEArmorsTorso();
 
         // character test
 
-        Person.characterTest();
-        Person.statTest();
+        Entity.characterTest();
+        Entity.statTest();
 
 
     } // end main method

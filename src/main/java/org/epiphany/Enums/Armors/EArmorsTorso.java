@@ -5,7 +5,7 @@ public enum EArmorsTorso {
     /*TODO:
     *      Consider making equip function in a different class, to allow easy verification on every armor type*/
 
-    /* Torso */
+    /* Chainmail */
 
     RUINED_CHAINMAIL_SHIRT("Ruined Chainmail Shirt", "Chainmail", 2, true),
     RUSTY_CHAINMAIL_SHIRT("Rusty Chainmail Shirt", "Chainmail", 4, false),

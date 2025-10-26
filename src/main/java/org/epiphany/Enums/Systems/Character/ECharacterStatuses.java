@@ -19,10 +19,11 @@ public enum ECharacterStatuses {
     AGILITY_UP("Agility Up"), // Increased speed and evasion
     DEFENSE_UP("Defense Up"), // Increased physical defense
     MAX_HP_UP("Max HP Up"), // Increased maximum health
+    MAX_SP_UP("Max SP Up"), // Increased maximum SP
     STAT_UP("Stat Up"), // Increases all stats slightly
 
     /* Negative */
-    STUNNED("Stunned"), // Cannot act for one turn
+    STUNNED("Stunned"), // Cannot act
     POISONED("Poisoned"), // Takes damage over time, reduced attack
     ASLEEP("Asleep"), // Cannot act until woken up
     SHOCKED("Shocked"), // Chance to force a default attack
@@ -37,6 +38,7 @@ public enum ECharacterStatuses {
     AGILITY_DOWN("Agility Down"), // Reduced speed and evasion
     DEFENSE_DOWN("Defense Down"), // Reduced physical defense
     MAX_HP_DOWN("Max HP Down"), // Reduced maximum health
+    MAX_SP_DOWN("Max SP Down"), // Reduced maximum SP
     STAT_DOWN("Stat Down"); // Decreases all stats slightly
 
 

@@ -20,60 +20,60 @@ public enum EAttributesMain {
 
     STRENGTH("Strength",
             "Measures physical power; bonus to physical attack, heavy weapon proficiency gain, and chainmail proficiency gain.",
-            1,
-            5,
-            50,
+            (byte)1,
+            (byte)5,
+            (byte)50,
             1.5,
             1.25),
 
     DEXTERITY("Dexterity",
             "Measures agility and reflexes; bonus to ranged attack, light weapon proficiency gain, and gambeson proficiency gain.",
-            1,
-            5,
-            50,
+            (byte)1,
+            (byte)5,
+            (byte)50,
             1.5,
             1.25),
 
     INTELLIGENCE("Intelligence",
             "Measures reasoning and memory; bonus to skill proficiency gain.",
-            1,
-            5,
-            50,
+            (byte)1,
+            (byte)5,
+            (byte)50,
             1.5,
             1.25),
 
     WISDOM("Wisdom",
             "Measures perception and insight; bonus to life proficiency gain.",
-            1,
-            5,
-            50,
+            (byte)1,
+            (byte)5,
+            (byte)50,
             1.5,
             1.25),
 
     CONSTITUTION("Constitution",
             "Measures endurance and health; bonus to max health, stamina, and plate proficiency gain.",
-            1,
-            5,
-            50,
+            (byte)1,
+            (byte)5,
+            (byte)50,
             1.5,
             1.25),
 
     CHARISMA("Charisma",
             "Measures force of personality; bonus to personal proficiency gain.",
-            1,
-            5,
-            50,
+            (byte)1,
+            (byte)5,
+            (byte)50,
             1.5,
             1.25);
 
 
     private final String attributeName;
     private final String description;
-    private final int minValue;
-    private final int startingValue;
-    private final int maxValue;
-    private double derivedBonus; // bonus to derived attributes
-    private double proficiencyBonus; // bonus to proficiency gain
+    private final byte minValue;
+    private final byte startingValue;
+    private final byte maxValue;
+    private final double derivedBonus; // bonus to derived attributes
+    private final double proficiencyBonus; // bonus to proficiency gain
 
     /* getters */
 
@@ -85,15 +85,15 @@ public enum EAttributesMain {
         return description;
     }
 
-    public int getMinValue() {
+    public byte getMinValue() {
         return minValue;
     }
 
-    public int getStartingValue() {
+    public byte getStartingValue() {
         return startingValue; // default starting value for all attributes
     }
 
-    public int getMaxValue() {
+    public byte getMaxValue() {
         return maxValue;
     }
 
@@ -105,15 +105,19 @@ public enum EAttributesMain {
         return proficiencyBonus;
     }
 
-    EAttributesMain(String attributeName, String description, int minValue, int startingValue, int maxValue, double derivedBonus, double proficiencyBonus) {
+    EAttributesMain(String attributeName,
+                    String description,
+                    byte minValue,
+                    byte startingValue,
+                    byte maxValue,
+                    double derivedBonus,
+                    double proficiencyBonus) {
 
         this.attributeName = attributeName;
         this.description = description;
         this.minValue = minValue;
         this.startingValue = startingValue;
         this.maxValue = maxValue;
-        this.derivedBonus = derivedBonus;
-        this.proficiencyBonus = proficiencyBonus;
         this.derivedBonus = derivedBonus;
         this.proficiencyBonus = proficiencyBonus;
 
