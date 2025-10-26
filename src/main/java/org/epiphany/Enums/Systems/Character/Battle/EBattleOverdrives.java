@@ -14,24 +14,24 @@ public enum EBattleOverdrives {
     BULLSEYE("Bullseye", ECharacterStatuses.NONE, EBattleTargetRange.SINGLE, EBattleTargetTypes.ENEMY, 140), // Bow OD
 
     /*Level 2 OD*/
-    SLICE_AND_DICE("Slice and Dice", ECharacterStatuses.NONE, EBattleTargetRange.GROUP, EBattleTargetTypes.ENEMY, 115), // Sword OD
+    SLICE_AND_DICE("Slice and Dice", ECharacterStatuses.NONE, EBattleTargetRange.PARTY, EBattleTargetTypes.ENEMY, 115), // Sword OD
     HOOK_N_HACK("Hook-N-Hack", ECharacterStatuses.ATTACK_DOWN, EBattleTargetRange.SINGLE, EBattleTargetTypes.ENEMY, 150), // Axe OD
-    WHIRLWIND("Whirlwind", ECharacterStatuses.NONE, EBattleTargetRange.GROUP, EBattleTargetTypes.ENEMY, 150), // polearm OD
-    VOLLEY("Volley", ECharacterStatuses.NONE, EBattleTargetRange.GROUP, EBattleTargetTypes.ENEMY, 130), // Bow OD
+    WHIRLWIND("Whirlwind", ECharacterStatuses.NONE, EBattleTargetRange.PARTY, EBattleTargetTypes.ENEMY, 150), // polearm OD
+    VOLLEY("Volley", ECharacterStatuses.NONE, EBattleTargetRange.PARTY, EBattleTargetTypes.ENEMY, 130), // Bow OD
 
     /*Level 3 OD*/
     MINCE("Mince", ECharacterStatuses.AGILITY_DOWN, EBattleTargetRange.SINGLE, EBattleTargetTypes.ENEMY, 175), // Sword OD
     LAMB_CHOP("Lamb Chop", ECharacterStatuses.DEFENSE_DOWN, EBattleTargetRange.SINGLE, EBattleTargetTypes.ENEMY, 180), // Axe OD
     LIVER_PUDDING("Liver Pudding", ECharacterStatuses.MAX_HP_DOWN, EBattleTargetRange.SINGLE, EBattleTargetTypes.ENEMY, 220), // Polearm OD
-    FLAMBE("Flambe", ECharacterStatuses.BURNED, EBattleTargetRange.GROUP, EBattleTargetTypes.ENEMY, 160), // Bow OD
+    FLAMBE("Flambe", ECharacterStatuses.BURNED, EBattleTargetRange.PARTY, EBattleTargetTypes.ENEMY, 160), // Bow OD
 
     /*Job Overdrives*/
 
     /*Acolyte job tree*/
 
     //insert acolyte job od here
-    ZEN_YANG("Zen Yang", ECharacterStatuses.HEALTHY, EBattleTargetRange.GROUP, EBattleTargetTypes.ALLY, 100), // Monk OD - buffs party
-    KREUZ_AIDE("Kreuz Aide", ECharacterStatuses.HEALTHY, EBattleTargetRange.GROUP, EBattleTargetTypes.ALLY, 200), // Priest OD - heals party
+    ZEN_YANG("Zen Yang", ECharacterStatuses.HEALTHY, EBattleTargetRange.PARTY, EBattleTargetTypes.ALLY, 100), // Monk OD - buffs party
+    KREUZ_AIDE("Kreuz Aide", ECharacterStatuses.HEALTHY, EBattleTargetRange.PARTY, EBattleTargetTypes.ALLY, 200), // Priest OD - heals party
 
     /*Rogue job tree*/
 
@@ -48,9 +48,9 @@ public enum EBattleOverdrives {
 
     /*Tactician job tree*/
 
-    REFORMATION("Reformation", ECharacterStatuses.AGILITY_UP, EBattleTargetRange.GROUP, EBattleTargetTypes.ALLY, 100), // Tactician OD
-    PINCER_ATTACK("Pincer Attack", ECharacterStatuses.ATTACK_UP, EBattleTargetRange.GROUP, EBattleTargetTypes.ALLY, 140), // Commander OD
-    REVITALIZE_AND_PRESERVE("Revitalize and Preserve", ECharacterStatuses.STAT_UP, EBattleTargetRange.GROUP, EBattleTargetTypes.ALLY, 200); // General OD
+    REFORMATION("Reformation", ECharacterStatuses.AGILITY_UP, EBattleTargetRange.PARTY, EBattleTargetTypes.ALLY, 100), // Tactician OD
+    PINCER_ATTACK("Pincer Attack", ECharacterStatuses.ATTACK_UP, EBattleTargetRange.PARTY, EBattleTargetTypes.ALLY, 140), // Commander OD
+    REVITALIZE_AND_PRESERVE("Revitalize and Preserve", ECharacterStatuses.STAT_UP, EBattleTargetRange.PARTY, EBattleTargetTypes.ALLY, 200); // General OD
 
 
 
@@ -90,16 +90,20 @@ public enum EBattleOverdrives {
         return overdriveName;
     }
 
-    public ECharacterStatuses getStatusApplied() {
-        return statusApplied;
+    public String getStatusApplied() {
+        return statusApplied.getStatusName();
     }
 
-    public EBattleTargetRange getTargetCount() {
-        return targetCount;
+    public String getTargetArea() {
+        return targetCount.getSizeName();
     }
 
-    public EBattleTargetTypes getTargetType() {
-        return targetType;
+    public int getTargetCount() {
+        return targetCount.getSize();
+    }
+
+    public String getTargetType() {
+        return targetType.getTargetType();
     }
 
     public int getPowerPercentage() {

@@ -5,7 +5,7 @@ public enum EBattleTargetRange {
     SINGLE("Single", 1),
     SMALL("Small", 2),
     MEDIUM("Medium", 3),
-    GROUP("Group",4),
+    PARTY("Party",4),
     FIELD("Field", 8);
 
     private final String sizeName;
