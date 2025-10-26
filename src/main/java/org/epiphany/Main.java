@@ -19,7 +19,7 @@ public class Main {
 
         // test EChainmails enum
 
-        EArmorsTorso.testEChainmails();
+        EArmorsTorso.testEArmorsTorso();
 
         // character test
 
