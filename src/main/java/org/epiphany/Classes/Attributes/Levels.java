@@ -22,7 +22,6 @@ import org.epiphany.Interfaces.IAttributes;
  * Methods: <br>
  * - verifyLevelBounds(byte level, EAttributesLevels type): Ensures the level is within min and max bounds. <br>
  * - verifyExperienceBounds(short experience, EAttributesLevels type): Ensures the experience is within min and max bounds. <br>
- * - canEarnExperience(EAttributesExperience type): Checks if the entity can earn experience of the given type. <br>
  * - characterLevelUp(): Levels up the character if enough experience is gained. <br>
  * - jobLevelUp(): Levels up the job if enough experience is gained. <br>
  * - proficiencyLevelUp(): Levels up the proficiency if enough experience is gained. <br>
