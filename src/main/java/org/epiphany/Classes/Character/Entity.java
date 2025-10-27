@@ -5,6 +5,7 @@ import org.epiphany.Enums.Systems.Character.ECharacterJobs;
 import org.epiphany.Interfaces.IEntity;
 
 /**
+ * <p>
  * Class representing a character with various attributes. <br>
  * Each attribute has defined minimum and maximum bounds from EAttributesMain. <br>
  * The class includes methods to get and set attributes, ensuring they stay within bounds. <br>
@@ -22,6 +23,8 @@ import org.epiphany.Interfaces.IEntity;
  * Testing: <br>
  * - characterTest(): Tests the Character class functionality.  <br>
  * - statTest(): Tests the attribute bounds enforcement.  <br>
+ * - levelTest(): Tests the leveling up functionality.  <br>
+ * </p>
  */
 
 
