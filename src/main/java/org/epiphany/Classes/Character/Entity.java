@@ -180,7 +180,7 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
 
         // Simulate gaining experience and leveling up
 
-        testCharacter.setCharacterExperience((short) 5000);
+        testCharacter.addCharacterExperience((short) 5000);
         testCharacter.setJobExperience((short) 3000);
         testCharacter.characterLevelUp();
         testCharacter.jobLevelUp();
@@ -189,6 +189,23 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
         afterLevelUp.append("\n--- After Level Up ---\n")
                 .append(testCharacter);
         System.out.println(afterLevelUp);
+
+        // test leveling beyond max level
+        testCharacter.addCharacterExperience((short) 25000);
+        testCharacter.addJobExperience((short)25000);
+        testCharacter.characterLevelUp();
+        testCharacter.jobLevelUp();
+        testCharacter.addCharacterExperience((short) 25000);
+        testCharacter.addJobExperience((short)30000);
+        testCharacter.characterLevelUp();
+        testCharacter.jobLevelUp();
+        testCharacter.addCharacterExperience((short)400);
+        testCharacter.characterLevelUp();
+
+        StringBuilder afterMaxLevelUp = new StringBuilder();
+        afterMaxLevelUp.append("\n--- After Beyond Max Level Up Attempt ---\n")
+                .append(testCharacter);
+        System.out.println(afterMaxLevelUp);
 
     } // end levelTest
 

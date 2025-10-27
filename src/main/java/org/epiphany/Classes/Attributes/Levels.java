@@ -4,6 +4,9 @@ import org.epiphany.Enums.Systems.Character.Attributes.EAttributesExperience;
 import org.epiphany.Enums.Systems.Character.Attributes.EAttributesLevels;
 import org.epiphany.Interfaces.IAttributes;
 
+/*TODO:
+*      Fix job xp not being set to 0 when being set to max lv manually*/
+
 /** <p>
  * Levels class represents the levels and experience of a character, job, and proficiency. <br>
  * It provides methods to verify and set levels and experience within defined bounds. <br>
@@ -40,7 +43,60 @@ public abstract class Levels implements IAttributes {
     private short proficiencyExperienceNeeded = EAttributesExperience.PROFICIENCY.getExperienceNeeded();
 
 
+
+    public boolean canEarnExperience(EAttributesExperience type) { // start canEarnExperience
+
+        switch (type) { // start switch
+
+            case CHARACTER:
+
+                if (characterLevel >= EAttributesLevels.CHARACTER.getMaxLevel()) { // start if
+
+                    characterExperience = 0;
+                    characterExperienceNeeded = 0;
+                    return false;
+
+                } // end if
+
+                break; // end case CHARACTER
+
+            case JOB:
+
+                if (jobLevel >= EAttributesLevels.JOB.getMaxLevel()) { // start if
+
+                    jobExperience = 0;
+                    jobExperienceNeeded = 0;
+                    return false;
+
+                } // end if
+
+                break; // end case JOB
+
+            case PROFICIENCY:
+
+                if (proficiencyLevel >= EAttributesLevels.PROFICIENCY.getMaxLevel()) { // start if
+
+                    proficiencyExperience = 0;
+                    proficiencyExperienceNeeded = 0;
+                    return false;
+
+                } // end if
+
+                break; // end case PROFICIENCY
+
+            default:
+                throw new IllegalArgumentException("Unknown experience type: " + type);
+
+        } // end switch
+
+        return true;
+
+    } // end canEarnExperience
+
+
     public byte verifyLevelBounds(byte level, EAttributesLevels type) {// start verifyLevelBounds
+
+
         if (level < type.getMinLevel()) {
             level = type.getMinLevel();
         } else if (level > type.getMaxLevel()) {
@@ -51,6 +107,13 @@ public abstract class Levels implements IAttributes {
     } // end verifyLevelBounds
 
     public short verifyExperienceBounds(short experience, EAttributesExperience type) { // start verifyExperienceBounds
+
+        // Check if the entity can earn experience of this type
+        if (!canEarnExperience(type)) {
+            return 0;
+        }
+
+        // Ensure experience is within bounds
         if (experience < type.getMinExperience()) {
             experience = type.getMinExperience();
         } else if (experience > type.getMaxExperience()) {
@@ -63,6 +126,32 @@ public abstract class Levels implements IAttributes {
     } // end verifyExperienceBounds
 
 
+    public void addCharacterExperience(short experienceToAdd) {
+        short currentExperience = getCharacterExperience();
+        byte characterLevel = getCharacterLevel();
+
+        if (characterLevel >= EAttributesLevels.CHARACTER.getMaxLevel()) {
+            return; // No more experience can be added if max level is reached
+        }
+
+        currentExperience = (short) (currentExperience + experienceToAdd);
+        currentExperience = verifyExperienceBounds(currentExperience, EAttributesExperience.CHARACTER);
+        setCharacterExperience(currentExperience);
+    }
+
+    public void addJobExperience(short experienceToAdd) {
+        short currentExperience = getJobExperience();
+        byte jobLevel = getJobLevel();
+
+        if (jobLevel >= EAttributesLevels.JOB.getMaxLevel()) {
+            return; // No more experience can be added if max level is reached
+        }
+
+        currentExperience = (short) (currentExperience + experienceToAdd);
+        currentExperience = verifyExperienceBounds(currentExperience, EAttributesExperience.JOB);
+        setJobExperience(currentExperience);
+    }
+
     public short calculateExperienceNeeded(EAttributesExperience type) {
         double experienceNeeded = type.getExperienceNeeded() * type.getExperienceMultiplier() * type.getMultiplierDelta();
         return (short) experienceNeeded;
@@ -73,18 +162,20 @@ public abstract class Levels implements IAttributes {
         return currentExperience;
     }
 
-    public byte calculateLevel(byte level) {
-        level++;
+    public byte calculateLevel(byte level, EAttributesLevels type) {
+        if (level < type.getMaxLevel()) {
+            level++;
+        }
         return level;
     }
 
-    public Levels characterLevelUp() { // start characterLevelUp
+    public void characterLevelUp() { // start characterLevelUp
 
         while (characterExperience >= calculateExperienceNeeded(EAttributesExperience.CHARACTER)) { // start while
 
             characterExperienceNeeded = calculateExperienceNeeded(EAttributesExperience.CHARACTER);
             characterExperience = calculateNewExperience(characterExperience, EAttributesExperience.CHARACTER);
-            characterLevel = calculateLevel(characterLevel);
+            characterLevel = calculateLevel(characterLevel, EAttributesLevels.CHARACTER);
 
         } // end while
 
@@ -93,17 +184,15 @@ public abstract class Levels implements IAttributes {
         characterExperienceNeeded = verifyExperienceBounds(characterExperienceNeeded, EAttributesExperience.CHARACTER);
         characterLevel = verifyLevelBounds(characterLevel, EAttributesLevels.CHARACTER);
 
-        return this;
-
     } // end characterLevelUp
 
-    public Levels jobLevelUp() { // start jobLevelUp
+    public void jobLevelUp() { // start jobLevelUp
 
         while (jobExperience >= calculateExperienceNeeded(EAttributesExperience.JOB)) { // start while
 
             jobExperienceNeeded = calculateExperienceNeeded(EAttributesExperience.JOB);
             jobExperience = calculateNewExperience(jobExperience, EAttributesExperience.JOB);
-            jobLevel = calculateLevel(jobLevel);
+            jobLevel = calculateLevel(jobLevel, EAttributesLevels.JOB);
 
         } // end while
 
@@ -111,8 +200,6 @@ public abstract class Levels implements IAttributes {
         jobExperience = verifyExperienceBounds(jobExperience, EAttributesExperience.JOB);
         jobExperienceNeeded = verifyExperienceBounds(jobExperienceNeeded, EAttributesExperience.JOB);
         jobLevel = verifyLevelBounds(jobLevel, EAttributesLevels.JOB);
-
-        return this;
 
     } // end jobLevelUp
 
@@ -122,7 +209,7 @@ public abstract class Levels implements IAttributes {
 
             proficiencyExperienceNeeded = calculateExperienceNeeded(EAttributesExperience.PROFICIENCY);
             proficiencyExperience = calculateNewExperience(proficiencyExperience, EAttributesExperience.PROFICIENCY);
-            proficiencyLevel = calculateLevel(proficiencyLevel);
+            proficiencyLevel = calculateLevel(proficiencyLevel, EAttributesLevels.PROFICIENCY);
 
         } // end while
 
@@ -208,7 +295,7 @@ public abstract class Levels implements IAttributes {
                 .append("Character Experience: ").append(getCharacterExperience()).append("\t\t")
                  .append("Experience Needed: ").append(getCharacterExperienceNeeded()).append("\n")
                 .append("Job Level: ").append(getJobLevel()).append("\t\t\t")
-                .append("Experience: ").append(getJobExperience()).append("\t\t")
+                .append("Job Experience: ").append(getJobExperience()).append("\t\t\t")
                  .append("Experience Needed: ").append(getJobExperienceNeeded()).append("\n");
         return sb.toString();
     }
