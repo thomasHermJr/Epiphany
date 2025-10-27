@@ -15,6 +15,7 @@ public abstract class DerivedAttributes extends MainAttributes {
     private short maxHealth;
     private short maxStamina;
 
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(super.toString());

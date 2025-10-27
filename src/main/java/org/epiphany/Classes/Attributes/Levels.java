@@ -1,5 +1,6 @@
 package org.epiphany.Classes.Attributes;
 
+import org.epiphany.Enums.Systems.Character.Attributes.EAttributesExperience;
 import org.epiphany.Enums.Systems.Character.Attributes.EAttributesLevels;
 import org.epiphany.Interfaces.IAttributes;
 
@@ -34,6 +35,9 @@ public abstract class Levels implements IAttributes {
     private short characterExperience;
     private short jobExperience;
     private short proficiencyExperience;
+    private short characterExperienceNeeded = EAttributesExperience.CHARACTER.getExperienceNeeded();
+    private short jobExperienceNeeded = EAttributesExperience.JOB.getExperienceNeeded();
+    private short proficiencyExperienceNeeded = EAttributesExperience.PROFICIENCY.getExperienceNeeded();
 
 
     public byte verifyLevelBounds(byte level, EAttributesLevels type) {// start verifyLevelBounds
@@ -46,15 +50,90 @@ public abstract class Levels implements IAttributes {
 
     } // end verifyLevelBounds
 
-    public short verifyExperienceBounds(short experience, EAttributesLevels type) { // start verifyExperienceBounds
+    public short verifyExperienceBounds(short experience, EAttributesExperience type) { // start verifyExperienceBounds
         if (experience < type.getMinExperience()) {
             experience = type.getMinExperience();
         } else if (experience > type.getMaxExperience()) {
             experience = type.getMaxExperience();
         }
-            return experience;
+
+
+        return experience;
 
     } // end verifyExperienceBounds
+
+
+    public short calculateExperienceNeeded(EAttributesExperience type) {
+        double experienceNeeded = type.getExperienceNeeded() * type.getExperienceMultiplier() * type.getMultiplierDelta();
+        return (short) experienceNeeded;
+    }
+
+    public short calculateNewExperience(short currentExperience, EAttributesExperience type) {
+        currentExperience = (short) (currentExperience - type.getExperienceNeeded());
+        return currentExperience;
+    }
+
+    public byte calculateLevel(byte level) {
+        level++;
+        return level;
+    }
+
+    public Levels characterLevelUp() { // start characterLevelUp
+
+        while (characterExperience >= calculateExperienceNeeded(EAttributesExperience.CHARACTER)) { // start while
+
+            characterExperienceNeeded = calculateExperienceNeeded(EAttributesExperience.CHARACTER);
+            characterExperience = calculateNewExperience(characterExperience, EAttributesExperience.CHARACTER);
+            characterLevel = calculateLevel(characterLevel);
+
+        } // end while
+
+        // verify bounds after leveling up
+        characterExperience = verifyExperienceBounds(characterExperience, EAttributesExperience.CHARACTER);
+        characterExperienceNeeded = verifyExperienceBounds(characterExperienceNeeded, EAttributesExperience.CHARACTER);
+        characterLevel = verifyLevelBounds(characterLevel, EAttributesLevels.CHARACTER);
+
+        return this;
+
+    } // end characterLevelUp
+
+    public Levels jobLevelUp() { // start jobLevelUp
+
+        while (jobExperience >= calculateExperienceNeeded(EAttributesExperience.JOB)) { // start while
+
+            jobExperienceNeeded = calculateExperienceNeeded(EAttributesExperience.JOB);
+            jobExperience = calculateNewExperience(jobExperience, EAttributesExperience.JOB);
+            jobLevel = calculateLevel(jobLevel);
+
+        } // end while
+
+        // verify bounds after leveling up
+        jobExperience = verifyExperienceBounds(jobExperience, EAttributesExperience.JOB);
+        jobExperienceNeeded = verifyExperienceBounds(jobExperienceNeeded, EAttributesExperience.JOB);
+        jobLevel = verifyLevelBounds(jobLevel, EAttributesLevels.JOB);
+
+        return this;
+
+    } // end jobLevelUp
+
+    public Levels proficiencyLevelUp() { // start proficiencyLevelUp
+
+        while (proficiencyExperience >= calculateExperienceNeeded(EAttributesExperience.PROFICIENCY)) { // start while
+
+            proficiencyExperienceNeeded = calculateExperienceNeeded(EAttributesExperience.PROFICIENCY);
+            proficiencyExperience = calculateNewExperience(proficiencyExperience, EAttributesExperience.PROFICIENCY);
+            proficiencyLevel = calculateLevel(proficiencyLevel);
+
+        } // end while
+
+        // verify bounds after leveling up
+        proficiencyExperience = verifyExperienceBounds(proficiencyExperience, EAttributesExperience.PROFICIENCY);
+        proficiencyExperienceNeeded = verifyExperienceBounds(proficiencyExperienceNeeded, EAttributesExperience.PROFICIENCY);
+        proficiencyLevel = verifyLevelBounds(proficiencyLevel, EAttributesLevels.PROFICIENCY);
+
+        return this;
+
+    } // end proficiencyLevelUp
 
     public byte getCharacterLevel() {
         return characterLevel;
@@ -88,7 +167,7 @@ public abstract class Levels implements IAttributes {
     }
 
     public void setCharacterExperience(short characterExperience) {
-        characterExperience = verifyExperienceBounds(characterExperience, EAttributesLevels.CHARACTER);
+        characterExperience = verifyExperienceBounds(characterExperience, EAttributesExperience.CHARACTER);
         this.characterExperience = characterExperience;
     }
 
@@ -97,7 +176,7 @@ public abstract class Levels implements IAttributes {
     }
 
     public void setJobExperience(short jobExperience) {
-        jobExperience = verifyExperienceBounds(jobExperience, EAttributesLevels.JOB);
+        jobExperience = verifyExperienceBounds(jobExperience, EAttributesExperience.JOB);
         this.jobExperience = jobExperience;
     }
 
@@ -106,16 +185,31 @@ public abstract class Levels implements IAttributes {
     }
 
     public void setProficiencyExperience(short proficiencyExperience) {
-        proficiencyExperience = verifyExperienceBounds(proficiencyExperience, EAttributesLevels.PROFICIENCY);
+        proficiencyExperience = verifyExperienceBounds(proficiencyExperience, EAttributesExperience.PROFICIENCY);
         this.proficiencyExperience = proficiencyExperience;
     }
 
+    public short getCharacterExperienceNeeded() {
+        return characterExperienceNeeded;
+    }
+
+    public short getJobExperienceNeeded() {
+        return jobExperienceNeeded;
+    }
+
+    public short getProficiencyExperienceNeeded() {
+        return proficiencyExperienceNeeded;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
          sb.append("Character Level: ").append(getCharacterLevel()).append("\t\t")
-                .append("Experience: ").append(getCharacterExperience()).append("\n")
+                .append("Character Experience: ").append(getCharacterExperience()).append("\t\t")
+                 .append("Experience Needed: ").append(getCharacterExperienceNeeded()).append("\n")
                 .append("Job Level: ").append(getJobLevel()).append("\t\t\t")
-                .append("Experience: ").append(getJobExperience()).append("\n");
+                .append("Experience: ").append(getJobExperience()).append("\t\t")
+                 .append("Experience Needed: ").append(getJobExperienceNeeded()).append("\n");
         return sb.toString();
     }
 

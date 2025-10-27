@@ -25,6 +25,7 @@ public class Main {
 
         Entity.characterTest();
         Entity.statTest();
+        Entity.levelTest();
 
 
     } // end main method

@@ -138,6 +138,7 @@ public abstract class MainAttributes extends Levels{
         this.proficiencyBonus = proficiencyBonus;
     }
 
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(super.toString())

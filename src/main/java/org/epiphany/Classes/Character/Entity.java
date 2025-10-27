@@ -166,4 +166,30 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
 
     } // end statTest
 
+    public static void levelTest() {
+        Entity testCharacter = new Entity("LevelTest", ECharacterJobs.PLACEHOLDER_JOB, // entity data
+                (byte) 1, (byte) 1, // levels
+                (short) 0, (short) 0, // experience
+                (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10); // main attributes
+
+        StringBuilder intro = new StringBuilder();
+        intro.append("\n--- Level Up Test ---\n")
+                .append("Initial character:\n")
+                .append(testCharacter);
+        System.out.println(intro);
+
+        // Simulate gaining experience and leveling up
+
+        testCharacter.setCharacterExperience((short) 5000);
+        testCharacter.setJobExperience((short) 3000);
+        testCharacter.characterLevelUp();
+        testCharacter.jobLevelUp();
+
+        StringBuilder afterLevelUp = new StringBuilder();
+        afterLevelUp.append("\n--- After Level Up ---\n")
+                .append(testCharacter);
+        System.out.println(afterLevelUp);
+
+    } // end levelTest
+
 } // end Character class
