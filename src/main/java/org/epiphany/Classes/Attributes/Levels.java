@@ -220,6 +220,9 @@ public abstract class Levels implements IAttributes {
     }
 
     public short getProficiencyExperience() {
+        if (proficiencyLevel >= EAttributesLevels.PROFICIENCY.getMaxLevel()) {
+            proficiencyExperience = 0;
+        }
         return proficiencyExperience;
     }
 
@@ -243,6 +246,9 @@ public abstract class Levels implements IAttributes {
     }
 
     public short getProficiencyExperienceNeeded() {
+        if (proficiencyLevel >= EAttributesLevels.PROFICIENCY.getMaxLevel()) {
+            proficiencyExperienceNeeded = 0;
+        }
         return proficiencyExperienceNeeded;
     }
 
