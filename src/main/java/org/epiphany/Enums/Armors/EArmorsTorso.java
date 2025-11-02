@@ -2,6 +2,9 @@ package org.epiphany.Enums.Armors;
 
 public enum EArmorsTorso {
 
+    /* TODO:
+        Consider plausibility of binary search by ordinal position in equip() method to reduce complexity to O(log N) */
+
     /**
      * Armors for the torso body part. <br>
      * <br>
@@ -17,7 +20,7 @@ public enum EArmorsTorso {
      * - getDefense(): Returns the defense value of the armor. <br>
      * - isEquipped(): Returns whether the armor is currently equipped. <br>
      * - equip(): Equips the armor, unequipping any other equipped torso armor. <br>
-     * - unequip(): Unequips the armor. <br>
+     * - unequip(): Unequips the armor - sets NONE to equipped <br>
      * - toString(): Returns a string representation of the armor's attributes. <br>
      * <br>
      * Testing: <br>
@@ -25,8 +28,10 @@ public enum EArmorsTorso {
      * <br>
      * Note: Reused code structure for armors is considered acceptable for maintainability.
      * */
+
     /* Chainmail */
 
+    NONE("Nothing Equipped", "None",  0, false),
     RUINED_CHAINMAIL_SHIRT("Ruined Chainmail Shirt", "Chainmail", 2, true),
     RUSTY_CHAINMAIL_SHIRT("Rusty Chainmail Shirt", "Chainmail", 4, false),
     RAGGED_CHAINMAIL_SHIRT("Ragged Chainmail Shirt", "Chainmail", 6, false),
@@ -78,21 +83,30 @@ public enum EArmorsTorso {
 
     public void unequip() {
         this.isEquipped = false;
+        NONE.isEquipped = true;
     } // end unequip method
 
     public void equip() {
 
-                this.isEquipped = true;
+        if (this.isEquipped) {
+            return; // end early if already equipped
+        } // end if
 
-                for (EArmorsTorso otherTorso : EArmorsTorso.values()) {
-                    // force unequip at O(N) efficiency -- Consider better verification method later
+        if (!NONE.isEquipped) { // if some other armor is equipped - skip if NONE is equipped
 
-                    if (!otherTorso.getName().equals(this.name) && otherTorso.isEquipped) {
-                        otherTorso.isEquipped = false; // Only one chainmail can be equipped at a time
-                        break;
-                    } // end inner if
+            for (EArmorsTorso otherTorso : EArmorsTorso.values()) {
+                // force unequip at O(N) efficiency -- Consider better verification method later
 
-                } // end inner for
+                if (!otherTorso.getName().equals(this.name) && otherTorso.isEquipped) {
+                    otherTorso.unequip(); // Only one chainmail can be equipped at a time
+                    break;
+                } // end inner if
+
+            } // end for
+
+        } // end outer if
+        this.isEquipped = true;
+        NONE.isEquipped = false;
 
     } // end equip method
 
@@ -100,10 +114,14 @@ public enum EArmorsTorso {
 
         StringBuilder initTest = new StringBuilder();
         initTest.append("\n--- Testing EArmorsTorso Enum ---\n");
+        EArmorsTorso unequipped = EArmorsTorso.NONE;
         EArmorsTorso torso1 = EArmorsTorso.RUINED_CHAINMAIL_SHIRT;
         EArmorsTorso torso2 = EArmorsTorso.BLACKENED_HAUBERK;
         EArmorsTorso torso3 = EArmorsTorso.RAGGED_CHAINMAIL_MESH;
-        initTest.append(torso1).append("\n")
+
+        initTest.append("\nInitial States...\n")
+                .append(unequipped).append("\n")
+                .append(torso1).append("\n")
                 .append(torso2).append("\n")
                 .append(torso3).append("\n");
         System.out.println(initTest);
@@ -113,25 +131,32 @@ public enum EArmorsTorso {
         torso1.unequip();
 
         unequipTest.append("\nAfter unequipping...\n")
-                .append(torso1);
+                .append(unequipped).append("\n")
+                .append(torso1).append("\n")
+                .append(torso2).append("\n")
+                .append(torso3).append("\n");
         System.out.println(unequipTest);
 
         StringBuilder equipTest = new StringBuilder();
         equipTest.append("\n--- Testing equip() method ---\n");
         torso3.equip();
+
         equipTest.append("\nAfter equipping...\n")
+                .append(unequipped).append("\n")
+                .append(torso1).append("\n")
+                .append(torso2).append("\n")
                 .append(torso3).append("\n");
         System.out.println(equipTest);
 
         StringBuilder reEquipTest = new StringBuilder();
         reEquipTest.append("\n--- Testing equip() method with other armor on ---\n");
         torso2.equip();
+
         reEquipTest.append("\nAfter equipping...\n")
-                .append(torso1)
-                .append("\n")
-                .append(torso2)
-                .append("\n")
-                .append(torso3);
+                .append(unequipped).append("\n")
+                .append(torso1).append("\n")
+                .append(torso2).append("\n")
+                .append(torso3).append("\n");
 
         System.out.println(reEquipTest);
     }
