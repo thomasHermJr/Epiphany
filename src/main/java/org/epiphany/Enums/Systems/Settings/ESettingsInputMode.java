@@ -50,7 +50,7 @@ public enum ESettingsInputMode { // start enum
             (!ESettingsInputMode.KEYBOARD_MOUSE.isOn && !ESettingsInputMode.GAMEPAD.isOn)) {
 
             // If both modes are on or both are off, default to KEYBOARD_MOUSE
-            System.out.println("Invalid input mode detected. Defaulting to Keyboard & Mouse.");
+            System.out.println("\nInvalid input mode detected. Defaulting to Keyboard & Mouse.\n");
             ESettingsInputMode.KEYBOARD_MOUSE.isOn = true;
             ESettingsInputMode.GAMEPAD.isOn = false;
         }
@@ -79,26 +79,27 @@ public enum ESettingsInputMode { // start enum
 
         // simulate valid input modes
 
-        System.out.println("\nTesting ESettingsInputMode enum...\n");
-        ESettingsInputMode GameInputMode = ESettingsInputMode.GAMEPAD;
-        ESettingsInputMode MenuInputMode = ESettingsInputMode.KEYBOARD_MOUSE;
+        System.out.println("\n--- Testing ESettingsInputMode enum ---\n\n");
+        ESettingsInputMode gamepad = ESettingsInputMode.GAMEPAD;
+        ESettingsInputMode keyboardAndMouse = ESettingsInputMode.KEYBOARD_MOUSE;
+
         StringBuilder sb = new StringBuilder();
-        sb.append(GameInputMode)
+        sb.append(gamepad)
                 .append("\n")
-                .append(MenuInputMode)
+                .append(keyboardAndMouse)
                 .append("\n");
         System.out.println(sb);
 
         toggleInputMode();
         StringBuilder sb2 = new StringBuilder();
         sb2.append("\ntoggling...\n\n")
-                .append(GameInputMode).
+                .append(gamepad).
                 append("\n")
-                .append(MenuInputMode)
+                .append(keyboardAndMouse)
                 .append("\n");
         System.out.println(sb2);
 
-        System.out.println("Testing invalid input mode handling...\n");
+        System.out.println("\n--- Testing invalid input mode handling ---\n\n");
 
         // Simulate invalid input mode
 
@@ -110,20 +111,20 @@ public enum ESettingsInputMode { // start enum
         whenBothOn.append("When both on")
                 .append("\n\n")
                 .append("Before validation:")
+                .append("\n\n")
+                .append(gamepad)
                 .append("\n")
-                .append(GameInputMode)
-                .append("\n")
-                .append(MenuInputMode)
+                .append(keyboardAndMouse)
                 .append("\n");
         System.out.println(whenBothOn);
 
          // Validate and correct the input modes
         validateInputMode();
         StringBuilder validateBothOn = new StringBuilder();
-        validateBothOn.append("After validation:\n")
-                .append(GameInputMode)
+        validateBothOn.append("After validation:\n\n")
+                .append(gamepad)
                 .append("\n")
-                .append(MenuInputMode)
+                .append(keyboardAndMouse)
                 .append("\n");
         System.out.println(validateBothOn);
 
@@ -137,10 +138,10 @@ public enum ESettingsInputMode { // start enum
         whenBothOff.append("When both off")
                 .append("\n\n")
                 .append("Before validation:")
+                .append("\n\n")
+                .append(gamepad)
                 .append("\n")
-                .append(GameInputMode)
-                .append("\n")
-                .append(MenuInputMode)
+                .append(keyboardAndMouse)
                 .append("\n");
         System.out.println(whenBothOff);
 
@@ -148,10 +149,10 @@ public enum ESettingsInputMode { // start enum
 
         validateInputMode();
         StringBuilder validateBothOff = new StringBuilder();
-        validateBothOff.append("After validation:\n")
-                .append(GameInputMode)
+        validateBothOff.append("After validation:\n\n")
+                .append(gamepad)
                 .append("\n")
-                .append(MenuInputMode)
+                .append(keyboardAndMouse)
                 .append("\n");
         System.out.println(validateBothOff);
 

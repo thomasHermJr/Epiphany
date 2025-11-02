@@ -96,8 +96,8 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
                 (byte) 10, (byte) 14, (byte) 12, (byte) 16, (byte) 13, (byte) 8); // main attributes
 
         StringBuilder intro = new StringBuilder();
-        intro.append("\n--- Character Class Test ---\n")
-                .append("Initial character\n")
+        intro.append("\n--- Entity Class setter Test ---\n\n")
+                .append("Initial character:\n\n")
                 .append(myCharacter);
         System.out.println(intro);
 
@@ -114,7 +114,7 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
         myCharacter.setJobExperience((short) 300);
 
         StringBuilder afterChanges = new StringBuilder();
-        afterChanges.append("\n--- After Changes ---\n")
+        afterChanges.append("\n--- After Changes ---\n\n")
                 .append(myCharacter);
         System.out.println(afterChanges);
 
@@ -128,8 +128,8 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
                 (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10); // main attributes
 
         StringBuilder intro = new StringBuilder();
-        intro.append("\n--- Stat Bounds Test ---\n")
-                .append("Initial character:\n")
+        intro.append("\n--- Stat Bounds Test ---\n\n")
+                .append("Initial character:\n\n")
                 .append(testCharacter);
         System.out.println(intro);
 
@@ -146,7 +146,7 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
         testCharacter.setCharisma((byte)0);
 
         StringBuilder afterMinTest = new StringBuilder();
-        afterMinTest.append("\n--- After setting attributes below minimum ---\n")
+        afterMinTest.append("\n--- After setting attributes below minimum ---\n\n")
                 .append(testCharacter);
         System.out.println(afterMinTest);
 
@@ -163,7 +163,7 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
         testCharacter.setCharisma((byte)100);
 
         StringBuilder afterMaxTest = new StringBuilder();
-        afterMaxTest.append("\n--- After setting attributes above maximum ---\n")
+        afterMaxTest.append("\n--- After setting attributes above maximum ---\n\n")
                 .append(testCharacter);
         System.out.println(afterMaxTest);
 
@@ -176,20 +176,25 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
                 (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10, (byte) 10); // main attributes
 
         StringBuilder intro = new StringBuilder();
-        intro.append("\n--- Level Up Test ---\n")
-                .append("Initial character:\n")
+        intro.append("\n--- Level Up Test ---\n\n")
+                .append("Initial character:\n\n")
                 .append(testCharacter);
         System.out.println(intro);
 
         // Simulate gaining experience and leveling up
 
-        testCharacter.addCharacterExperience((short) 5000);
-        testCharacter.setJobExperience((short) 3000);
+        short addCharacterExperience = 5000;
+        short addJobExperience = 3000;
+
+        testCharacter.addCharacterExperience(addCharacterExperience);
+        testCharacter.setJobExperience(addJobExperience);
         testCharacter.characterLevelUp();
         testCharacter.jobLevelUp();
 
         StringBuilder afterLevelUp = new StringBuilder();
-        afterLevelUp.append("\n--- After Level Up ---\n")
+        afterLevelUp.append("\n--- After Level Ups (+ ")
+                .append(addCharacterExperience).append(" character experience + ")
+                .append(addJobExperience).append(" job experience) ---\n\n")
                 .append(testCharacter);
         System.out.println(afterLevelUp);
 
@@ -206,7 +211,7 @@ public class Entity extends Proficiencies implements IEntity { // Changed class 
         testCharacter.characterLevelUp();
 
         StringBuilder afterMaxLevelUp = new StringBuilder();
-        afterMaxLevelUp.append("\n--- After Beyond Max Level Up Attempt ---\n")
+        afterMaxLevelUp.append("\n--- After Beyond Max Level Up Attempt ---\n\n")
                 .append(testCharacter);
         System.out.println(afterMaxLevelUp);
 
