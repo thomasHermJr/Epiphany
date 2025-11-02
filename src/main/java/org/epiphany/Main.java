@@ -10,23 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Test ESettingsToggles enum
-        ESettingsToggles.testESettingsToggles();
-
-
-        // Test ESettingsInputMode enum
-        ESettingsInputMode.testESettingsInputMode();
-
-        // test EArmorsTorso enum
-
-        EArmorsTorso.testEArmorsTorso();
-
-        // character test
-
-        Entity.characterTest();
-        Entity.statTest();
-        Entity.levelTest();
-
+       // Testing moved to Tests package
 
     } // end main method
 
