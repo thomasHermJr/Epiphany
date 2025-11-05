@@ -1,4 +1,6 @@
-package org.epiphany.Enums.Armors;
+package org.epiphany.Enums.Equipment.Armors;
+
+import org.epiphany.Enums.Equipment.EEquipmentQuality;
 
 public enum EArmorsTorso {
 
@@ -6,25 +8,27 @@ public enum EArmorsTorso {
         Consider plausibility of binary search by ordinal position in equip() method to reduce complexity to O(log N) */
 
     /**
-     * Armors for the torso body part. <br>
+     * Armors for the torso body part. Uses EEquipmentQuality for name and stat modification. <br>
      * <br>
-     * Attributes: <br>
+     * Attributes: <ul>
      * - name: The name of the armor. <br>
      * - armorType: The type of armor (e.g., Chainmail). <br>
-     * - defense: The defense value provided by the armor. <br>
+     * - defense: The defense value provided by the armor in int. <br>
      * - isEquipped: Boolean indicating if the armor is currently equipped. <br>
+     * </ul>
      * <br>
-     * Methods: <br>
+     * Methods: <ul>
      * - getName(): Returns the name of the armor. <br>
      * - getArmorType(): Returns the type of armor. <br>
      * - getDefense(): Returns the defense value of the armor. <br>
      * - isEquipped(): Returns whether the armor is currently equipped. <br>
      * - equip(): Equips the armor, unequipping any other equipped torso armor. <br>
      * - unequip(): Unequips the armor - sets NONE to equipped <br>
+     * - qualityModifier(EEquipmentQuality quality): Modifies the armor's attributes and name based on the specified quality. <br>
      * - toString(): Returns a string representation of the armor's attributes. <br>
+     * </ul>
      * <br>
-     * Testing: <br>
-     * - testEArmorsTorso(): Static method to test the functionality of the EArmorsTorso enum. <br>
+     * Testing moved to org.epiphany.Tests.EquipTests <br>
      * <br>
      * Note: Reused code structure for armors is considered acceptable for maintainability.
      * */
@@ -32,27 +36,16 @@ public enum EArmorsTorso {
     /* Chainmail */
 
     NONE("Nothing Equipped", "None",  0, false),
-    RUINED_CHAINMAIL_SHIRT("Ruined Chainmail Shirt", "Chainmail", 2, true),
-    RUSTY_CHAINMAIL_SHIRT("Rusty Chainmail Shirt", "Chainmail", 4, false),
-    RAGGED_CHAINMAIL_SHIRT("Ragged Chainmail Shirt", "Chainmail", 6, false),
     CHAINMAIL_SHIRT("Chainmail Shirt", "Chainmail", 8, false),
-    RUSTY_CHAINMAIL_MESH("Rusty Chainmail Mesh", "Chainmail", 12, false),
-    RAGGED_CHAINMAIL_MESH("Ragged Chainmail Mesh", "Chainmail", 14, false),
     CHAINMAIL_MESH("Chainmail Mesh", "Chainmail", 16, false),
-    RUSTY_HAUBERGON("Rusty Haubergon", "Chainmail", 20, false),
-    RAGGED_HAUBERGON("Ragged Haubergon", "Chainmail", 23, false),
     HAUBERGON("Haubergon", "Chainmail", 28, false),
-    RUSTY_HAUBERK("Rusty Hauberk", "Chainmail", 35, false),
-    RAGGED_HAUBERK("Ragged Hauberk", "Chainmail", 42, false),
     HAUBERK("Hauberk", "Chainmail", 50, false),
-    RUSTY_BLACKENED_HAUBERK("Rusty Blackened Hauberk", "Chainmail", 57, false),
-    RAGGED_BLACKENED_HAUBERK("Ragged Blackened Hauberk", "Chainmail", 64, false),
     BLACKENED_HAUBERK("Blackened Hauberk", "Chainmail", 75, false);
 
 
-    private final String name;
+    private String name; // Made non-final to allow quality modification
     private final String armorType;
-    private final int defense;
+    private int defense; // Made non-final to allow quality modification
     private boolean isEquipped;
 
 
@@ -110,62 +103,27 @@ public enum EArmorsTorso {
 
     } // end equip method
 
-    public static void testEArmorsTorso() {
+    public void qualityModifier(EEquipmentQuality quality) { // Start quality modification method
 
-        StringBuilder initTest = new StringBuilder();
-        initTest.append("\n--- Testing EArmorsTorso Enum ---\n");
-        EArmorsTorso unequipped = EArmorsTorso.NONE;
-        EArmorsTorso torso1 = EArmorsTorso.RUINED_CHAINMAIL_SHIRT;
-        EArmorsTorso torso2 = EArmorsTorso.BLACKENED_HAUBERK;
-        EArmorsTorso torso3 = EArmorsTorso.RAGGED_CHAINMAIL_MESH;
+        if ((this == EArmorsTorso.NONE) || (quality == EEquipmentQuality.STANDARD)) { // No modification for NONE or STANDARD quality
+            return;
+        } // end if
 
-        initTest.append("\nInitial States...\n")
-                .append(unequipped).append("\n")
-                .append(torso1).append("\n")
-                .append(torso2).append("\n")
-                .append(torso3).append("\n");
-        System.out.println(initTest);
+        this.defense = ((int) (this.defense * quality.getQualityModifier())); // Modify defense based on quality
 
-        StringBuilder unequipTest = new StringBuilder();
-        unequipTest.append("\n--- Testing unequip() method ---\n");
-        torso1.unequip();
+        // Modify name to include quality descriptor
 
-        unequipTest.append("\nAfter unequipping...\n")
-                .append(unequipped).append("\n")
-                .append(torso1).append("\n")
-                .append(torso2).append("\n")
-                .append(torso3).append("\n");
-        System.out.println(unequipTest);
+        StringBuilder modifiedName = new StringBuilder();
+        modifiedName.append(quality.getQualityName()).append(" ").append(this.getName());
+        this.name = (modifiedName.toString());
 
-        StringBuilder equipTest = new StringBuilder();
-        equipTest.append("\n--- Testing equip() method ---\n");
-        torso3.equip();
-
-        equipTest.append("\nAfter equipping...\n")
-                .append(unequipped).append("\n")
-                .append(torso1).append("\n")
-                .append(torso2).append("\n")
-                .append(torso3).append("\n");
-        System.out.println(equipTest);
-
-        StringBuilder reEquipTest = new StringBuilder();
-        reEquipTest.append("\n--- Testing equip() method with other armor on ---\n");
-        torso2.equip();
-
-        reEquipTest.append("\nAfter equipping...\n")
-                .append(unequipped).append("\n")
-                .append(torso1).append("\n")
-                .append(torso2).append("\n")
-                .append(torso3).append("\n");
-
-        System.out.println(reEquipTest);
-    }
+    } // end qualityModifier method
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Name: ").append(name).append("\n")
-                .append("Body Coverage: ").append(armorType).append("\n")
+                .append("Armor Type: ").append(armorType).append("\n")
                 .append("Defense: ").append(defense).append("\n")
                 .append("Equipped: ").append(isEquipped ? "Yes" : "No").append("\n");
         return sb.toString();
