@@ -6,6 +6,18 @@ import org.epiphany.Enums.Systems.Settings.ESettingsToggles;
 import static org.epiphany.Enums.Systems.Settings.ESettingsInputMode.toggleInputMode;
 import static org.epiphany.Enums.Systems.Settings.ESettingsInputMode.validateInputMode;
 
+/**
+ * Test class for settings-related enums and functionalities. <br>
+ * <br>
+ * Methods: <ul>
+ * - ESettingsToggles: Tests togglable settings. <br>
+ * <br>
+ * - ESettingsInputMode: Tests valid and invalid input mode handling, including toggling and validation. <br>
+ * <br>
+ * </ul>
+ * Each test method prints the results to the console for verification. <br>
+ */
+
 public class SettingsTests {
 
     public static void testESettingsToggles() { // test method

@@ -4,18 +4,22 @@ public enum ESettingsToggles { // start enum
 
     /*TODO: Add more toggle settings later*/
 
-    /** Toggle Settings Enum
-     * Each enum constant represents a toggleable setting in the application.
-     * The setting can be either "On" (true) or "Off" (false).
-
-     * Methods:
-     * - getSettingName(): Returns the name of the setting.
-     * - getIsOn(): Returns the current state of the setting.
-     * - toggleSetting(): Toggles the state of the setting.
-     * - toString(): Returns a string representation of the setting and its state.
-
-     * Test Method:
-     * - testESettingsToggles(): Tests the functionality of the enum.
+    /**
+     * Each enum constant represents a toggleable setting in the application. <br>
+     * The setting can be either "On" (true) or "Off" (false). <br>
+     * <br>
+     * Methods: <ul> <br>
+     * getSettingName(): Returns the name of the setting. <br>
+     * <br>
+     * getIsOn(): Returns the current state of the setting. <br>
+     * <br>
+     * toggleSetting(): Toggles the state of the setting. <br>
+     * <br>
+     * toString(): Returns a string representation of the setting and its state. <br>
+     * <br>
+     * </ul>
+     * <br>
+     * Test Method moved to org.epiphany.Tests.SettingsTests <br>
      */
 
 

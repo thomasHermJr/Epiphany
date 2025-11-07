@@ -1,21 +1,25 @@
 package org.epiphany.Enums.Systems.Settings;
 
 /**
- * ESettingsInputMode enum represents different input modes for the application.
- * It includes methods to toggle between modes and validate their states.
- *
- * Modes:
- * - KEYBOARD_MOUSE: Represents keyboard and mouse input mode.
- * - GAMEPAD: Represents gamepad input mode.
- *
- * Only one input mode can be active at a time.
- *
- * Methods:
- * - toggleInputMode(): Toggles between the two input modes.
- * - validateInputMode(): Ensures that only one mode is active at a time.
- *
- * Test Method:
- * - testESettingsInputMode(): Tests the functionality of the enum.
+ * Enum representing different input modes for the application. <br>
+ * It includes methods to toggle between modes and validate their states. <br>
+ * <br>
+ * Modes: <ul> <br>
+ * KEYBOARD_MOUSE: Represents keyboard and mouse input mode. <br>
+ * <br>
+ * GAMEPAD: Represents gamepad input mode. <br>
+ * </ul>
+ * <br>
+ * Only one input mode can be active at a time. <br>
+ * <br>
+ * Methods: <ul> <br>
+ * toggleInputMode(): Toggles between the two input modes. <br>
+ * <br>
+ * validateInputMode(): Ensures that exactly one mode is active at a time. <br>
+ * <br>
+ * </ul>
+ * <br>
+ * Testing moved to org.epiphany.Tests.SettingsTests
  */
 
 public enum ESettingsInputMode { // start enum
@@ -46,7 +50,7 @@ public enum ESettingsInputMode { // start enum
         this.isOn = isOn;
     }
 
-    public static void validateInputMode() {
+    public static void validateInputMode() { // start method
 
         // cannot use .equals in static context, so we check the boolean states directly
 
@@ -54,11 +58,14 @@ public enum ESettingsInputMode { // start enum
             (!ESettingsInputMode.KEYBOARD_MOUSE.isOn && !ESettingsInputMode.GAMEPAD.isOn)) {
 
             // If both modes are on or both are off, default to KEYBOARD_MOUSE
+
             System.out.println("\nInvalid input mode detected. Defaulting to Keyboard & Mouse.\n");
             ESettingsInputMode.KEYBOARD_MOUSE.isOn = true;
             ESettingsInputMode.GAMEPAD.isOn = false;
-        }
-    }
+
+        } // end if
+
+    } // end method
 
     public static void toggleInputMode() {
 
@@ -71,16 +78,12 @@ public enum ESettingsInputMode { // start enum
     } // end method
 
     @Override
-    public String toString() {
+    public String toString() { // start toString method
 
         StringBuilder sb = new StringBuilder();
         sb.append(inputName).append(": ").append(isOn ? "On" : "Off");
         return sb.toString();
 
-    }
-
-    // keeping test method within enum to simplify access to private members
-
-
+    } // end toString method
 
 } // end enum

@@ -10,22 +10,32 @@ public enum EArmorsTorso {
     /**
      * Armors for the torso body part. Uses EEquipmentQuality for name and stat modification. <br>
      * <br>
-     * Attributes: <ul>
-     * - name: The name of the armor. <br>
-     * - armorType: The type of armor (e.g., Chainmail). <br>
-     * - defense: The defense value provided by the armor in int. <br>
-     * - isEquipped: Boolean indicating if the armor is currently equipped. <br>
+     * Attributes: <ul> <br>
+     * name: The name of the armor. <br>
+     * <br>
+     * armorType: The type of armor (e.g., Chainmail). <br>
+     * <br>
+     * defense: The defense value provided by the armor in int. <br>
+     * <br>
+     * isEquipped: Boolean indicating if the armor is currently equipped. <br>
      * </ul>
      * <br>
-     * Methods: <ul>
-     * - getName(): Returns the name of the armor. <br>
-     * - getArmorType(): Returns the type of armor. <br>
-     * - getDefense(): Returns the defense value of the armor. <br>
-     * - isEquipped(): Returns whether the armor is currently equipped. <br>
-     * - equip(): Equips the armor, unequipping any other equipped torso armor. <br>
-     * - unequip(): Unequips the armor - sets NONE to equipped <br>
-     * - qualityModifier(EEquipmentQuality quality): Modifies the armor's attributes and name based on the specified quality. <br>
-     * - toString(): Returns a string representation of the armor's attributes. <br>
+     * Methods: <ul> <br>
+     * getName(): Returns the name of the armor. <br>
+     * <br>
+     * getArmorType(): Returns the type of armor. <br>
+     * <br>
+     * getDefense(): Returns the defense value of the armor. <br>
+     * <br>
+     * isEquipped(): Returns whether the armor is currently equipped. <br>
+     * <br>
+     * equip(): Equips the armor, unequipping any other equipped torso armor. <br>
+     * <br>
+     * unequip(): Unequips the armor - sets NONE to equipped <br>
+     * <br>
+     * qualityModifier(EEquipmentQuality quality): Modifies the armor's attributes and name based on the specified quality. <br>
+     * <br>
+     * toString(): Returns a string representation of the armor's attributes. <br>
      * </ul>
      * <br>
      * Testing moved to org.epiphany.Tests.EquipTests <br>
@@ -98,6 +108,7 @@ public enum EArmorsTorso {
             } // end for
 
         } // end outer if
+
         this.isEquipped = true;
         NONE.isEquipped = false;
 
@@ -120,13 +131,13 @@ public enum EArmorsTorso {
     } // end qualityModifier method
 
     @Override
-    public String toString() {
+    public String toString() { // start toString method
         StringBuilder sb = new StringBuilder();
         sb.append("Name: ").append(name).append("\n")
                 .append("Armor Type: ").append(armorType).append("\n")
                 .append("Defense: ").append(defense).append("\n")
                 .append("Equipped: ").append(isEquipped ? "Yes" : "No").append("\n");
         return sb.toString();
-    }
+    } // end toString method
 
-}
+} // end enum

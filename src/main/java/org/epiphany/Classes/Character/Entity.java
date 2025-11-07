@@ -4,8 +4,12 @@ import org.epiphany.Classes.Attributes.Proficiencies;
 import org.epiphany.Enums.Systems.Character.ECharacterJobs;
 import org.epiphany.Interfaces.IEntity;
 
+/*TODO:
+*       Test other jobs to check if experience carries over (expected but not wanted)
+*        Consider using job enum to maintain exp and level of each job individually
+* */
+
 /**
- * <p>
  * Class representing a character with various attributes. <br>
  * Each attribute has defined minimum and maximum bounds from EAttributesMain. <br>
  * The class includes methods to get and set attributes, ensuring they stay within bounds. <br>
@@ -13,18 +17,19 @@ import org.epiphany.Interfaces.IEntity;
  * Class chain: <br>
  * Levels --> MainAttributes --> DerivedAttributes --> Proficiencies --> Entity <br>
  * <br>
- * Methods: <br>
- * - getName(): Returns the character's name. <br>
- * - setName(String name): Sets the character's name. <br>
- * - getJob(): Returns the character's job. <br>
- * - setJob(ECharacterJobs job): Sets the character's job. <br>
- * - toString(): Returns a string representation of the character's attributes. <br>
+ * Methods: <ul> <br>
+ * getName(): Returns the character's name. <br>
  * <br>
- * Testing: <br>
- * - characterTest(): Tests the Character class functionality.  <br>
- * - statTest(): Tests the attribute bounds enforcement.  <br>
- * - levelTest(): Tests the leveling up functionality.  <br>
- * </p>
+ * setName(String name): Sets the character's name. <br>
+ * <br>
+ * getJob(): Returns the character's job. <br>
+ * <br>
+ * setJob(ECharacterJobs job): Sets the character's job. <br>
+ * <br>
+ * toString(): Returns a string representation of the character's attributes. <br>
+ * </ul>
+ * <br>
+ * Testing moved to org.epiphany.Tests.EntityTests <br>
  */
 
 

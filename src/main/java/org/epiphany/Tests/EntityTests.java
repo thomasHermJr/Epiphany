@@ -3,6 +3,21 @@ package org.epiphany.Tests;
 import org.epiphany.Classes.Character.Entity;
 import org.epiphany.Enums.Systems.Character.ECharacterJobs;
 
+/**
+ * Test class for the Entity class. <br>
+ * <br>
+ * Methods: <ul>
+ * - characterTest: Tests the creation and modification of an Entity instance. <br>
+ * <br>
+ * - statTest: Tests the bounds checking of Entity attributes. <br>
+ * <br>
+ * - levelTest: Tests the leveling up mechanics of the Entity class. <br>
+ * <br>
+ * </ul>
+ * <br>
+ * Each test method prints the results to the console for verification. <br>
+ * */
+
 public class EntityTests {
 
     public static void characterTest() {
