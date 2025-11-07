@@ -1,4 +1,4 @@
-package org.epiphany.Tests;
+package Tests;
 
 import org.epiphany.Enums.Systems.Settings.ESettingsInputMode;
 import org.epiphany.Enums.Systems.Settings.ESettingsToggles;
@@ -10,9 +10,9 @@ import static org.epiphany.Enums.Systems.Settings.ESettingsInputMode.validateInp
  * Test class for settings-related enums and functionalities. <br>
  * <br>
  * Methods: <ul>
- * - ESettingsToggles: Tests togglable settings. <br>
+ * - ESettingsToggles(): Tests togglable settings. <br>
  * <br>
- * - ESettingsInputMode: Tests valid and invalid input mode handling, including toggling and validation. <br>
+ * - ESettingsInputMode(): Tests valid and invalid input mode handling, including toggling and validation. <br>
  * <br>
  * </ul>
  * Each test method prints the results to the console for verification. <br>

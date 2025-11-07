@@ -1,4 +1,4 @@
-package org.epiphany.Tests;
+package Tests;
 
 /**
  * Full test suite to run all individual test classes. <br>

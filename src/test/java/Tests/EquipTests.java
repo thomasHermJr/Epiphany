@@ -1,4 +1,4 @@
-package org.epiphany.Tests;
+package Tests;
 
 import org.epiphany.Enums.Equipment.Armors.EArmorsTorso;
 import org.epiphany.Enums.Equipment.EEquipmentQuality;
@@ -7,7 +7,7 @@ import org.epiphany.Enums.Equipment.EEquipmentQuality;
  * EquipTests class to test equipment functionalities. <br>
  * <br>
  * Methods: <ul>
- * testEArmorsTorso - Tests equipping, unequipping, and quality modification of torso armors.
+ * testEArmorsTorso() - Tests equipping, unequipping, and quality modification of torso armors.
  * </ul>
  * <br>
  * Each test method prints the results to the console for verification. <br>
