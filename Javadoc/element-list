@@ -1,15 +1,1 @@
-org.epiphany
-org.epiphany.Classes.Attributes
-org.epiphany.Classes.Character
-org.epiphany.Enums.Equipment
 org.epiphany.Enums.Equipment.Armors
-org.epiphany.Enums.Equipment.Weapons
-org.epiphany.Enums.Equipment.Weapons.Offhand
-org.epiphany.Enums.Systems.Character
-org.epiphany.Enums.Systems.Character.Attributes
-org.epiphany.Enums.Systems.Character.Battle
-org.epiphany.Enums.Systems.Generation
-org.epiphany.Enums.Systems.Lore
-org.epiphany.Enums.Systems.Settings
-org.epiphany.Interfaces
-Tests

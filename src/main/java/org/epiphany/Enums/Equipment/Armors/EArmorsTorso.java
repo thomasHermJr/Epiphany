@@ -11,11 +11,12 @@ public enum EArmorsTorso {
      * Armors for the torso body part. Uses EEquipmentQuality for name and stat modification. <br>
      * <br>
      * Attributes: <ul> <br>
-     * name: The name of the armor. <br>
+     * name: The name of the armor. Made non-final to allow for quality modifications. <br>
      * <br>
      * armorType: The type of armor (e.g., Chainmail). <br>
      * <br>
-     * defense: The defense value provided by the armor in int. <br>
+     * defense: The defense value provided by the armor in int. Made non-final to allow for quality
+     * modifications.<br>
      * <br>
      * isEquipped: Boolean indicating if the armor is currently equipped. <br>
      * </ul>
@@ -43,9 +44,10 @@ public enum EArmorsTorso {
      * Note: Reused code structure for armors is considered acceptable for maintainability.
      * */
 
-    /* Chainmail */
+    /* No Armor */
+    NONE("Nothing Equipped", "None",  0, true),
 
-    NONE("Nothing Equipped", "None",  0, false),
+    /* Chainmail */
     CHAINMAIL_SHIRT("Chainmail Shirt", "Chainmail", 8, false),
     CHAINMAIL_MESH("Chainmail Mesh", "Chainmail", 16, false),
     HAUBERGON("Haubergon", "Chainmail", 28, false),
