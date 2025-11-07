@@ -108,7 +108,7 @@ public enum EArmorsTorso {
                 // force unequip at O(N) efficiency -- Consider better verification method later
 
                 if (!otherTorso.getName().equals(this.name) && otherTorso.isEquipped) {
-                    otherTorso.unequip(); // Only one chainmail can be equipped at a time
+                    otherTorso.unequip(); // Only one torso piece can be equipped at a time
                     break;
                 } // end inner if
 
