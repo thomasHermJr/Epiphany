@@ -1,5 +1,9 @@
 package org.epiphany.Enums.Systems.Character.Battle;
 
+/**
+ * Enumeration representing different battle actions available to characters.
+ */
+
 public enum EBattleActions {
 
     ATTACK("Attack"),

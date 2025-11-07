@@ -11,7 +11,9 @@ import org.epiphany.Interfaces.IEntity;
 
 /**
  * Class representing a character with various attributes. <br>
+ * <br>
  * Each attribute has defined minimum and maximum bounds from EAttributesMain. <br>
+ * <br>
  * The class includes methods to get and set attributes, ensuring they stay within bounds. <br>
  *<br>
  * Class chain: <br>

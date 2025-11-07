@@ -2,48 +2,38 @@ package org.epiphany.Classes.Attributes;
 
 import org.epiphany.Enums.Systems.Character.Attributes.EAttributesMain;
 
-/** <p>
+/**
  * MainAttributes class represents the primary attributes of a character. <br>
+ * <br>
+ * Each attribute has defined minimum and maximum bounds from EAttributesMain. <br>
+ * <br>
  * It includes methods to get and set each attribute while ensuring they
  * remain within defined bounds. <br>
  * <br>
  * Class chain: <br>
  * Levels --> MainAttributes --> DerivedAttributes --> Proficiencies --> Entity <br>
  * <br>
- * Attributes: <br>
- * - strength <br>
- * - dexterity <br>
- * - constitution <br>
- * - intelligence <br>
- * - wisdom <br>
- * - charisma <br>
- *  <br>
- *  min and max bounds are defined in EAttributesMain <br>
+ * Attributes: <ul> <br>
+ * strength <br>
+ * dexterity <br>
+ * constitution <br>
+ * intelligence <br>
+ * wisdom <br>
+ * charisma <br>
+ * </ul>
  * <br>
- * Bonuses: <br>
- * - derivedBonus <br>
- * - proficiencyBonus <br>
+ * Bonuses: <ul> <br>
+ * derivedBonus: Boosts to derived stats <br>
  * <br>
- * Methods: <br>
- * - verifyStatBounds(byte stat, EAttributesMain attribute): Ensures the stat is within min and max bounds. <br>
- * - getStrength(): Returns the strength attribute. <br>
- * - setStrength(byte strength): Sets the strength attribute with bounds checking. <br>
- * - getDexterity(): Returns the dexterity attribute. <br>
- * - setDexterity(byte dexterity): Sets the dexterity attribute with bounds checking. <br>
- * - getConstitution(): Returns the constitution attribute. <br>
- * - setConstitution(byte constitution): Sets the constitution attribute with bounds checking. <br>
- * - getIntelligence(): Returns the intelligence attribute. <br>
- * - setIntelligence(byte intelligence): Sets the intelligence attribute with bounds checking. <br>
- * - getWisdom(): Returns the wisdom attribute. <br>
- * - setWisdom(byte wisdom): Sets the wisdom attribute with bounds checking. <br>
- * - getCharisma(): Returns the charisma attribute. <br>
- * - setCharisma(byte charisma): Sets the charisma attribute with bounds checking. <br>
- * - getDerivedBonus(): Returns the derived bonus. <br>
- * - setDerivedBonus(double derivedBonus): Sets the derived bonus. <br>
- * - getProficiencyBonus(): Returns the proficiency bonus. <br>
- * - setProficiencyBonus(double proficiencyBonus): Sets the proficiency bonus. <br>
+ * proficiencyBonus: Boosts to related proficiencies <br>
+ * </ul>
+ * <br>
+ * Methods: <ul> <br>
+ * verifyStatBounds(byte stat, EAttributesMain attribute): Ensures the stat is within min and max bounds. <br>
+ * <br>
+ * getters and setters for each attribute and bonus. <br>
+ * <br>
  * - toString(): Returns a string representation of the main attributes. <br>
- * </p>
  */
 
 public abstract class MainAttributes extends Levels{
@@ -58,15 +48,19 @@ public abstract class MainAttributes extends Levels{
     private double derivedBonus;
     private double proficiencyBonus;
 
-    public byte verifyStatBounds(byte stat, EAttributesMain attribute) {
-        if (stat > attribute.getMaxValue()) {
+    public byte verifyStatBounds(byte stat, EAttributesMain attribute) { // start verifyStatBounds
+
+        if (stat > attribute.getMaxValue()) { // verify upper bound
             return attribute.getMaxValue();
-        } else if (stat < attribute.getMinValue()) {
+        } else if (stat < attribute.getMinValue()) { // verify lower bound
             return attribute.getMinValue();
-        } else {
+        } else { // within bounds
             return stat;
-        }
-    }
+        } // end if-else
+
+    } // end verifyStatBounds
+
+    // Getters and Setters
 
     public byte getStrength() {
         return strength;
@@ -139,7 +133,7 @@ public abstract class MainAttributes extends Levels{
     }
 
     @Override
-    public String toString() {
+    public String toString() { // start toString
         StringBuilder sb = new StringBuilder();
         sb.append(super.toString())
                 .append("Strength: ").append(getStrength()).append("\n")
@@ -149,5 +143,6 @@ public abstract class MainAttributes extends Levels{
                 .append("Wisdom: ").append(getWisdom()).append("\n")
                 .append("Charisma: ").append(getCharisma()).append("\n");
         return sb.toString();
-    }
-}
+    } // end toString
+
+} // end MainAttributes class

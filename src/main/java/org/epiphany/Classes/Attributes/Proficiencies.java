@@ -81,10 +81,10 @@ public abstract class Proficiencies extends DerivedAttributes {
     private short oratoryExperience;
 
     @Override
-    public String toString() {
+    public String toString() { // start toString
         StringBuilder sb = new StringBuilder();
         sb.append(super.toString());
         return sb.toString();
-    }
+    } // end toString
 
 } // end of Proficiencies class

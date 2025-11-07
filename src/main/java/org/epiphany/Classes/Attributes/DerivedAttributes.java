@@ -16,10 +16,10 @@ public abstract class DerivedAttributes extends MainAttributes {
     private short maxStamina;
 
     @Override
-    public String toString() {
+    public String toString() { // start toString
         StringBuilder sb = new StringBuilder();
         sb.append(super.toString());
         return sb.toString();
-    }
+    } // end toString
 
-}
+} // end class

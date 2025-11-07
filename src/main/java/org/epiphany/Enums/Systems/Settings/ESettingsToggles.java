@@ -1,26 +1,26 @@
 package org.epiphany.Enums.Systems.Settings;
 
+/**
+ * Each enum constant represents a toggleable setting in the application. <br>
+ * The setting can be either "On" (true) or "Off" (false). <br>
+ * <br>
+ * Methods: <ul> <br>
+ * getSettingName(): Returns the name of the setting. <br>
+ * <br>
+ * getIsOn(): Returns the current state of the setting. <br>
+ * <br>
+ * toggleSetting(): Toggles the state of the setting. <br>
+ * <br>
+ * toString(): Returns a string representation of the setting and its state. <br>
+ * <br>
+ * </ul>
+ * <br>
+ * Test Method moved to org.epiphany.Tests.SettingsTests <br>
+ */
+
 public enum ESettingsToggles { // start enum
 
     /*TODO: Add more toggle settings later*/
-
-    /**
-     * Each enum constant represents a toggleable setting in the application. <br>
-     * The setting can be either "On" (true) or "Off" (false). <br>
-     * <br>
-     * Methods: <ul> <br>
-     * getSettingName(): Returns the name of the setting. <br>
-     * <br>
-     * getIsOn(): Returns the current state of the setting. <br>
-     * <br>
-     * toggleSetting(): Toggles the state of the setting. <br>
-     * <br>
-     * toString(): Returns a string representation of the setting and its state. <br>
-     * <br>
-     * </ul>
-     * <br>
-     * Test Method moved to org.epiphany.Tests.SettingsTests <br>
-     */
 
 
     FULLSCREEN("Fullscreen", false),

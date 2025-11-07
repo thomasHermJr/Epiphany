@@ -1,5 +1,14 @@
 package org.epiphany.Enums.Systems.Character.Attributes;
 
+/**
+ * Enum representing different experience types for a character. <br>
+ * <br>
+ * Each experience type has a name, experience needed for level up,
+ * experience multiplier, and multiplier delta. <br>
+ * <br>
+ * Also hard sets min and max experience values, at 0 and 30000 respectively. <br>
+ */
+
 public enum EAttributesExperience {
 
     CHARACTER("character experience", (short) 200, 1.5, 1.3),
@@ -11,12 +20,17 @@ public enum EAttributesExperience {
     private final double experienceMultiplier;
     private final double multiplierDelta;
 
-    EAttributesExperience(String experienceType, short experienceNeeded, double experienceMultiplier, double multiplierDelta) {
+    EAttributesExperience(String experienceType,
+                          short experienceNeeded,
+                          double experienceMultiplier,
+                          double multiplierDelta) { // start constructor
         this.experienceType = experienceType;
         this.experienceNeeded = experienceNeeded;
         this.experienceMultiplier = experienceMultiplier;
         this.multiplierDelta = multiplierDelta;
-    }
+    } // end constructor
+
+    // Getters
 
     public String getExperienceType() {
         return experienceType;
@@ -42,4 +56,4 @@ public enum EAttributesExperience {
         return (short) 30000;
     }
 
-}
+} // end enum

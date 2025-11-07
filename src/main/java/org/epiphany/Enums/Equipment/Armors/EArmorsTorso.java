@@ -2,47 +2,47 @@ package org.epiphany.Enums.Equipment.Armors;
 
 import org.epiphany.Enums.Equipment.EEquipmentQuality;
 
+/**
+ * Armors for the torso body part. Uses EEquipmentQuality for name and stat modification. <br>
+ * <br>
+ * Attributes: <ul> <br>
+ * name: The name of the armor. Made non-final to allow for quality modifications. <br>
+ * <br>
+ * armorType: The type of armor (e.g., Chainmail). <br>
+ * <br>
+ * defense: The defense value provided by the armor in int. Made non-final to allow for quality
+ * modifications.<br>
+ * <br>
+ * isEquipped: Boolean indicating if the armor is currently equipped. <br>
+ * </ul>
+ * <br>
+ * Methods: <ul> <br>
+ * getName(): Returns the name of the armor. <br>
+ * <br>
+ * getArmorType(): Returns the type of armor. <br>
+ * <br>
+ * getDefense(): Returns the defense value of the armor. <br>
+ * <br>
+ * isEquipped(): Returns whether the armor is currently equipped. <br>
+ * <br>
+ * equip(): Equips the armor, unequipping any other equipped torso armor. <br>
+ * <br>
+ * unequip(): Unequips the armor - sets NONE to equipped <br>
+ * <br>
+ * qualityModifier(EEquipmentQuality quality): Modifies the armor's attributes and name based on the specified quality. <br>
+ * <br>
+ * toString(): Returns a string representation of the armor's attributes. <br>
+ * </ul>
+ * <br>
+ * Testing moved to org.epiphany.Tests.EquipTests <br>
+ * <br>
+ * Note: Reused code structure for armors is considered acceptable for maintainability.
+ * */
+
 public enum EArmorsTorso {
 
     /* TODO:
         Consider plausibility of binary search by ordinal position in equip() method to reduce complexity to O(log N) */
-
-    /**
-     * Armors for the torso body part. Uses EEquipmentQuality for name and stat modification. <br>
-     * <br>
-     * Attributes: <ul> <br>
-     * name: The name of the armor. Made non-final to allow for quality modifications. <br>
-     * <br>
-     * armorType: The type of armor (e.g., Chainmail). <br>
-     * <br>
-     * defense: The defense value provided by the armor in int. Made non-final to allow for quality
-     * modifications.<br>
-     * <br>
-     * isEquipped: Boolean indicating if the armor is currently equipped. <br>
-     * </ul>
-     * <br>
-     * Methods: <ul> <br>
-     * getName(): Returns the name of the armor. <br>
-     * <br>
-     * getArmorType(): Returns the type of armor. <br>
-     * <br>
-     * getDefense(): Returns the defense value of the armor. <br>
-     * <br>
-     * isEquipped(): Returns whether the armor is currently equipped. <br>
-     * <br>
-     * equip(): Equips the armor, unequipping any other equipped torso armor. <br>
-     * <br>
-     * unequip(): Unequips the armor - sets NONE to equipped <br>
-     * <br>
-     * qualityModifier(EEquipmentQuality quality): Modifies the armor's attributes and name based on the specified quality. <br>
-     * <br>
-     * toString(): Returns a string representation of the armor's attributes. <br>
-     * </ul>
-     * <br>
-     * Testing moved to org.epiphany.Tests.EquipTests <br>
-     * <br>
-     * Note: Reused code structure for armors is considered acceptable for maintainability.
-     * */
 
     /* No Armor */
     NONE("Nothing Equipped", "None",  0, true),

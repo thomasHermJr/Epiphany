@@ -11,25 +11,45 @@ import org.epiphany.Interfaces.IAttributes;
  * Class chain: <br>
  * Levels --> MainAttributes --> DerivedAttributes --> Proficiencies --> Entity <br>
  * <br>
- * Attributes: <br>
- * - characterLevel <br>
- * - jobLevel <br>
- * - proficiencyLevel <br>
- * - characterExperience <br>
- * - jobExperience <br>
- * - proficiencyExperience <br>
+ * Attributes: <ul><br>
+ * characterLevel <br>
+ * jobLevel <br>
+ * proficiencyLevel <br>
+ * characterExperience <br>
+ * jobExperience <br>
+ * proficiencyExperience <br>
+ * characterExperienceNeeded <br>
+ * jobExperienceNeeded <br>
+ * proficiencyExperienceNeeded <br>
+ * </ul>
  * <br>
- * Methods: <br>
- * - verifyLevelBounds(byte level, EAttributesLevels type): Ensures the level is within min and max bounds. <br>
- * - verifyExperienceBounds(short experience, EAttributesLevels type): Ensures the experience is within min and max bounds. <br>
- * - characterLevelUp(): Levels up the character if enough experience is gained. <br>
- * - jobLevelUp(): Levels up the job if enough experience is gained. <br>
- * - proficiencyLevelUp(): Levels up the proficiency if enough experience is gained. <br>
- * - calculateExperienceNeeded(EAttributesExperience type): Calculates experience needed for next level. <br>
- * - calculateNewExperience(short currentExperience, EAttributesExperience type): Calculates new experience after leveling up. <br>
- * - calculateLevel(byte level, EAttributesLevels type): Calculates new level after leveling up. <br>
- * - Getters and setters for each attribute with bounds checking. <br>
- * - toString(): Returns a string representation of the levels and experience. <br>
+ * Methods: <ul> <br>
+ * verifyLevelBounds(byte level, EAttributesLevels type): Ensures the level is within min and max bounds. <br>
+ * <br>
+ * verifyExperienceBounds(short experience, EAttributesLevels type): Ensures the experience is within min and max bounds. <br>
+ * <br>
+ * addCharacterExperience(short experienceToAdd): Adds experience to the character. <br>
+ * <br>
+ * addJobExperience(short experienceToAdd): Adds experience to the job. <br>
+ * <br>
+ * characterLevelUp(): Levels up the character if enough experience is gained. <br>
+ * <br>
+ * jobLevelUp(): Levels up the job if enough experience is gained. <br>
+ * <br>
+ * proficiencyLevelUp(): Levels up the proficiency if enough experience is gained. <br>
+ * <br>
+ * calculateExperienceNeeded(EAttributesExperience type): Calculates experience needed for next level. <br>
+ * <br>
+ * calculateNewExperience(short currentExperience, EAttributesExperience type): Calculates new experience after leveling up. <br>
+ * <br>
+ * calculateLevel(byte level, EAttributesLevels type): Calculates new level after leveling up. <br>
+ * <br>
+ * Getters and setters for each attribute with bounds checking. <br>
+ * <br>
+ * toString(): Returns a string representation of the levels and experience. <br>
+ * </ul>
+ * <br>
+ * Testing moved to org.epiphany.Tests.EntityTests <br>
  * </p>
  */
 

@@ -18,7 +18,10 @@ public enum EAttributesLevels {
         this.levelType = levelType;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
-    }
+    } // end constructor
+
+
+    // Getters
 
     public String getLevelType() {
         return levelType;
@@ -32,12 +35,4 @@ public enum EAttributesLevels {
         return maxLevel;
     }
 
-    public byte getMinExperience() {
-        return (byte) 0;
-    }
-
-    public short getMaxExperience() {
-        return (short) 30000;
-    }
-
-}
+} // end enum
