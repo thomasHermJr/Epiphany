@@ -87,6 +87,11 @@ public enum EArmorsTorso {
     } // end isEquipped
 
     public void unequip() {
+
+        if (!this.isEquipped) {
+            return; // end early if already unequipped
+        } // end if
+
         this.isEquipped = false;
         NONE.isEquipped = true;
     } // end unequip method

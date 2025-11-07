@@ -33,19 +33,6 @@ public class EquipTests {
                 .append(torso3).append("\n");
         System.out.println(initTest);
 
-        // Test unequip method
-
-        StringBuilder unequipTest = new StringBuilder();
-        unequipTest.append("\n--- Testing unequip() method ---\n");
-        torso1.unequip();
-
-        unequipTest.append("\nAfter unequipping...\n")
-                .append(unequipped).append("\n")
-                .append(torso1).append("\n")
-                .append(torso2).append("\n")
-                .append(torso3).append("\n");
-        System.out.println(unequipTest);
-
         // Test equip method
 
         StringBuilder equipTest = new StringBuilder();
@@ -59,10 +46,31 @@ public class EquipTests {
                 .append(torso3).append("\n");
         System.out.println(equipTest);
 
+        // Test unequip method
+
+        StringBuilder unequipTest = new StringBuilder();
+        unequipTest.append("\n--- Testing unequip() method ---\n");
+        torso3.unequip();
+
+        unequipTest.append("\nAfter unequipping...\n")
+                .append(unequipped).append("\n")
+                .append(torso1).append("\n")
+                .append(torso2).append("\n")
+                .append(torso3).append("\n");
+        System.out.println(unequipTest);
+
         // Test equip method with other armor already equipped
 
         StringBuilder reEquipTest = new StringBuilder();
-        reEquipTest.append("\n--- Testing equip() method with other armor on ---\n");
+        reEquipTest.append("\n--- Testing equip() method with other armor on ---\n")
+                        .append("\n\nFirst, equipping ").append(torso3.getName()).append("...\n");
+        torso3.equip();
+
+        reEquipTest.append(unequipped).append("\n")
+                .append(torso1).append("\n")
+                .append(torso2).append("\n")
+                .append(torso3).append("\n")
+                .append("\nNow, equipping ").append(torso2.getName()).append("...\n");
         torso2.equip();
 
         reEquipTest.append("\nAfter equipping...\n")
@@ -76,7 +84,7 @@ public class EquipTests {
         // Test qualityModifier method
 
         StringBuilder qualityTest = new StringBuilder();
-        qualityTest.append("\n--- Testing qualityModifier() method ---\n");
+        qualityTest.append("\n--- Testing qualityModifier() method ---\n\n");
 
         EArmorsTorso standardTorso = EArmorsTorso.HAUBERK;
 
@@ -102,4 +110,5 @@ public class EquipTests {
     public static void main(String[] args) {
        testEArmorsTorso();
     }
-}
+
+} // end EquipTests class
